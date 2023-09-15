@@ -1,5 +1,5 @@
 import About from "@/components/About";
-
+import Advantages from "@/components/Advantages";
 
 
 export default function Home() {
@@ -7,12 +7,8 @@ export default function Home() {
   return (
     <>
       <About />
-      <section id="test" className="h-screen">
-        <p className="h-90">test</p>
-      </section>
-      <section id="calculator" className="screen">
-        <p className="h-90">calculator</p>
-      </section>
+      <Advantages/>
+      
     </>
   );
 }

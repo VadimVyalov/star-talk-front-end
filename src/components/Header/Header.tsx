@@ -6,7 +6,7 @@ import Navigation from "../Navigation";
 const Header: FC = () => {
   return (
     <header>
-      <div>
+      <div className="container">
         <ContactsPanel />
         <div>
           <p>Logo</p>
