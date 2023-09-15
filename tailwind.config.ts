@@ -13,9 +13,9 @@ const config: Config = {
       },
     },
     screens: {
-      sm: "420px",
-      md: "768px",
-      lg: "1440px",
+      "mobile": "280px",
+      "tablet": "591px",
+      "desktop": "1025px",
     },
     colors: {
       transparent: "transparent",
