@@ -33,7 +33,7 @@ ul {
 button {
   cursor: pointer;
 }
-
+/* advantage section styles */
 .container {
   @apply mx-auto my-0 desktop:pl-[120px] desktop:pr-[120px] mobile:min-w-[280px] mobile:max-w-[590px] tablet:min-w-[591px] tablet:max-w-[1024px] desktop:min-w-[1025px] desktop:max-w-[1440px];
 }
@@ -44,4 +44,10 @@ button {
 
 .advantage-item {
   @apply flex desktop:gap-[16px] desktop:w-[384px] desktop:h-[160px] desktop:pt-[40px] desktop:pl-[28px] bg-white-50;
+}
+
+/* price section styles */
+
+.slick-dots {
+  @apply flex
 }
