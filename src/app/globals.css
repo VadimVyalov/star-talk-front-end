@@ -12,7 +12,7 @@ body {
   color: #26262b;
   line-height: 1.5;
   font-size: 16px;
-  background-color: #FEFBF4;
+  background-color: #fefbf4;
 }
 
 * {
@@ -48,6 +48,10 @@ button {
 
 /* price section styles */
 
-.slick-dots {
-  @apply flex
+.slider-item {
+  @apply !flex flex-col justify-between items-center !w-[357px] h-[831px]  pt-[30px] px-[24px] pb-[40px] border-[1px] border-grey-50 rounded-[5px];
+}
+
+.prices-list-item {
+  @apply relative text-base before:absolute before:content-['\2713'] before:-left-5 before:top-0 before:text-accent-50 before:font-semibold;
 }
