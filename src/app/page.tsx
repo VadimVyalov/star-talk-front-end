@@ -1,9 +1,13 @@
-import Image from 'next/image'
+import About from "@/components/About";
+import Advantages from "@/components/Advantages";
+import Prices from "@/components/Prices";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div></div>
-    </main>
-  )
+    <>
+      <About />
+      <Advantages />
+      <Prices/>
+    </>
+  );
 }
