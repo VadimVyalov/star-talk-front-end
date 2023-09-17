@@ -25,6 +25,12 @@ const config: Config = {
       white: {
         50: "#FFF",
       },
+      accent: {
+        50: "#46BB59",
+      },
+      grey: {
+        50: "#E5E4D8",
+      },
     },
   },
   plugins: [],
