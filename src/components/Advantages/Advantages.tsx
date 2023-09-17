@@ -17,7 +17,7 @@ const Advantages: FC = () => {
               />
             </div>
             <div>
-              <h3 className="text-[18px] font-semibold">Доступна вартість</h3>
+              <h3 className="mb-[5px] text-[18px] font-semibold">Доступна вартість</h3>
               <p>Ціна на індивідуальні заняття найвигідніша</p>
             </div>
           </li>
@@ -31,7 +31,7 @@ const Advantages: FC = () => {
               />
             </div>
             <div>
-              <h3>Подарунки і сертифікати</h3>
+              <h3 className="mb-[5px] text-[18px] font-semibold">Подарунки і сертифікати</h3>
               <p>Подарунки. Сертифікати при закінченні навчання</p>
             </div>
           </li>
@@ -45,7 +45,7 @@ const Advantages: FC = () => {
               />
             </div>
             <div>
-              <h3>Словниковий запас</h3>
+              <h3 className="mb-[5px] text-[18px] font-semibold">Словниковий запас</h3>
               <p>Високий рівень словникового запасу</p>
             </div>
           </li>
@@ -59,7 +59,7 @@ const Advantages: FC = () => {
               />
             </div>
             <div>
-              <h3>Різний підхід до кожного</h3>
+              <h3 className="mb-[5px] text-[18px] font-semibold">Різний підхід до кожного</h3>
               <p>Різний підхід для різних видів</p>
             </div>
           </li>
@@ -73,7 +73,7 @@ const Advantages: FC = () => {
               />
             </div>
             <div>
-              <h3>Зручний час навчання</h3>
+              <h3 className="mb-[5px] text-[18px] font-semibold">Зручний час навчання</h3>
               <p>Різний підхід для різних видів</p>
             </div>
           </li>
@@ -87,7 +87,7 @@ const Advantages: FC = () => {
               />
             </div>
             <div>
-              <h3>Мовне середовище</h3>
+              <h3 className="mb-[5px] text-[18px] font-semibold">Мовне середовище</h3>
               <p>Мова якою можуть оволодіти всі в короткий проміжок часу</p>
             </div>
           </li>

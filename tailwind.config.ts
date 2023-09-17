@@ -13,14 +13,17 @@ const config: Config = {
       },
     },
     screens: {
-      "mobile": "280px",
-      "tablet": "591px",
-      "desktop": "1025px",
+      mobile: "280px",
+      tablet: "591px",
+      desktop: "1025px",
     },
     colors: {
       transparent: "transparent",
       black: {
         50: "#26262B",
+      },
+      white: {
+        50: "#FFF",
       },
     },
   },
