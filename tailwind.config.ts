@@ -9,13 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        montserrat: ['var(--font-montserrat)'],
+        roboto: ['var(--font-roboto)'],
+        bree: ['var(--font-bree)'],
       },
     },
     screens: {
-      mobile: "280px",
-      tablet: "591px",
-      desktop: "1025px",
+      mobile: "396px",
+      tablet: "768px",
+      desktop: "1440px",
     },
     colors: {
       transparent: "transparent",

@@ -2,17 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap);
+/* @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap); */
 
 html,
 body {
-  /* font-family: ${montserrat.style.fontFamily}; */
 
-  font-weight: 400;
-  color: #26262b;
-  line-height: 1.5;
-  font-size: 16px;
-  background-color: #fefbf4;
+  @apply font-montserrat font-normal text-base leading-[1.5] text-[#26262b] bg-[#fefbf4];
 }
 
 * {
@@ -33,11 +28,13 @@ ul {
 button {
   cursor: pointer;
 }
+
 /* advantage section styles */
 .container {
-  @apply mx-auto my-0 desktop:pl-[120px] desktop:pr-[120px] mobile:min-w-[280px] mobile:max-w-[590px] tablet:min-w-[591px] tablet:max-w-[1024px] desktop:min-w-[1025px] desktop:max-w-[1440px];
-}
 
+  @apply mx-auto my-0 desktop:px-[120px] mobile:min-w-[280px] ;
+}
+/* mobile:max-w-[590px] tablet:min-w-[591px] tablet:max-w-[1024px] desktop:min-w-[1025px] desktop:max-w-[1440px] */
 .sectionTitle {
   @apply text-center desktop:mb-[40px] desktop:text-[40px] font-semibold;
 }
@@ -49,7 +46,7 @@ button {
 /* price section styles */
 
 .slider-item {
-  @apply !flex flex-col justify-between items-center !w-[357px] h-[831px]  pt-[30px] px-[24px] pb-[40px] border-[1px] border-grey-50 rounded-[5px];
+  @apply  !flex flex-col justify-between items-center !w-[357px] h-[831px] pt-[30px] px-[24px] pb-[40px] border-[1px] border-grey-50 rounded-[5px];
 }
 
 .prices-list-item {
