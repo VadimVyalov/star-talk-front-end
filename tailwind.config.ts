@@ -15,9 +15,9 @@ const config: Config = {
       },
     },
     screens: {
-      mobile: "396px",
-      tablet: "768px",
-      desktop: "1440px",
+      m: "280px",
+      t: "591px",
+      d: "1025px",
     },
     colors: {
       transparent: "transparent",
