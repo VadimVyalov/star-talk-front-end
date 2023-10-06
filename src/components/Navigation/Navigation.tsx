@@ -1,57 +1,33 @@
-import { FC, useEffect } from "react";
-import Link from "next/link";
-
-// function scrollToSection(sectionId) {
-//     const element = document.getElementById(sectionId);
-//     if (element) {
-//       element.scrollIntoView({ behavior: "smooth" });
-//     }
-//   }
+import { FC } from "react";
+import ScrollLink from "../ScrollLink";
 
 const Navigation: FC = () => {
-  // useEffect(() => {
-  //     // Listen for route changes and scroll to the appropriate section
-  //     const handleRouteChange = () => {
-  //       // Get the section ID from the route query parameter or use a default value
-  //       const sectionId = router.query.section || 'about';
-  //       scrollToSection(sectionId);
-  //     };
+  const menuItems = [
+    { id: 'm-01', title: 'Ціни', link: '/#prices' },
+    { id: 'm-02', title: 'Тривалість навчання', link: '/#prices' },
+    { id: 'm-03', title: 'Акції', link: '/#discounts' },
+    { id: 'm-04', title: 'Про нас', link: '/#about' },
+    { id: 'm-05', title: 'Викладачі', link: '/#teachers' },
+    { id: 'm-06', title: 'Статті', link: '/articles' },
+    { id: 'm-07', title: 'Відгуки', link: '/responses' }
+  ]
 
-  //     // Initial scroll on page load
-  //     handleRouteChange();
-
-  //     // Listen for route changes
-  //     router.events.on('routeChangeComplete', handleRouteChange);
-
-  //     // Cleanup the event listener when the component unmounts
-  //     return () => {
-  //       router.events.off('routeChangeComplete', handleRouteChange);
-  //     };
-  //   }, []);
   return (
     <nav>
-      <ul className="flex gap-3">
-        <li>
-          <Link href={"/#about"}>Про нас</Link>
-        </li>
-        <li>
-          <Link href={"/#prices"}>Ціни</Link>
-        </li>
-        <li>
-          <Link href={"/#discounts"}>Акції</Link>
-        </li>
-        <li>
-          <Link href={"/#teachers"}>Викладачі</Link>
-        </li>
-        <li>
-        <Link href={"/#articles"}>Статті</Link>
-        </li>
-        <li>
-          <Link href={"/#responses"}>Відгуки</Link>
-        </li>
-        <li>
-          <Link href={"/#calculator"}>Калькулятор</Link>
-        </li>
+      <ul className="flex gap-6">
+        {
+          menuItems.map(i => {
+            return (
+              <li key={i.id}>
+                <ScrollLink className="font-medium whitespace-nowrap" 
+                  title={i.title} 
+                  href={i.link} 
+                  > {i.title}  
+                </ScrollLink>
+              </li>
+            )
+          })
+        }
       </ul>
     </nav>
   );
