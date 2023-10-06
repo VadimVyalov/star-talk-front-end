@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import { SCREENS } from './public/const/screens';
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,11 +14,7 @@ const config: Config = {
         bree: ['var(--font-bree)'],
       },
     },
-    screens: {
-      m: "280px",
-      t: "591px",
-      d: "1025px",
-    },
+    screens: SCREENS,
     colors: {
       transparent: "transparent",
       black: {

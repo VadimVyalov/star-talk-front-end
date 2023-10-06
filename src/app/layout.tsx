@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Bree_Serif, Montserrat, Roboto_Slab } from "next/font/google";
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 const montserrat=Montserrat({subsets:["latin"], weight:["400","500","600","700"], variable:'--font-montserrat',})
@@ -21,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${roboto.variable} ${bree_serif.variable}`}>
-        {/* <Header /> */}
+        <Header />
         <main>{children}</main>
+        <Footer/>
       </body>
     </html>
   );

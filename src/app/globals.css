@@ -52,3 +52,8 @@ button {
 .prices-list-item {
   @apply relative text-base before:absolute before:content-['\2713'] before:-left-5 before:top-0 before:text-accent-50 before:font-semibold;
 }
+
+.greenLink {
+  @apply block w-full t:w-fit px-[23px] py-[21px] t:py-[15px]  rounded-bl-3xl rounded-tr-3xl bg-accent-50 text-white-50
+          text-[16px] text-center font-semibold whitespace-nowrap
+}
