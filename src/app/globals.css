@@ -7,7 +7,7 @@
 html,
 body {
 
-  @apply font-montserrat font-normal text-base leading-[1.5] text-black-50 bg-mainBg;
+  @apply font-montserrat font-normal text-base leading-[1.5] text-black-50 bg-mainBg scroll-smooth; 
 }
 
 * {
