@@ -8,8 +8,7 @@ function NotFound() {
           <p className="text-[128px] t:text-[148px] d:text-[190px]  t:mt-[117px] d:mt-[156px] font-roboto leading-[1.1]">404</p>
           <p className="text-[34px] t:text-[75px] d:text-[96px] mt-[134px] t:mt-[16px] d:mt-[20px] font-bree leading-[1.1042] uppercase">error</p>
           <p className="text-[18px] t:text-[24px] d:text-[32px] mt-[143px] t:mt-[39px] d:mt-[45px]">Шкода, але сторінку не знайдено</p>
-          <Link href="/" className="block w-full t:w-fit px-[23px] py-[21px] t:py-[15px] mt-[45px] t:mt-[13px] d:mt-[16px] rounded-bl-3xl rounded-tr-3xl bg-accent-50 text-white-50
-          text-[16px] text-center font-semibold ">Повернутись на головну</Link>
+          <Link href="/" className="greenLink w-full t:w-fit px-[23px] py-[21px] t:py-[15px] mt-[45px] t:mt-[13px] d:mt-[16px] ">Повернутись на головну</Link>
       </div>
       </div>
     </section >

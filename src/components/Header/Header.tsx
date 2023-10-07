@@ -2,14 +2,16 @@
 import Image from "next/image";
 import useScreen from '../../hooks/useScreen';
 import { FC } from "react";
-
 import ContactsPanel from "../ContactsPanel";
 import Navigation from "../Navigation";
 import logo from "../../../public/assets/icons/logo.svg"
 import Link from "next/link";
+import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
+
 
 const Header: FC = () => {
   const { isD } = useScreen();
+
   return (
     <header>
       <div className="container  ">
@@ -22,9 +24,14 @@ const Header: FC = () => {
               />
           </Link>
 
-          {isD ? <Navigation /> : <p>BurgerMenu</p>}
+          {isD ? 
+            (<>
+              <Navigation /> 
+              <Link href="/" className="greenLink px-[23px] py-[15px] ">Замовити урок</Link>
+          </>) : 
+          (<BurgerMenu/>)}
 
-          <Link href="/" className="greenLink ">Замовити урок</Link>
+          
 
         </div>
 

@@ -1,11 +1,10 @@
+'use client';
 import Image from "next/image";
-import { FC } from "react";
-
 import ContactsPanel from "../ContactsPanel";
 import Navigation from "../Navigation";
 import logo from "../../../public/assets/icons/logo.svg"
 
-const Footer: FC = () => {
+const Footer= () => {
   return (
 
     <div className="container">
@@ -14,10 +13,9 @@ const Footer: FC = () => {
         <Image
           src={logo}
           alt="Star Talk"
-
         />
 
-        {/* <Navigation /> */}
+         <Navigation /> 
       </div>
     </div>
 
