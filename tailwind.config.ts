@@ -17,6 +17,8 @@ const config: Config = {
     screens: SCREENS,
     colors: {
       transparent: "transparent",
+      overlay: "rgba(21, 21, 21, 0.5)",
+      mainBg:"#fefbf4",
       black: {
         50: "#26262B",
       },
@@ -30,6 +32,7 @@ const config: Config = {
         50: "#E5E4D8",
       },
     },
+
   },
   plugins: [],
 };
