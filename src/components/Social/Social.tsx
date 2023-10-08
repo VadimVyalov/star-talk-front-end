@@ -1,25 +1,30 @@
 
-import Image from "next/image"
-import instagram_icon from "../../../public/assets/icons/instagram.svg"
-import telegram_icon from "../../../public/assets/icons/telegram.svg"
+//import Image from "next/image"
+//import instagram_icon from "../../../public/assets/icons/instagram.svg"
+//import telegram_icon from "../../../public/assets/icons/telegram.svg"
+
+import { BsInstagram, BsTelegram } from "react-icons/bs";
 const Social = () => {
     return (
         <div className="flex gap-x-5">
             <a href="#insta" title="Instagram" className=' '>
-                <Image
+                {/* <Image
                     src={instagram_icon}
                     alt="instagram icon"
                     width={32}
                     height={32}
-                />
+                /> */}
+                <BsInstagram className=" icon" />
             </a>
             <a href="#telega" title="Telegram">
-                <Image
+                {/* <Image
                     src={telegram_icon}
                     alt="telegram icon"
                     width={32}
                     height={32}
-                />
+
+                /> */}
+                <BsTelegram className="icon" />
             </a>
 
         </div>

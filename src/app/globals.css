@@ -7,7 +7,7 @@
 html,
 body {
 
-  @apply font-montserrat font-normal text-base leading-[1.5] text-black-50 bg-mainBg scroll-smooth; 
+  @apply font-montserrat font-normal text-base leading-[1.5] text-black-50 bg-mainBg scroll-smooth;
 }
 
 * {
@@ -34,6 +34,7 @@ button {
 
   @apply mx-auto my-0 px-[16px] t:px-[32px] d:px-[120px] min-w-[280px] max-w-[590px] t:min-w-[591px] t:max-w-[1024px] d:min-w-[1025px] d:max-w-[1440px];
 }
+
 /*  */
 .sectionTitle {
   @apply text-center d:mb-[40px] d:text-[40px] font-semibold;
@@ -54,6 +55,12 @@ button {
 }
 
 .greenLink {
-  @apply block   rounded-bl-3xl rounded-tr-3xl bg-accent-50 text-white-50
-          text-[16px] text-center font-semibold whitespace-nowrap
-} /* w-full t:w-fit px-[23px] py-[21px] t:py-[15px] */
+  @apply block rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50 text-accent-50  hover:bg-accent-50  hover:text-white-50 
+  text-[16px] text-center font-semibold whitespace-nowrap hover:shadow-lg transition
+}
+
+/* w-full t:w-fit px-[23px] py-[21px] t:py-[15px] */
+
+.icon {
+  @apply w-8 h-8 fill-black-50 hover:fill-accent-50 hover:shadow-lg transition;
+}

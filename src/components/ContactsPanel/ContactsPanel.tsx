@@ -1,5 +1,3 @@
-//import { BsInstagram ,BsTelegram} from "react-icons/bs";
-
 import viber_icon from "../../../public/assets/icons/viber.svg"
 import telephone_icon from "../../../public/assets/icons/telephone.svg"
 

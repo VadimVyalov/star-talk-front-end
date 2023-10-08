@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" 0 , "liga" 0'}],
-        roboto: ['var(--font-roboto)',{ fontFeatureSettings: '"clig" 0 , "liga" 0'}],
+        roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
         bree: ['var(--font-bree)',{ fontFeatureSettings: '"clig" 0 , "liga" 0'}],
       },
     },
