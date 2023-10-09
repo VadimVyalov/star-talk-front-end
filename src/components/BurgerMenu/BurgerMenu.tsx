@@ -3,9 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import menu_icon from "../../../public/assets/icons/menu.svg"
+
 import { ModalPortal } from "../Modal/ModalPortal";
 import Navigation from "../Navigation";
+
+const menu_icon = "/assets/icons/menu.svg";
 
 export function BurgerMenu() {
 	const [open, setOpen] = useState(false);
@@ -26,7 +28,7 @@ export function BurgerMenu() {
 				/>
 			</button>
 			{
-				open ? <ModalPortal onCloseMenu={onCloseMenu} isOpen={true}>
+				open ? <ModalPortal onCloseMenu={onCloseMenu} isOpen={true} className=" bg-overlay">
 					<div className=" bg-mainBg rounded-b-3xl pb-6 flex flex-col items-center">
 						<Navigation
 							wrapCn='mb-12'

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Advantages: FC = () => {
   return (
-    <section className="desktop:mb-[120px]">
+    <section className="d:mb-[120px]">
       <div className="container">
         <h2 className="sectionTitle">Наші переваги</h2>
         <ul className="flex flex-wrap justify-center desktop:gap-[24px] ">

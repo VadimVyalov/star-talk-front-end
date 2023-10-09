@@ -3,17 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import useScreen from '@/hooks/useScreen';
 import Navigation from "../Navigation";
-import logo from "../../../public/assets/icons/logo.svg"
+import Social from "../Social";
 import viber_icon from "../../../public/assets/icons/viber.svg"
 import telephone_icon from "../../../public/assets/icons/telephone.svg"
 
-import Social from "../Social";
+const logo ="/assets/icons/logo.svg"
+
 const Footer = () => {
   const { isT } = useScreen();
-  console.log(isT)
+  //console.log(isT)
   return (
 
-    <div className="container pb-8">
+    <div id="footer" className="container pb-8">
 
       <div className="flex  flex-col t:flex-row items-center t:items-start t:justify-between pb-6 t:pb-10 d:pb-14 pt-8 t:pt-10 d:pt-16 ">
 
@@ -21,6 +22,8 @@ const Footer = () => {
           <Image
             src={logo}
             alt="Star Talk"
+            width={133}
+            height={33}
           />
           {isT ? <Social /> : null}
         </div>
