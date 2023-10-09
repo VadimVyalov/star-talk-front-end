@@ -55,8 +55,8 @@ button {
 }
 
 .greenLink {
-  @apply block rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50 text-accent-50  hover:bg-accent-50  hover:text-white-50 
-  text-[16px] text-center font-semibold whitespace-nowrap hover:shadow-lg transition
+  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50 text-accent-50  hover:bg-accent-50  hover:text-white-50 
+   text-center font-semibold whitespace-nowrap hover:shadow-lg transition
 }
 
 /* w-full t:w-fit px-[23px] py-[21px] t:py-[15px] */

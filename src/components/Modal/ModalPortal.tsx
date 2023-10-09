@@ -2,7 +2,7 @@ import { useKeyPress } from "@/hooks/useKeyPress";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
-
+import cn from "@/helpers";
 interface ModalProps {
 	className?: string;
 	isOpen?: boolean;
@@ -33,8 +33,7 @@ export function ModalPortal({
 
 	const modalContent = (
 		<div
-			className="fixed top-0 left-0 w-[100vw] h-[100vh]
-			flex justify-center items-center z-10  bg-overlay"
+			className={cn("fixed top-0 left-0 w-[100vw] h-[100vh] flex justify-center items-center z-10 ",className)}
 			onClick={onCloseMenu}
 			>
 			
