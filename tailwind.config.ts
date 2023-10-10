@@ -15,7 +15,11 @@ const config: Config = {
         bree: ['var(--font-bree)',{ fontFeatureSettings: '"clig" 0 , "liga" 0'}],
       },
     },
-    screens: SCREENS,
+    screens: {
+      d:`${SCREENS.d}px`,
+      t:`${SCREENS.t}px`,
+      m:`${SCREENS.m}px`,
+    },
     colors: {
       transparent: "transparent",
       overlay: "rgba(21, 21, 21, 0.5)",

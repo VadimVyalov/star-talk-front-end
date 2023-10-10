@@ -1,5 +1,5 @@
 export const SCREENS={
-    m: "280px",
-    t: "591px",
-    d: "1025px"
+    m: 280,
+    t: 591,
+    d: 1025
 }
