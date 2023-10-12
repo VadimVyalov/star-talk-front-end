@@ -14,6 +14,10 @@ const config: Config = {
         roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
         bree: ['var(--font-bree)',{ fontFeatureSettings: '"clig" 0 , "liga" 0'}],
       },
+      content: {
+        'check': 'url("/assets/icons/check.svg")',
+
+      },
     },
     screens: {
       d:`${SCREENS.d}px`,

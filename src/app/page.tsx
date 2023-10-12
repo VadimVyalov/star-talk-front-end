@@ -2,7 +2,10 @@ import About from "@/components/About";
 import Advantages from "@/components/Advantages";
 import { ArrowUp } from "@/components/ArrowUp/ArrowUp";
 import Hero from "@/components/Hero";
-import Prices from "@/components/Prices";
+import PricesA from "@/components/PricesA/PricesA";
+
+
+
 
 export default function Home() {
   return (
@@ -10,7 +13,7 @@ export default function Home() {
       <Hero />
       {/* <About /> */}
       <Advantages />
-      <Prices />
+      <PricesA />
       <ArrowUp className="fixed bottom-12 right-6 z-10" />
 
     </div>
