@@ -16,7 +16,7 @@ const config: Config = {
       },
       content: {
         'check': 'url("/assets/icons/check.svg")',
-
+        'star': 'url("/assets/icons/star.svg")',
       },
     },
     screens: {

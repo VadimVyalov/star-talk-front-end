@@ -20,7 +20,7 @@ const Hero = () => {
                             <BsArrowRightShort size={28} />
                         </Link>
                     </div>
-                    <Image
+                    <Image className="rounded-3xl"
                         src={hero_img}
                         alt="hero image"
                         sizes="(max-width: 590px) 100vw, 50vw"

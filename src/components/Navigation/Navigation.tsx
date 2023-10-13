@@ -25,7 +25,7 @@ const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) 
         {
           menuItems.map(i => {
             return (
-              <li key={i.id} className={cn(itemCn,"hover:text-accent-50 transition hover:shadow-lg")}>
+              <li key={i.id} className={cn(itemCn,"hover:text-accent-50 transition active:shadow-lg")}>
 
                 <Link className={cn(" block whitespace-nowrap font-medium h-full ", linkCn)}
                   title={i.title}
