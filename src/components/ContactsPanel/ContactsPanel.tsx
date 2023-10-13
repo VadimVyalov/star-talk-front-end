@@ -1,7 +1,7 @@
-import viber_icon from "../../../public/assets/icons/viber.svg"
-import telephone_icon from "../../../public/assets/icons/telephone.svg"
+// import viber_icon from "../../../public/assets/icons/viber.svg"
+// import telephone_icon from "../../../public/assets/icons/telephone.svg"
+import { FaViber } from "react-icons/fa";
 
-import Image from "next/image";
 import Social from "../Social";
 
 const ContactsPanel = () => {
@@ -16,21 +16,16 @@ const ContactsPanel = () => {
 
       <div className="flex  items-end t:items-center gap-y-2 gap-x-4 t:gap-x-6 shrink-0 flex-col-reverse t:flex-row">
         <a href="#viber" title="Viber" className=' shrink-0'>
-          <Image
-            src={viber_icon}
-            alt="viber icon"
-            width={32}
-            height={32}
-          />
+        <FaViber className=" icon"/>
         </a>
         <a href="#tel" className="flex gap-x-2 ">
-          <Image
+          {/* <Image
             src={telephone_icon}
             alt="telephone icon"
             width={16}
             height={16}
-          />
-          <span className="text-base t:text-[20px] font-medium ">0667778899</span>
+          /> */}
+          <span className="text-base t:text-[20px] font-medium hover:text-accent-50 transition ">0667778899</span>
         </a>
       </div>
     </div>

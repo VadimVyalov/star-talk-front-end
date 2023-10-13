@@ -28,7 +28,7 @@ export const ArrowUp = ({ className = "",...props}: ButtonProps) => {
 
 		return (
 			<button
-				className={`${className} ${	showButton ? "w-16 h-16 border-[1px] rounded-full flex items-center justify-center border-accent-50 text-accent-50 hover:bg-accent-50 hover:text-mainBg" : "hidden"}  `}
+				className={`${className} ${	showButton ? " w-16 h-16 border-[1px] rounded-full flex items-center justify-center border-accent-50 hover:text-accent-50 bg-accent-50 hover:bg-mainBg" : "hidden"}  `}
 				type={'button'}
 				onClick={() => {
 					document.documentElement.scrollIntoView({behavior: "smooth",});
@@ -37,7 +37,8 @@ export const ArrowUp = ({ className = "",...props}: ButtonProps) => {
 				
 				{...props}
 			>
-				<BsChevronUp className=" w-10 h-10 fill-inherit "/>
+				<BsChevronUp className=" w-10 h-10 stroke-accent-50 stroke-1"/>
+				<BsChevronUp className=" absolute w-10 h-10 fill-mainBg "/>
 			</button>
 		);
 	}

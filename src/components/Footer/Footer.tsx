@@ -4,9 +4,9 @@ import Link from "next/link";
 import useScreen from '@/hooks/useScreen';
 import Navigation from "../Navigation";
 import Social from "../Social";
-import viber_icon from "../../../public/assets/icons/viber.svg"
-import telephone_icon from "../../../public/assets/icons/telephone.svg"
-
+// import viber_icon from "../../../public/assets/icons/viber.svg"
+// import telephone_icon from "../../../public/assets/icons/telephone.svg"
+import { FaViber } from "react-icons/fa";
 const logo ="/assets/icons/logo.svg"
 
 const Footer = () => {
@@ -38,24 +38,19 @@ const Footer = () => {
 
           <div className="flex flex-row gap-x-6 items-center">
             <a href="#viber" title="Viber" className=' shrink-0 '>
-              <Image
-                src={viber_icon}
-                alt="viber icon"
-                width={32}
-                height={32}
-              />
+            <FaViber className="icon"/>
             </a>
             <a href="#tel" className="flex gap-x-2 ">
-              <Image
+              {/* <Image
                 src={telephone_icon}
                 alt="telephone icon"
                 width={16}
                 height={16}
-              />
-              <span className="text-base t:text-[20px] font-medium ">0667778899</span>
+              /> */}
+              <span className="text-base t:text-[20px] font-medium  hover:text-accent-50 transition ">0667778899</span>
             </a>
           </div>
-          <Link href={'mailto:startalk.school@gmail.com'}>startalk.school@gmail.com</Link>
+          <Link className=" hover:text-accent-50 transition " href={'mailto:startalk.school@gmail.com'}>startalk.school@gmail.com</Link>
 
         </div>
         {!isT ? <Social /> : null}
