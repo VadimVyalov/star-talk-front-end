@@ -30,6 +30,7 @@ const config: Config = {
       mainBg:"#fefbf4",
       black: {
         50: "#26262B",
+        30:"#26262B4D",
       },
       white: {
         50: "#FFF",
@@ -40,6 +41,7 @@ const config: Config = {
       grey: {
         50: "#E5E4D8",
       },
+  
     },
 
   },

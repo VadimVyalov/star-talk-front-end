@@ -6,7 +6,7 @@ import Social from "../Social";
 
 const ContactsPanel = () => {
   return (
-    <div className="flex justify-between  items-center py-[28px] border-b-[1px] border-[#18181b33]">
+    <div className="flex justify-between  items-center py-[28px] border-b-[1px] border-black-30">
 
       <div className="flex flex-wrap items-start t:items-center gap-y-2 gap-x-10 flex-col t:flex-row ">
         <p className='font-roboto font-medium tracking-tight text-base d:text-2xl whitespace-nowrap'>Приєднуйтесь до нас!</p>
