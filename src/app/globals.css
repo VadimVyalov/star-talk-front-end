@@ -37,17 +37,14 @@ button {
 
 /*  */
 .sectionTitle {
-  @apply text-center d:mb-[40px] d:text-[40px] font-semibold;
+  @apply text-center font-roboto text-[40px] font-semibold mb-[40px];
 }
 
-.advantage-item {
-  @apply flex d:gap-[16px] d:w-[384px] d:h-[160px] d:pt-[40px] d:pl-[28px] bg-white-50;
-}
 
 /* price section styles */
 
 .slider-item {
-  @apply  !flex flex-col justify-between items-center pt-[30px] px-[24px] pb-[40px] border-[1px] border-grey-50 rounded-[5px] h-[inherit];
+  @apply  !flex flex-col justify-between items-center pt-[30px] px-[24px] pb-[40px] border-[1px] border-black-30 rounded-[5px] h-[inherit];
 }
 
 .prices-list-item {
@@ -59,17 +56,19 @@ button {
    text-center font-semibold whitespace-nowrap hover:shadow-lg transition
 }
 
-/* w-full t:w-fit px-[23px] py-[21px] t:py-[15px] */
+
 
 .icon {
   @apply w-8 h-8 fill-black-50 hover:fill-accent-50 hover:shadow-lg transition;
 }
+
 .slider-price .slick-slide {height: unset;}
 .slider-price .slick-slide > div {height: 100%; margin: 0 5%;}
 .slider-price .slick-track { display: flex;}
 .slider-price .slick-list { margin-bottom: 48px; }
 .slider-price .slick-dots {position: unset; }
 .slider-price .slick-dots button::before{content: none; }
-.slider-price .slick-dots button{width: 18px; height:18px; border: 1px solid  #26262B4D; border-radius: 10px;}
-.slider-price .slick-dots .slick-active button{background-color: #46BB59; border-color: #46BB59;}
-.slider-price .slick-dots button:hover{background-color: #46BB59;}
+.slider-price .slick-dots button{@apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full}
+/* .slider-price .slick-dots button{ width:18px; height:18px; border-width: 1px; border-style: solid; border-color: #26262B4D; border-radius: 50px;} */
+.slider-price .slick-dots .slick-active button{@apply bg-accent-50 border-accent-50}
+.slider-price .slick-dots button:hover{@apply bg-accent-50}
