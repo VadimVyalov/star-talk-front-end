@@ -1,0 +1,12 @@
+
+
+    
+.dateDrop{ 
+ @apply bg-transparent text-sm leading-[1.25];
+
+}
+.dateDrop .dateDrop__control{ 
+    @apply outline-none border-grey-50 hover:border-grey-50 shadow-none
+   }
+   
+
