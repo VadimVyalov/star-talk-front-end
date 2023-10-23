@@ -61,7 +61,7 @@ const PricesA = () => {
               return (
                 <div key={period.id} className="slider-item">
                   <PriceItem period={period} baseUrl='' />
-                  <button className=" w-full h-[60px] text-lg  font-semibold text-white-50 bg-accent-50 hover:text-accent-50 hover:bg-transparent   border-[1px] border-accent-50 rounded-[5px]">
+                  <button className=" w-[95%] h-[60px] text-lg  font-semibold mx-1.5 greenLink">
                     Записатись  </button>
                 </div>
               )

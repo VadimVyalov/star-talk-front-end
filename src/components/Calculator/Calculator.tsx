@@ -10,7 +10,7 @@ import type {
 } from "react-hook-form";
 import ReactDatePicker, { ReactDatePickerCustomHeaderProps } from "react-datepicker";
 import ReactSelect, { StylesConfig } from "react-select";
-import { addMonths, subMonths, format, getYear, getMonth } from 'date-fns';
+import { addMonths, subMonths, format, getYear, getMonth, differenceInDays, hoursToMinutes, addDays, subDays } from 'date-fns';
 import uk from "date-fns/locale/uk"
 
 import style from "./styles.module.scss";
@@ -18,7 +18,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./datePicker.css"
 import dataSelect from "./dateSelect.module.scss"
 
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 
 
 type OptionType = {
@@ -28,27 +28,38 @@ type OptionType = {
 }
 
 type FormValues = {
-    StartLevel: OptionType;
-    FinishLevel: OptionType;
-    ReactDatepicker: Date;
+    startLevel: OptionType;
+    finishLevel: OptionType;
+    selectDate: Date;
 };
 
 const optionsList: OptionType[] = [
-    { value: "A1", label: "A1" },
-    { value: "A2", label: "A2" },
-    { value: "B1", label: "B1" },
-    { value: "B2", label: "B2" },
-    { value: "C1", label: "C1" }
+    { value: "0", label: "0" },
+    { value: "100", label: "A1" },
+    { value: "250", label: "A2" },
+    { value: "450", label: "B1" },
+    { value: "700", label: "B2" },
+    { value: "900", label: "C1" },
+    { value: "1200", label: "C2" }
 
 ]
-const totalMonth=6;
+// const optionsFinish: OptionType[] = [
+
+// ]
+
+
+
+const totalMonth = 6;
+const maxHourPerDay = 8;
+const optionsStart = optionsList.slice(0, -1);
+
 
 const defaultValues: DefaultValues<FormValues> = {
 
-    StartLevel: optionsList[0],
-    FinishLevel: optionsList[0],
+    startLevel: optionsList[0],
+    finishLevel: optionsList[1],
 
-    ReactDatepicker: new Date(),
+    selectDate: addDays(new Date(), 13),
 };
 
 
@@ -84,29 +95,29 @@ const formSelectStyle: StylesConfig = {
 
     menu: styles => ({ ...styles, border: '1px solid #DFE0E2', }),
     valueContainer: styles => ({ ...styles, padding: '8px 12px', textAlign: "left" }),
-    dropdownIndicator: (styles, { selectProps: { menuIsOpen },  }, ) => ({
+    dropdownIndicator: (styles, { selectProps: { menuIsOpen }, },) => ({
         ...styles,
 
-      //  color:"#FF0000",
+        //  color:"#FF0000",
         transition: "all 250ms ease",
         transform: menuIsOpen ? "rotate(180deg)" : "rotate(0deg)",
-        "&:hover":{
-            color:'#FF0000',
+        "&:hover": {
+            color: '#FF0000',
         },
     })
 };
 
 const dateSelectStyle: StylesConfig = {
 
-    container:(styles, { isDisabled, isFocused })=>{
-       
-       return {
-        ...styles,
-        fontSize:'14px',
-    }
+    container: (styles, { isDisabled, isFocused }) => {
+
+        return {
+            ...styles,
+            fontSize: '14px',
+        }
     },
 
-    
+
     control: (styles, { isFocused }) => {
         return {
             ...styles,
@@ -123,8 +134,8 @@ const dateSelectStyle: StylesConfig = {
             ':active': {
                 borderColor: '#DFE0E2',
             },
-            
-            
+
+
         }
     },
     option: (styles, { isDisabled, isFocused, isSelected }) => {
@@ -134,12 +145,12 @@ const dateSelectStyle: StylesConfig = {
             backgroundColor: isSelected ? '#46BB59' : isFocused ? '#DFE0E2' : undefined,
             color: isSelected ? '#FFFFFF' : '#1C1D1F',
             cursor: isDisabled ? 'not-allowed' : 'pointer',
-            lineHeight:1.25,
+            lineHeight: 1.25,
 
         }
     },
 
-    menu: styles => ({ ...styles, border: '1px solid #DFE0E2', marginTop:'10px' }),
+    menu: styles => ({ ...styles, border: '1px solid #DFE0E2', marginTop: '10px' }),
     valueContainer: styles => ({ ...styles, padding: '8px 12px', textAlign: "left" }),
     dropdownIndicator: (styles, { selectProps: { menuIsOpen } }) => ({
         ...styles,
@@ -151,13 +162,20 @@ const dateSelectStyle: StylesConfig = {
 const Calculator = () => {
     const {
         handleSubmit,
-        register,
-        reset,
+        // register,
+        // reset,
+        watch,
+        setValue,
+        getValues,
         control,
         formState: { errors }
     } = useForm<FormValues>({
         defaultValues
     });
+
+    const [optionsFinish, setOptionsFinish] = useState(optionsList.slice(1));
+    const [minDate, setMinDate] = useState(addDays(new Date(), 13));
+
 
     const customHeaderDP = ({
         date,
@@ -175,27 +193,27 @@ const Calculator = () => {
             index: 0,
         }
 
-        const montsYear: OptionType[] = Array(totalMonth+1).fill('').map((_, i) => {
+        const montsYear: OptionType[] = Array(totalMonth + 1).fill('').map((_, i) => {
 
             return {
-                value: format(addMonths(new Date(), i), "LLLL yyyy", { locale: uk }),
-                label: format(addMonths(new Date(), i), "LLLL yyyy", { locale: uk }),
+                value: format(addMonths(minDate, i), "LLLL yyyy", { locale: uk }),
+                label: format(addMonths(minDate, i), "LLLL yyyy", { locale: uk }),
                 index: i,
             }
         })
         const onChangeHandler = (option: any) => {
             const index = option?.index || 0;
-            const newMonts = (getMonth(new Date()) + index) > 12 ?
-                (getMonth(new Date()) + index) - 12 : (getMonth(new Date()) + index)
-            const newYear = (getMonth(new Date()) + index) > 11 ? (getYear(new Date()) + 1)
-                : (getYear(new Date()))
+            const newMonts = (getMonth(minDate) + index) > 12 ?
+                (getMonth(minDate) + index) - 12 : (getMonth(minDate) + index)
+            const newYear = (getMonth(minDate) + index) > 11 ? (getYear(minDate) + 1)
+                : (getYear(minDate))
             changeMonth(newMonts)
             changeYear(newYear)
         }
         return (
             <div className="px-3 font-medium">
                 <div className="text-left text-sm leading-[1.5] mb-8 ">
-                    Оберіть дату    
+                    Оберіть дату
                 </div >
                 <div className="text-left capitalize text-2xl leading-[1.5] mb-4">
                     {format(date, "eeeeee, LLLL d", { locale: uk })}
@@ -207,13 +225,13 @@ const Calculator = () => {
                         classNamePrefix="dateDrop"
                         isSearchable={false}
 
-                      //  styles={dateSelectStyle}
+                        //  styles={dateSelectStyle}
                         options={montsYear}
                         value={startDate}
                         onChange={onChangeHandler}
                     />
                     <button className="h-full w-8 ml-auto mr-0"
-                    title="Попередній місяць"
+                        title="Попередній місяць"
                         onClick={decreaseMonth}
                         disabled={prevMonthButtonDisabled}>
 
@@ -225,7 +243,7 @@ const Calculator = () => {
                         />
                     </button>
                     <button className="h-full w-8 mx-0"
-                      title="Наступний місяць"
+                        title="Наступний місяць"
                         onClick={increaseMonth}
                         disabled={nextMonthButtonDisabled}>
 
@@ -241,10 +259,84 @@ const Calculator = () => {
         );
     }
 
-    const onSubmit: SubmitHandler<FormValues> = (data) =>
-        alert(JSON.stringify(data));
-    
-  
+    useEffect(() => {
+
+        const subscription = watch(({ startLevel, finishLevel }, { name }) => {
+
+            const newList = optionsList.filter(item => +item.value > +(startLevel?.value || 0))
+            const day = Math.ceil((+(finishLevel?.value || 0) - +(startLevel?.value || 0)) / maxHourPerDay);
+            const newDate = addDays(new Date(), day + 1)
+
+
+            if (name === 'startLevel') {
+
+                setOptionsFinish(newList)
+                setValue("finishLevel", newList[0])
+                //  setValue("selectDate", newDate)
+            }
+
+            if (name === 'finishLevel') {
+                setMinDate(newDate)
+                setValue("selectDate", newDate)
+            }
+
+        }
+        );
+
+
+        return () => subscription.unsubscribe();
+    }, [watch])
+
+
+    const oneOrMore = (num: number) => {
+        const cl = num > 20 ? +(num.toString().slice(-1)) : num;
+        const cz = cl === 1 ? 'у' : cl > 1 && cl < 4 ? 'и' : ''
+        return cz
+        // години
+        // а - 1
+        // и - 2 3 4
+        // - 5 6 7 8 9 10
+
+        // хвелини
+        // 
+        // а - 1 
+        // и - 2 3 4  
+        // - 5 6 7 8 9 
+    }
+
+    const timeMes = (time: number) => {
+        const hour = Math.trunc(time);
+        const minute = hoursToMinutes(time - Math.trunc(time));
+
+        const mes = (hour ? `${hour} годин${oneOrMore(hour)} ` : '') +
+            (minute ? `${minute} хвелин${oneOrMore(minute)}` : '')
+        return mes
+    }
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+        // alert(JSON.stringify(data));
+
+        //console.log(data)
+        const { startLevel, finishLevel, selectDate } = data
+        const days = differenceInDays(selectDate, Date.now())
+        const hourPerDay = (+finishLevel.value - +startLevel.value) / days
+
+        console.log(`витрачати ${timeMes(hourPerDay)} на день`)
+        console.log(`Дивитись відео ${timeMes(hourPerDay * 7 * 0.3)} на тиждень`)
+        console.log(`Відвідувати спікінги ${timeMes(hourPerDay * 7 * 0.4)} на тиждень`)
+        console.log(`Займатись з репетитором ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
+        console.log(`Самостійно писати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
+        console.log(`Самостійно читати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
+
+        // return hourPerDay;
+
+    }
+
+    const calcResult = (date: Date, startLevel: string, finishLevel: string) => {
+        const days = differenceInDays(Date.now(), date)
+        const hourPerDay = (+finishLevel - +startLevel) / days
+        return hourPerDay;
+    }
+
     return (
         <section id='calculator' className={cn(style.bg, "bg-center bg-no-repeat ", "mb-[72px] t:mb-[100px] d:mb-[120px]")}>
             <div className="container  ">
@@ -261,15 +353,17 @@ const Calculator = () => {
                                 <Controller
                                     render={({ field }) => (
                                         <ReactSelect
-                                        className="min-w-[140px] t:min-w-[180px]"
-                                            isSearchable={false}
-                                            
-                                            styles={formSelectStyle}
-                                            options={optionsList}
                                             {...field}
+                                            className="min-w-[140px] t:min-w-[180px]"
+                                            isSearchable={false}
+                                            // onChange={handleChangeStart}
+                                            styles={formSelectStyle}
+
+                                            options={optionsStart}
+
                                         />
                                     )}
-                                    name="StartLevel"
+                                    name="startLevel"
                                     control={control}
                                 />
                             </div>
@@ -279,15 +373,16 @@ const Calculator = () => {
                                 <Controller
                                     render={({ field }) => (
                                         <ReactSelect
-                                        className="min-w-[140px] t:min-w-[180px]"
+                                            className="min-w-[140px] t:min-w-[180px]"
                                             isSearchable={false}
                                             styles={formSelectStyle}
-                                            options={optionsList}
+                                            options={optionsFinish}
+
 
                                             {...field}
                                         />
                                     )}
-                                    name="FinishLevel"
+                                    name="finishLevel"
                                     control={control}
                                 />
                             </div>
@@ -297,8 +392,8 @@ const Calculator = () => {
                                 <Controller
                                     control={control}
 
-                                    name="ReactDatepicker"
-                                    render={({ field: { value,onChange, ...fieldProps } }) => {
+                                    name="selectDate"
+                                    render={({ field: { value, onChange, ...fieldProps } }) => {
 
                                         const [isOpen, setIsOpen] = useState(false);
                                         return (
@@ -307,19 +402,21 @@ const Calculator = () => {
                                                 {...fieldProps}
                                                 open={isOpen}
                                                 onInputClick={() => setIsOpen(!isOpen)}
-                                                onChange={(date) =>{  onChange(date) }}
-                                                onClickOutside={()=>setIsOpen(false)}
+                                                onChange={(date) => { onChange(date); setIsOpen(false) }}
+                                                onClickOutside={() => setIsOpen(false)}
                                                 shouldCloseOnSelect={true}
                                                 portalId="root-portal"
                                                 placeholderText=""
                                                 dateFormat="dd.MM.yyyy"
+
                                                 popperPlacement="bottom-end"
                                                 locale={uk}
-                                                minDate={subMonths(new Date(), 0)}
-                                                maxDate={addMonths(new Date(), 12)}
+                                                minDate={minDate}
+                                                maxDate={addMonths(minDate, totalMonth)}
+                                                // startDate
                                                 showPopperArrow={false}
                                                 selected={value}
-                                                showIcon
+                                                showIcon={true}
                                                 icon={
                                                     <Icon name="/assets/icons/small.svg" id="arrow"
                                                         className={cn(" text-black-30 hover:text-black-50 transition pointer-events-none ",
@@ -333,7 +430,7 @@ const Calculator = () => {
                                 />
                             </div>
                         </div>
-                        <button className={cn("greenLink"," px-28 py-4 text-lg leading-[1.75] w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
+                        <button className={cn("greenLink", " px-28 py-4 text-lg leading-[1.75] w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
                     </form>
                 </div>
             </div>
