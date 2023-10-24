@@ -29,7 +29,7 @@ const config: Config = {
       },
       grey: {
         50: "#E5E4D8",
-        30:'#DFE0E2',
+        30: "#DFE0E2",
       },
     },
 

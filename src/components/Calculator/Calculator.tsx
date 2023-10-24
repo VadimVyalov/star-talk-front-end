@@ -10,13 +10,15 @@ import type {
 } from "react-hook-form";
 import ReactDatePicker, { ReactDatePickerCustomHeaderProps } from "react-datepicker";
 import ReactSelect, { StylesConfig } from "react-select";
-import { addMonths, subMonths, format, getYear, getMonth, differenceInDays, hoursToMinutes, addDays, subDays } from 'date-fns';
+import { addMonths, addDays, format, getYear, getMonth, differenceInDays, hoursToMinutes, } from 'date-fns';
 import uk from "date-fns/locale/uk"
 
 import style from "./styles.module.scss";
 import "react-datepicker/dist/react-datepicker.css";
 import "./datePicker.css"
-import dataSelect from "./dateSelect.module.scss"
+import "./levelSelect.css"
+import "./dateSelect.css"
+
 
 import { useEffect, useState } from "react";
 
@@ -39,134 +41,27 @@ const optionsList: OptionType[] = [
     { value: "250", label: "A2" },
     { value: "450", label: "B1" },
     { value: "700", label: "B2" },
-    { value: "900", label: "C1" },
-    { value: "1200", label: "C2" }
-
+    { value: "900", label: "C1" }
 ]
-// const optionsFinish: OptionType[] = [
 
-// ]
-
-
-
-const totalMonth = 6;
+const totalMonth = 12;
 const maxHourPerDay = 8;
 const optionsStart = optionsList.slice(0, -1);
-
+const startDay = addDays(new Date(), Math.ceil((+(optionsList[1].value || 100) / maxHourPerDay)) + 1);
 
 const defaultValues: DefaultValues<FormValues> = {
 
     startLevel: optionsList[0],
     finishLevel: optionsList[1],
-
-    selectDate: addDays(new Date(), 13),
+    selectDate: startDay,
 };
 
-
-const formSelectStyle: StylesConfig = {
-    control: (styles, { isFocused }) => {
-        return {
-            ...styles,
-            backgroundColor: 'white',
-            boxShadow: 'none',
-            borderColor:
-                isFocused
-                    ? '#DFE0E2'
-                    : 'transparent',
-            cursor: 'pointer',
-            ':hover': {
-                borderColor: '#DFE0E2',
-            },
-            ':active': {
-                borderColor: '#DFE0E2',
-            },
-        }
-    },
-    option: (styles, { isDisabled, isFocused, isSelected }) => {
-
-        return {
-            ...styles,
-            backgroundColor: isSelected ? '#46BB59' : isFocused ? '#DFE0E2' : undefined,
-            color: isSelected ? '#FFFFFF' : '#1C1D1F',
-            cursor: isDisabled ? 'not-allowed' : 'pointer',
-
-        }
-    },
-
-    menu: styles => ({ ...styles, border: '1px solid #DFE0E2', }),
-    valueContainer: styles => ({ ...styles, padding: '8px 12px', textAlign: "left" }),
-    dropdownIndicator: (styles, { selectProps: { menuIsOpen }, },) => ({
-        ...styles,
-
-        //  color:"#FF0000",
-        transition: "all 250ms ease",
-        transform: menuIsOpen ? "rotate(180deg)" : "rotate(0deg)",
-        "&:hover": {
-            color: '#FF0000',
-        },
-    })
-};
-
-const dateSelectStyle: StylesConfig = {
-
-    container: (styles, { isDisabled, isFocused }) => {
-
-        return {
-            ...styles,
-            fontSize: '14px',
-        }
-    },
-
-
-    control: (styles, { isFocused }) => {
-        return {
-            ...styles,
-            backgroundColor: 'white',
-            boxShadow: 'none',
-            borderColor:
-                isFocused
-                    ? '#DFE0E2'
-                    : 'transparent',
-            cursor: 'pointer',
-            ':hover': {
-                borderColor: '#DFE0E2',
-            },
-            ':active': {
-                borderColor: '#DFE0E2',
-            },
-
-
-        }
-    },
-    option: (styles, { isDisabled, isFocused, isSelected }) => {
-
-        return {
-            ...styles,
-            backgroundColor: isSelected ? '#46BB59' : isFocused ? '#DFE0E2' : undefined,
-            color: isSelected ? '#FFFFFF' : '#1C1D1F',
-            cursor: isDisabled ? 'not-allowed' : 'pointer',
-            lineHeight: 1.25,
-
-        }
-    },
-
-    menu: styles => ({ ...styles, border: '1px solid #DFE0E2', marginTop: '10px' }),
-    valueContainer: styles => ({ ...styles, padding: '8px 12px', textAlign: "left" }),
-    dropdownIndicator: (styles, { selectProps: { menuIsOpen } }) => ({
-        ...styles,
-        transition: "all 250ms ease",
-        transform: menuIsOpen ? "rotate(180deg)" : "rotate(0deg)"
-    })
-};
 
 const Calculator = () => {
     const {
         handleSubmit,
-        // register,
-        // reset,
         watch,
         setValue,
-        getValues,
         control,
         formState: { errors }
     } = useForm<FormValues>({
@@ -174,7 +69,7 @@ const Calculator = () => {
     });
 
     const [optionsFinish, setOptionsFinish] = useState(optionsList.slice(1));
-    const [minDate, setMinDate] = useState(addDays(new Date(), 13));
+    const [minDate, setMinDate] = useState(startDay);
 
 
     const customHeaderDP = ({
@@ -220,12 +115,10 @@ const Calculator = () => {
                 </div >
                 <div className="flex h-8">
                     <ReactSelect
-                        //className="w-2/3 "
+                       
                         className="dateDrop"
                         classNamePrefix="dateDrop"
                         isSearchable={false}
-
-                        //  styles={dateSelectStyle}
                         options={montsYear}
                         value={startDate}
                         onChange={onChangeHandler}
@@ -292,16 +185,6 @@ const Calculator = () => {
         const cl = num > 20 ? +(num.toString().slice(-1)) : num;
         const cz = cl === 1 ? 'у' : cl > 1 && cl < 4 ? 'и' : ''
         return cz
-        // години
-        // а - 1
-        // и - 2 3 4
-        // - 5 6 7 8 9 10
-
-        // хвелини
-        // 
-        // а - 1 
-        // и - 2 3 4  
-        // - 5 6 7 8 9 
     }
 
     const timeMes = (time: number) => {
@@ -312,10 +195,9 @@ const Calculator = () => {
             (minute ? `${minute} хвелин${oneOrMore(minute)}` : '')
         return mes
     }
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
-        // alert(JSON.stringify(data));
 
-        //console.log(data)
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+
         const { startLevel, finishLevel, selectDate } = data
         const days = differenceInDays(selectDate, Date.now())
         const hourPerDay = (+finishLevel.value - +startLevel.value) / days
@@ -327,14 +209,8 @@ const Calculator = () => {
         console.log(`Самостійно писати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
         console.log(`Самостійно читати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
 
-        // return hourPerDay;
 
-    }
 
-    const calcResult = (date: Date, startLevel: string, finishLevel: string) => {
-        const days = differenceInDays(Date.now(), date)
-        const hourPerDay = (+finishLevel - +startLevel) / days
-        return hourPerDay;
     }
 
     return (
@@ -354,13 +230,10 @@ const Calculator = () => {
                                     render={({ field }) => (
                                         <ReactSelect
                                             {...field}
-                                            className="min-w-[140px] t:min-w-[180px]"
-                                            isSearchable={false}
-                                            // onChange={handleChangeStart}
-                                            styles={formSelectStyle}
-
+                                            className="levelDrop"
+                                            classNamePrefix="levelDrop"
+                                            isSearchable={false}                              
                                             options={optionsStart}
-
                                         />
                                     )}
                                     name="startLevel"
@@ -373,13 +246,11 @@ const Calculator = () => {
                                 <Controller
                                     render={({ field }) => (
                                         <ReactSelect
-                                            className="min-w-[140px] t:min-w-[180px]"
-                                            isSearchable={false}
-                                            styles={formSelectStyle}
-                                            options={optionsFinish}
-
-
                                             {...field}
+                                            className="levelDrop"
+                                            classNamePrefix="levelDrop"
+                                            isSearchable={false}                              
+                                            options={optionsFinish}
                                         />
                                     )}
                                     name="finishLevel"

@@ -1,5 +1,7 @@
 .react-datepicker-wrapper{
-@apply  bg-white-50 rounded border-white-50 border-[1px] border-solid min-w-[180px] w-full ;
+@apply  bg-white-50 rounded  min-w-[180px] w-full 
+ border-[1px] border-solid border-transparent
+ outline-none shadow-none;
 }
 
 .react-datepicker__header{
@@ -7,7 +9,8 @@
   }
 
 .react-datepicker__input-container {
-  @apply flex flex-row-reverse items-center cursor-pointer caret-transparent justify-between;
+  @apply flex flex-row-reverse items-center cursor-pointer caret-transparent justify-between 
+  rounded border-solid border-0 border-transparent shadow-none;;
 }
 
 .react-datepicker__input-container input {
@@ -21,9 +24,9 @@
 
 .react-datepicker__input-container svg.react-datepicker__calendar-icon {
 
-  @apply block w-[12px] h-[12px] p-[12px]
+  @apply block w-[12px] h-[12px] p-[12px] text-black-30
 }
-.react-datepicker__input-container svg.react-datepicker__calendar-icon:hover {
+.react-datepicker__input-container:hover svg.react-datepicker__calendar-icon {
 
   @apply text-black-50
 }
