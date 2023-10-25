@@ -24,7 +24,7 @@ export function ModalWrapper({
 	
 				 <ModalPortal onCloseMenu={onCloseMenu} isOpen={isOpen} className=" bg-overlay">
 					<div onClick={(e)=>{e.stopPropagation();
-						console.log(e)
+						//console.log(e)
 						}} className={cn(" bg-mainBg rounded  p-5 flex flex-col items-center z-20",className)}>
 					{children}
 					</div>
