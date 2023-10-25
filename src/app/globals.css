@@ -48,7 +48,7 @@ button {
 }
 
 .prices-list-item {
-  @apply relative text-base before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-50 before:font-semibold;
+  @apply relative before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-50 before:font-semibold;
 }
 
 .greenLink {

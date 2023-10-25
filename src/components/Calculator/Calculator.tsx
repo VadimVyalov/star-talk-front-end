@@ -9,7 +9,7 @@ import type {
     DefaultValues
 } from "react-hook-form";
 import ReactDatePicker, { ReactDatePickerCustomHeaderProps } from "react-datepicker";
-import ReactSelect, { StylesConfig } from "react-select";
+import ReactSelect from "react-select";
 import { addMonths, addDays, format, getYear, getMonth, differenceInDays, hoursToMinutes, } from 'date-fns';
 import uk from "date-fns/locale/uk"
 
@@ -21,6 +21,7 @@ import "./dateSelect.css"
 
 
 import { useEffect, useState } from "react";
+import { ModalWrapper } from "../ModalForm/ModalWrapper";
 
 
 type OptionType = {
@@ -70,7 +71,14 @@ const Calculator = () => {
 
     const [optionsFinish, setOptionsFinish] = useState(optionsList.slice(1));
     const [minDate, setMinDate] = useState(startDay);
-
+    const [openModal, setOpenModal] = useState(false);
+    const [hourPerDay, setHourPerDay] = useState(maxHourPerDay);
+    const onOpenMenu = () => {
+        setOpenModal(true);
+    };
+    const onCloseMenu = () => {
+        setOpenModal(false);
+    };
 
     const customHeaderDP = ({
         date,
@@ -115,7 +123,7 @@ const Calculator = () => {
                 </div >
                 <div className="flex h-8">
                     <ReactSelect
-                       
+
                         className="dateDrop"
                         classNamePrefix="dateDrop"
                         isSearchable={false}
@@ -192,7 +200,15 @@ const Calculator = () => {
         const minute = hoursToMinutes(time - Math.trunc(time));
 
         const mes = (hour ? `${hour} годин${oneOrMore(hour)} ` : '') +
-            (minute ? `${minute} хвелин${oneOrMore(minute)}` : '')
+            (minute ? `${minute} хвилин${oneOrMore(minute)}` : '')
+        return mes
+    }
+    const timeMesShort = (time: number) => {
+        const hour = Math.trunc(time);
+        const minute = hoursToMinutes(time - Math.trunc(time));
+
+        const mes = (hour ? `${hour} год. ` : '') +
+            (minute ? `${minute} хв.` : '')
         return mes
     }
 
@@ -202,15 +218,15 @@ const Calculator = () => {
         const days = differenceInDays(selectDate, Date.now())
         const hourPerDay = (+finishLevel.value - +startLevel.value) / days
 
-        console.log(`витрачати ${timeMes(hourPerDay)} на день`)
-        console.log(`Дивитись відео ${timeMes(hourPerDay * 7 * 0.3)} на тиждень`)
-        console.log(`Відвідувати спікінги ${timeMes(hourPerDay * 7 * 0.4)} на тиждень`)
-        console.log(`Займатись з репетитором ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
-        console.log(`Самостійно писати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
-        console.log(`Самостійно читати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
+        // console.log(`витрачати ${timeMes(hourPerDay)} на день`)
+        // console.log(`Дивитись відео ${timeMes(hourPerDay * 7 * 0.3)} на тиждень`)
+        // console.log(`Відвідувати спікінги ${timeMes(hourPerDay * 7 * 0.4)} на тиждень`)
+        // console.log(`Займатись з репетитором ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
+        // console.log(`Самостійно писати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
+        // console.log(`Самостійно читати ${timeMes(hourPerDay * 7 * 0.1)} на тиждень`)
 
-
-
+        setHourPerDay(hourPerDay);
+        setOpenModal(true)
     }
 
     return (
@@ -232,7 +248,7 @@ const Calculator = () => {
                                             {...field}
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
-                                            isSearchable={false}                              
+                                            isSearchable={false}
                                             options={optionsStart}
                                         />
                                     )}
@@ -249,7 +265,7 @@ const Calculator = () => {
                                             {...field}
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
-                                            isSearchable={false}                              
+                                            isSearchable={false}
                                             options={optionsFinish}
                                         />
                                     )}
@@ -305,6 +321,44 @@ const Calculator = () => {
                     </form>
                 </div>
             </div>
+            {openModal &&
+                <ModalWrapper isOpen={openModal} onCloseMenu={onCloseMenu} className="max-w-[310px] t:max-w-[400px] px-2 t:px-5 py-6">
+                    <p className="indent-3 t:indent-3"> Щоб досягти бажаного рівня до обраної дати Вам потрібно витрачати приблизно</p>
+                    <p className="text-lg t:text-xl font-semibold py-2"> {timeMes(hourPerDay)} на день</p>
+
+                    <p className="p-4 text-xl t:text-2xl font-semibold">Щотижня витрачати:</p>
+                    <ul className="text-left pl-6 t:pl-8 mb-6 w-full">
+
+                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                            Перегляд відео
+                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                            {timeMesShort(hourPerDay * 7 * 0.3)}
+                        </li>
+                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1 ", "flex whitespace-nowrap items-center")}>
+                            Розмовний клуб
+                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                            {timeMesShort(hourPerDay * 7 * 0.4)}
+                        </li>
+                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                            З репетитором
+                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                            {timeMesShort(hourPerDay * 7 * 0.1)}
+                        </li>
+                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                            Самостійно писати
+                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                            {timeMesShort(hourPerDay * 7 * 0.1)}
+                        </li>
+                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                            Самостійно читати
+                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                            {timeMesShort(hourPerDay * 7 * 0.1)}
+                        </li>
+                    </ul>
+
+                    <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>зрозуміло</button>
+                </ModalWrapper>}
+
         </section>
     )
 }

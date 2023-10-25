@@ -15,6 +15,7 @@ export function ModalPortal({
 	isOpen,
 	className = "",
 	children,
+	
 }: ModalProps) {
 	const { lockScroll, unlockScroll } = useScrollLock();
 	useKeyPress("Escape", onCloseMenu);
@@ -35,8 +36,7 @@ export function ModalPortal({
 		<div
 			className={cn("fixed top-0 left-0 w-[100vw] h-[100vh] flex justify-center items-center z-10 ",className)}
 			onClick={onCloseMenu}
-			>
-			
+			>	
 			{children}
 		
 		</div>
