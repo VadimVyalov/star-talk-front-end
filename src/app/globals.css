@@ -48,14 +48,18 @@ button {
 }
 
 .prices-list-item {
-  @apply relative text-base before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-50 before:font-semibold;
+  @apply relative before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-50 before:font-semibold;
 }
 
 .greenLink {
-  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50   bg-accent-50 text-white-50 hover:text-accent-50 hover:bg-transparent 
-   text-center font-semibold whitespace-nowrap active:shadow-lg transition
+  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50   bg-accent-50 text-white-50 hover:text-accent-50 hover:bg-mainBg 
+   text-center font-semibold whitespace-nowrap active:shadow-lg transition ;
 }
 
+.whiteLink {
+  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50  hover:bg-accent-50 hover:text-white-50 text-accent-50 bg-mainBg 
+   text-center font-semibold whitespace-nowrap active:shadow-lg transition ;
+}
 
 
 .icon {
@@ -68,6 +72,7 @@ button {
 .slider-price .slick-list {@apply mb-12 mx-[-6%] t:mx-[-3%] d:mx-[-2%] }
 .slider-price .slick-dots {position: unset; }
 .slider-price .slick-dots button::before{content: none; }
-.slider-price .slick-dots button{@apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full}
-.slider-price .slick-dots .slick-active button{@apply bg-accent-50 border-accent-50}
-.slider-price .slick-dots button:hover{@apply bg-accent-50}
+.slider-price .slick-dots button{@apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full }
+.slider-price .slick-dots .slick-active button{@apply bg-accent-50 border-accent-50 }
+.slider-price .slick-dots button:hover{@apply bg-accent-50 }
+.sss__control{@apply bg-accent-50}

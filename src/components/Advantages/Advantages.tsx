@@ -47,7 +47,7 @@ const Advantages = () => {
         <ul className="grid t:grid-cols-2 d:grid-cols-3 justify-center gap-5 d:gap-6  ">
           {data.map(item => {
             return (
-              <li key={item.id} className="flex border-[1px] border-black-30 rounded-[5px] px-12 py-9 t:px-6 t:py-9 d:px-7 d:py-10">
+              <li key={item.id} className="flex border-[1px] border-black-30 rounded-[5px] px-12 py-9 t:px-6 t:py-9  d:py-10">
                 <Image
                   className="w-[70px] h-[70px] d:w-[80px] d:h-[80px]"
                   alt={item.title}

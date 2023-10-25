@@ -1,0 +1,30 @@
+.dateDrop {
+    @apply bg-transparent text-sm leading-[1.25];
+}
+
+.dateDrop .dateDrop__control {
+    @apply outline-none border-transparent hover:border-grey-50 shadow-none w-48 
+}
+
+.dateDrop .dateDrop__control:hover .dateDrop__indicator {
+    @apply text-black-30
+}
+.dateDrop .dateDrop__dropdown-indicator {
+    @apply rotate-0 transition
+}
+
+.dateDrop .dateDrop__control--menu-is-open .dateDrop__dropdown-indicator {
+    @apply rotate-180 transition
+}
+.dateDrop .dateDrop__menu-list {
+    @apply h-[245px] t:h-[285px]
+}
+
+.dateDrop .dateDrop__option {
+    @apply bg-white-50 hover:bg-grey-30 active:bg-accent-50 border-[1px] border-solid border-transparent hover:border-grey-50;
+}
+
+.dateDrop .dateDrop__option--is-selected{
+    @apply bg-accent-50
+}
+

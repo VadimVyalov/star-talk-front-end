@@ -28,7 +28,7 @@ export function BurgerMenu() {
 				/>
 			</button>
 			{
-				open ? <ModalPortal onCloseMenu={onCloseMenu} isOpen={true} className=" bg-overlay">
+				open ? <ModalPortal onCloseMenu={onCloseMenu} isOpen={open} className=" bg-overlay">
 					<div className=" bg-mainBg rounded-b-3xl pb-6 flex flex-col items-center">
 						<Navigation
 							wrapCn='mb-12'
