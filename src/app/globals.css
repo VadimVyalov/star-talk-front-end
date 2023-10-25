@@ -56,6 +56,11 @@ button {
    text-center font-semibold whitespace-nowrap active:shadow-lg transition ;
 }
 
+.whiteLink {
+  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50  hover:bg-accent-50 hover:text-white-50 text-accent-50 bg-mainBg 
+   text-center font-semibold whitespace-nowrap active:shadow-lg transition ;
+}
+
 
 .icon {
   @apply w-8 h-8 fill-black-50 hover:fill-accent-50 active:shadow-lg transition;

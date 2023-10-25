@@ -317,7 +317,7 @@ const Calculator = () => {
                                 />
                             </div>
                         </div>
-                        <button className={cn("greenLink", " px-28 py-4 text-lg leading-[1.75] w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
+                        <button className={cn("greenLink", " t:px-28 py-4 text-lg leading-[1.75] w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
                     </form>
                 </div>
             </div>
