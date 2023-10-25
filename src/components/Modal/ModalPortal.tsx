@@ -23,7 +23,7 @@ export function ModalPortal({
 	useEffect(() => {
 		lockScroll();
 		return () => unlockScroll();
-	}, [isOpen]);
+	}, [isOpen,lockScroll,unlockScroll]);
 
 	if (!isOpen) return null;
 

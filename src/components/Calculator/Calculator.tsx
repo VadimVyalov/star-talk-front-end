@@ -73,6 +73,7 @@ const Calculator = () => {
     const [minDate, setMinDate] = useState(startDay);
     const [openModal, setOpenModal] = useState(false);
     const [hourPerDay, setHourPerDay] = useState(maxHourPerDay);
+    const [isOpen, setIsOpen] = useState(false);
     const onOpenMenu = () => {
         setOpenModal(true);
     };
@@ -184,9 +185,8 @@ const Calculator = () => {
         }
         );
 
-
         return () => subscription.unsubscribe();
-    }, [watch])
+    }, [watch,setValue])
 
 
     const oneOrMore = (num: number) => {
@@ -282,7 +282,7 @@ const Calculator = () => {
                                     name="selectDate"
                                     render={({ field: { value, onChange, ...fieldProps } }) => {
 
-                                        const [isOpen, setIsOpen] = useState(false);
+                                        
                                         return (
 
                                             <ReactDatePicker
