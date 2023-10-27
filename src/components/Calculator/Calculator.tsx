@@ -323,7 +323,7 @@ const Calculator = () => {
             </div>
             {openModal &&
                 <ModalWrapper isOpen={openModal} onCloseMenu={onCloseMenu} className="max-w-[310px] t:max-w-[400px] px-2 t:px-5 py-6">
-                    <p className="indent-3 t:indent-3"> Щоб досягти бажаного рівня до обраної дати Вам потрібно витрачати приблизно</p>
+                    <p className="indent-3 px-4 t:px-0"> Щоб досягти бажаного рівня до обраної дати Вам потрібно витрачати приблизно</p>
                     <p className="text-lg t:text-xl font-semibold py-2"> {timeMes(hourPerDay)} на день</p>
 
                     <p className="p-4 text-xl t:text-2xl font-semibold">Щотижня витрачати:</p>
