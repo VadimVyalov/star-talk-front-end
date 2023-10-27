@@ -4,6 +4,7 @@ import { ArrowUp } from "@/components/ArrowUp/ArrowUp";
 import Calculator from "@/components/Calculator";
 import Hero from "@/components/Hero";
 import PricesA from "@/components/PricesA/PricesA";
+import Discount from "@/components/Discount";
 
 
 
@@ -16,6 +17,7 @@ export default function Home() {
       <PricesA />
       <Calculator />
       <About />
+      <Discount/>
       <ArrowUp className="fixed bottom-12 right-6 z-10" />
 
     </div>
