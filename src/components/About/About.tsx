@@ -29,19 +29,24 @@ const About = () => {
     <section id="about" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">
         <h2 className="sectionTitle">Про нас</h2>
-        <div className="flex flex-col  d:grid d:grid-cols-2 d:gap-x-6">
-          <Image className="rounded-3xl"
-            src={about_img}
-            alt="about image"
-            sizes="(max-width: 590px) 100vw, 50vw"
-            style={{
-              width: '100%',
-              height: 'auto',
-            }}
-            width={587}
-            height={445} />
+        <div className="grid grid-cols-1 d:grid-cols-[minmax(345px,500px)_auto_minmax(445px,650px)] d:gap-x-auto w-full">
+          <div className="d:max-w-[500px] d:min-h-[500px] relative h-[90vw] d:h-auto t:min-h-[600px]  ">
+            <Image className="rounded-3xl"
+              src={about_img}
+              alt="about image"
+              sizes="(max-width: 590px) 100vw, 42vw"
+              fill
+              style={{
+                //   width: 'auto',
+                //height: '100%',
+                objectFit: 'cover'
+              }}
+            // width={587}
+            // height={445}
+            />
+          </div>
 
-          <div className="mt-6 t:mt-8 d:mt-0">
+          <div className="d:col-start-3 d:pl-5 mt-6 t:mt-8 d:mt-0">
             <h3 className="font-roboto text-2xl leading-[1.5] font-medium mb-5">Хто ми? Наша місія</h3>
             <p className="ml-6 mb-6">
               Ми - команда закоханих в свою справу людей, мета яких - розговорити

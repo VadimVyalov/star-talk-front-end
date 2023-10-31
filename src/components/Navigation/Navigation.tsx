@@ -12,11 +12,11 @@ const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) 
   const menuItems = [
     { id: 'm-01', title: 'Ціни', link: '/#prices' },
     { id: 'm-02', title: 'Тривалість навчання', link: '/#prices' },
- //   { id: 'm-03', title: 'Акції', link: '/#discounts' },
+    //   { id: 'm-03', title: 'Акції', link: '/#discounts' },
     { id: 'm-04', title: 'Про нас', link: '/#about' },
     { id: 'm-05', title: 'Викладачі', link: '/#teachers' },
     { id: 'm-06', title: 'Статті', link: '/articles' },
-    { id: 'm-07', title: 'Відгуки', link: '/responses' }
+    { id: 'm-07', title: 'Відгуки', link: '/test' }
   ]
 
   return (
@@ -25,7 +25,7 @@ const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) 
         {
           menuItems.map(i => {
             return (
-              <li key={i.id} className={cn(itemCn,"hover:text-accent-50 transition active:shadow-lg")}>
+              <li key={i.id} className={cn(itemCn, "hover:text-accent-50 transition active:shadow-lg")}>
 
                 <Link className={cn(" block whitespace-nowrap font-medium h-full ", linkCn)}
                   title={i.title}

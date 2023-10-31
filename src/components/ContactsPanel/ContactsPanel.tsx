@@ -16,7 +16,7 @@ const ContactsPanel = () => {
 
       <div className="flex  items-end t:items-center gap-y-2 gap-x-4 t:gap-x-6 shrink-0 flex-col-reverse t:flex-row">
         <a href="#viber" title="Viber" className=' shrink-0'>
-        <FaViber className=" icon"/>
+          <FaViber className=" icon" />
         </a>
         <a href="#tel" className="flex gap-x-2 ">
           {/* <Image
@@ -25,7 +25,7 @@ const ContactsPanel = () => {
             width={16}
             height={16}
           /> */}
-          <span className="text-base t:text-[20px] font-medium hover:text-accent-50 transition ">0667778899</span>
+          <span className="text-base t:text-[20px] font-medium hover:text-accent-100 transition ">0667778899</span>
         </a>
       </div>
     </div>

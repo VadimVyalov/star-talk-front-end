@@ -6,8 +6,7 @@
 
 html,
 body {
-
-  @apply font-montserrat font-normal text-base leading-[1.5] text-black-50 bg-mainBg scroll-smooth;
+  @apply font-montserrat font-normal text-base leading-[1.5] text-black-100 bg-mainBg scroll-smooth;
 }
 
 * {
@@ -31,48 +30,65 @@ button {
 
 /* advantage section styles */
 .container {
-
-  @apply mx-auto my-0 px-[16px] t:px-[32px] d:px-[120px] min-w-[280px] max-w-[590px] t:min-w-[591px] t:max-w-[1024px] d:min-w-[1025px] d:max-w-[1440px];
+  @apply mx-auto my-0 px-[16px] t:px-[32px] d:px-[120px] min-w-[320px] max-w-[590px] t:min-w-[591px] t:max-w-[1024px] d:min-w-[1025px] d:max-w-[1440px];
 }
 
 /*  */
 .sectionTitle {
-  @apply text-center font-roboto text-[40px] font-semibold mb-[40px];
+  @apply text-center font-roboto text-[40px] font-semibold mb-10;
 }
-
 
 /* price section styles */
 
 .slider-item {
-  @apply  !flex flex-col justify-between items-center pt-[30px] px-[24px] pb-[40px] border-[1px] border-black-30 rounded-[5px] h-[inherit];
+  @apply !flex flex-col justify-between items-center pt-[30px] px-[24px] pb-[40px] border-[1px] border-black-30 rounded-[5px] h-[inherit];
 }
 
 .prices-list-item {
-  @apply relative before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-50 before:font-semibold;
+  @apply relative before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-100 before:font-semibold;
 }
 
 .greenLink {
-  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50   bg-accent-50 text-white-50 hover:text-accent-50 hover:bg-mainBg 
-   text-center font-semibold whitespace-nowrap active:shadow-lg transition ;
+  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-100   bg-accent-100 text-white-100 hover:text-accent-100 hover:bg-mainBg 
+   text-center font-semibold whitespace-nowrap active:shadow-lg transition;
 }
 
 .whiteLink {
-  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-50  hover:bg-accent-50 hover:text-white-50 text-accent-50 bg-mainBg 
-   text-center font-semibold whitespace-nowrap active:shadow-lg transition ;
+  @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-100  hover:bg-accent-100 hover:text-white-100 text-accent-100 bg-mainBg 
+   text-center font-semibold whitespace-nowrap active:shadow-lg transition;
 }
-
 
 .icon {
-  @apply w-8 h-8 fill-black-50 hover:fill-accent-50 active:shadow-lg transition;
+  @apply w-8 h-8 fill-black-100 hover:fill-accent-100 active:shadow-lg transition;
 }
 
-.slider-price .slick-slide {height: unset;}
-.slider-price .slick-slide > div {@apply h-full mx-[6%]}
-.slider-price .slick-track { display: flex;}
-.slider-price .slick-list {@apply mb-12 mx-[-6%] t:mx-[-3%] d:mx-[-2%] }
-.slider-price .slick-dots {position: unset; }
-.slider-price .slick-dots button::before{content: none; }
-.slider-price .slick-dots button{@apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full }
-.slider-price .slick-dots .slick-active button{@apply bg-accent-50 border-accent-50 }
-.slider-price .slick-dots button:hover{@apply bg-accent-50 }
-.sss__control{@apply bg-accent-50}
+.slider-price .slick-slide {
+  height: unset;
+}
+.slider-price .slick-slide > div {
+  @apply h-full mx-[6%];
+}
+.slider-price .slick-track {
+  display: flex;
+}
+.slider-price .slick-list {
+  @apply mb-12 mx-[-6%] t:mx-[-3%] d:mx-[-2%];
+}
+.slider-price .slick-dots {
+  position: unset;
+}
+.slider-price .slick-dots button::before {
+  content: none;
+}
+.slider-price .slick-dots button {
+  @apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full;
+}
+.slider-price .slick-dots .slick-active button {
+  @apply bg-accent-100 border-accent-100;
+}
+.slider-price .slick-dots button:hover {
+  @apply bg-accent-100;
+}
+.sss__control {
+  @apply bg-accent-100;
+}

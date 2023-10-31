@@ -1,6 +1,5 @@
 "use client"
 
-
 import cn from "@/helpers"
 import Icon from "../Icon";
 import { useForm, Controller } from "react-hook-form";
@@ -141,7 +140,7 @@ const Calculator = () => {
                             className={cn("w-5 h-5 rotate-180",
                                 prevMonthButtonDisabled ?
                                     "text-transparent cursor-default " :
-                                    " text-black-30 hover:text-black-50")}
+                                    " text-black-30 hover:text-black-100")}
                         />
                     </button>
                     <button className="h-full w-8 mx-0"
@@ -153,7 +152,7 @@ const Calculator = () => {
                             className={cn("w-5 h-5",
                                 nextMonthButtonDisabled ?
                                     "text-transparent cursor-default" :
-                                    " text-black-30 hover:text-black-50")}
+                                    " text-black-30 hover:text-black-100")}
                         />
                     </button>
                 </div>
@@ -186,7 +185,7 @@ const Calculator = () => {
         );
 
         return () => subscription.unsubscribe();
-    }, [watch,setValue])
+    }, [watch, setValue])
 
 
     const oneOrMore = (num: number) => {
@@ -234,18 +233,19 @@ const Calculator = () => {
             <div className="container  ">
 
                 <div className="flex flex-col items-center pt-10 t:py-10 d:py-14 ">
-                    <h2 className="font-roboto text-center text-white-50 text-[40px] font-semibold leading-[1.5] 
+                    <h2 className="font-roboto text-center text-white-100 text-[40px] font-semibold leading-[1.5] 
                                     mb-10 t:mb-4 d:mb-10 max-w-[280px] t:max-w-[460px] d:max-w-[750px]">Калькулятор тривалості навчання</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col text-center items-center
                     max-w-[320px] t:max-w-[400px] d:max-w-[840px] ">
                         <div className="w-full flex flex-row  justify-between gap-x-4 t:gap-x-8 d:gap-x-14 gap-y-6 flex-wrap">
                             <div className="flex flex-col items-start">
-                                <label className="whitespace-nowrap text-white-50 ">Поточний рівень</label>
+                                <label className="whitespace-nowrap text-white-100 ">Поточний рівень</label>
                                 <Controller
                                     render={({ field }) => (
                                         <ReactSelect
                                             {...field}
+                                            id="levelS"
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
                                             isSearchable={false}
@@ -258,11 +258,12 @@ const Calculator = () => {
                             </div>
 
                             <div className="flex flex-col items-start">
-                                <label className="whitespace-nowrap text-white-50 " >Бажаний рівень</label>
+                                <label className="whitespace-nowrap text-white-100 " >Бажаний рівень</label>
                                 <Controller
                                     render={({ field }) => (
                                         <ReactSelect
                                             {...field}
+                                            id="levelF"
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
                                             isSearchable={false}
@@ -275,14 +276,14 @@ const Calculator = () => {
                             </div>
 
                             <div className="flex flex-col items-start grow mb-12 ">
-                                <label className="whitespace-nowrap text-white-50 ">Дата завершення</label>
+                                <label className="whitespace-nowrap text-white-100 ">Дата завершення</label>
                                 <Controller
                                     control={control}
 
                                     name="selectDate"
                                     render={({ field: { value, onChange, ...fieldProps } }) => {
 
-                                        
+
                                         return (
 
                                             <ReactDatePicker
@@ -306,7 +307,7 @@ const Calculator = () => {
                                                 showIcon={true}
                                                 icon={
                                                     <Icon name="/assets/icons/small.svg" id="arrow"
-                                                        className={cn(" text-black-30 hover:text-black-50 transition pointer-events-none ",
+                                                        className={cn(" text-black-30 hover:text-black-100 transition pointer-events-none ",
                                                             isOpen ? "rotate-[270deg]  " : "rotate-[90deg]  "
                                                         )}
                                                     />}
