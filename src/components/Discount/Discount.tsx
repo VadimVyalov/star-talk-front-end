@@ -27,7 +27,7 @@ const Discount = () => {
       <div className={cn(style.bg, "bg-center bg-no-repeat ", "flex  justify-center",
         "h-[490px] t:h-[520px] d:h-[705px]   pt-[160px] t:pt-[190px] d:pt-[240px] ")}>
 
-        <div className="w-[300px] t:w-[405px] d:w-[550px] px-4 t:px-6 d:px-8 text-white-50 font-medium">
+        <div className="w-[300px] t:w-[405px] d:w-[550px] px-4 t:px-6 d:px-8 text-white-100 font-medium">
           <h3 className="text-center text-2xl d:text-4xl leading-[1.3]  mb-4 d:mb-8">Акція <span className="whitespace-nowrap">{discount_data.title}</span></h3>
 
           <ul className="flex flex-col gap-y-3 t:gap-y-4 d:gap-y-6">

@@ -3,7 +3,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { SCREENS } from "../../../public/const/screens";
+import { SCREENS } from "@/lib/screens";
 import useGetData from "@/hooks/useGetData";
 import PriceItem from "./PriceItem";
 import data from "../../../public/data/price.json"

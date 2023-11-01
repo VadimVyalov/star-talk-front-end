@@ -5,11 +5,12 @@ import Calculator from "@/components/Calculator";
 import Hero from "@/components/Hero";
 import PricesA from "@/components/PricesA/PricesA";
 import Discount from "@/components/Discount";
-
-
+import Gift from "@/components/Gift";
 
 
 export default function Home() {
+
+
   return (
     <div className="relative overflow-hidden">
       <Hero />
@@ -17,7 +18,8 @@ export default function Home() {
       <PricesA />
       <Calculator />
       <About />
-      <Discount/>
+      <Discount />
+      <Gift />
       <ArrowUp className="fixed bottom-12 right-6 z-10" />
 
     </div>
