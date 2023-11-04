@@ -58,7 +58,7 @@ const About = () => {
             <ul className="flex flex-col gap-y-4">
               {principles_list.map(item => {
                 return (
-                  <li key={item.id} className="before:content-star before:mr-2 ml-6 ">
+                  <li key={item.id} className="flex before:content-star before:mr-2 ml-6 ">
                     {item.text}
                   </li>
                 )
