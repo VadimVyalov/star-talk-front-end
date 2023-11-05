@@ -40,10 +40,6 @@ button {
 
 /* price section styles */
 
-.slider-item {
-  @apply !flex flex-col justify-between items-center pt-[30px] px-[24px] pb-[40px] border-[1px] border-black-30 rounded-[5px] h-[inherit];
-}
-
 .prices-list-item {
   @apply relative before:absolute before:content-check before:-left-8 before:top-[2px] before:text-accent-100 before:font-semibold;
 }
@@ -59,38 +55,7 @@ button {
 }
 
 .icon {
-  @apply w-8 h-8 fill-black-100 hover:fill-accent-100 active:shadow-lg transition;
-}
-
-.slider-price .slick-slide {
-  height: unset;
-}
-.slider-price .slick-slide > div {
-  @apply h-full mx-[6%];
-}
-.slider-price .slick-track {
-  display: flex;
-}
-.slider-price .slick-list {
-  @apply mb-12 mx-[-6%] t:mx-[-3%] d:mx-[-2%];
-}
-.slider-price .slick-dots {
-  position: unset;
-}
-.slider-price .slick-dots button::before {
-  content: none;
-}
-.slider-price .slick-dots button {
-  @apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full;
-}
-.slider-price .slick-dots .slick-active button {
-  @apply bg-accent-100 border-accent-100;
-}
-.slider-price .slick-dots button:hover {
-  @apply bg-accent-100;
-}
-.sss__control {
-  @apply bg-accent-100;
+  @apply w-8 h-8 text-black-100 hover:text-accent-100 active:shadow-lg transition;
 }
 
 /* skeleton */

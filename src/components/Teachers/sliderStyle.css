@@ -1,0 +1,30 @@
+.slider-teacher .slider-item {
+  @apply !flex flex-col justify-between items-center  border-[1px] border-black-30 rounded-[5px] h-[inherit];
+}
+.slider-teacher .slick-slide {
+  height: unset;
+}
+.slider-teacher .slick-slide > div {
+  @apply h-full mx-[4%];
+}
+.slider-teacher .slick-track {
+  display: flex;
+}
+.slider-teacher .slick-list {
+  @apply mb-12 mx-[-4%] t:mx-[-2%] d:mx-[-1%];
+}
+.slider-teacher .slick-dots {
+  position: unset;
+}
+.slider-teacher .slick-dots button::before {
+  content: none;
+}
+.slider-teacher .slick-dots button {
+  @apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full;
+}
+.slider-teacher .slick-dots .slick-active button {
+  @apply bg-accent-100 border-accent-100;
+}
+.slider-teacher .slick-dots button:hover {
+  @apply bg-accent-100;
+}
