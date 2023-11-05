@@ -4,7 +4,7 @@
   height: 100%;
   cursor: pointer;
   transform-style: preserve-3d;
-  transform-origin: center right;
+  transform-origin: center center;
 }
 
 .card .is-flipped {

@@ -55,7 +55,7 @@ button {
 }
 
 .icon {
-  @apply w-8 h-8 fill-black-100 hover:fill-accent-100 active:shadow-lg transition;
+  @apply w-8 h-8 text-black-100 hover:text-accent-100 active:shadow-lg transition;
 }
 
 /* skeleton */

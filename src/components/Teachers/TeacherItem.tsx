@@ -1,10 +1,8 @@
 import Image from "next/image"
-
 import cn from "@/helpers"
 import type { Teacher } from "./Teachers";
-import "./card.css"
 import { useState } from "react";
-
+import "./card.css"
 interface Props {
   teacher: Teacher
 }
@@ -16,7 +14,7 @@ const TeacherItem = ({ teacher }: Props) => {
   const [flip, setFlip] = useState(false)
   return (
 
-    <div className="flex flex-col justify-between items-center  slider-item  " >
+    <div className=" items-center  slider-item bg-white-100 " >
       <div className="card " onClick={() => setFlip(!flip)}>
         <div className={cn("  w-full card__face card__face--front  ", flip ? ' is-flipped' : '')}>
           <Image
@@ -42,7 +40,7 @@ const TeacherItem = ({ teacher }: Props) => {
           </div>
         </div>
 
-        <ul className={cn("flex flex-col gap-2 p-2 pr-3 mr-2  card__face card__face--back absolute ", flip ? ' ' : 'is-flipped')}>
+        <ul className={cn("flex flex-col gap-2 p-2 pr-3 mr-2  card__face card__face--back absolute ", flip ? '' : 'is-flipped')}>
           {
             description.map((description) => {
 
@@ -51,14 +49,8 @@ const TeacherItem = ({ teacher }: Props) => {
               )
             })}
         </ul>
-
-
       </div>
-
-
     </div>
-
-
   )
 }
 

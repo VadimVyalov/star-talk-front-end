@@ -1,13 +1,10 @@
 "use client";
-
-import Image from "next/image";
+import cn from "@/helpers";
+import Icon from "../Icon";
 import Link from "next/link";
-import { useState } from "react";
-
 import { ModalPortal } from "../Modal/ModalPortal";
 import Navigation from "../Navigation";
-
-const menu_icon = "/assets/icons/menu.svg";
+import { useState } from "react";
 
 export function BurgerMenu() {
 	const [open, setOpen] = useState(false);
@@ -19,12 +16,9 @@ export function BurgerMenu() {
 	};
 	return (
 		<>
-			<button onClick={onOpenMenu}>
-				<Image
-					src={menu_icon}
-					alt="menu icon"
-					width={40}
-					height={33}
+			<button onClick={onOpenMenu} className='flex shrink-0 icon !w-10 !h-10'>
+				<Icon name='/assets/icons/small.svg' id='menu'
+					className={cn('w-full h-full shrink-0')}
 				/>
 			</button>
 			{
@@ -34,7 +28,6 @@ export function BurgerMenu() {
 							wrapCn='mb-12'
 							itemCn="border-b-[1px] border-[#18181b33]  d:border-none"
 							linkCn="mx-5 text-xl tracking-[-0.347px] leading-[70px] text-center " />
-						{/* d:mx-0 d:text-base d:tracking-normal d:leading-normal */}
 						<Link href="/" className="greenLink px-[42px] py-[18px]">Замовити урок</Link>
 					</div>
 				</ModalPortal> : null
