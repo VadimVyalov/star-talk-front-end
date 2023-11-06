@@ -1,6 +1,6 @@
 const Sceleton = () => {
   return (
-    <div title="period " className="skeleton p-3 rounded-md">
+    <div title="period " className="skeleton p-3 rounded-md flex-col gap-2">
       <div
         title="period avatar"
         className="skeleton-circle justify-center text-5xl mx-auto"

@@ -120,8 +120,6 @@ button {
 
 .skeleton {
   display: flex;
-  flex-direction: column;
-  row-gap: 0.5rem;
   width: 100%;
   background-color: #fff;
   border: 2px solid #ebebeb;
