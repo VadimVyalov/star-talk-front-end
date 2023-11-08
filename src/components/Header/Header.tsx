@@ -1,16 +1,62 @@
-import { FC } from "react";
-
+'use client';
+import Image from "next/image";
+import useScreen from '@/hooks/useScreen';
 import ContactsPanel from "../ContactsPanel";
 import Navigation from "../Navigation";
+import Link from "next/link";
+import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
+import { useState } from "react";
+import cn from "@/helpers";
+import Icon from "../Icon";
+import { ModalPortal } from "../Modal/ModalPortal";
+const logo = "/assets/icons/logo.svg"
 
-const Header: FC = () => {
+const Header = () => {
+  //const { isD } = useScreen();
+  const [open, setOpen] = useState(false);
+  //console.log(open)
+  const onCloseMenu = () => {
+    setOpen(false);
+  };
   return (
-    <header>
-      <div className="container">
+    <header id="header" className="mb-[72px] t:mb-[60px]">
+      <div className="container   relative">
         <ContactsPanel />
-        <div>
-          <p>Logo</p>
-          <Navigation />
+        <div className="flex justify-between items-center mt-7">
+          <Link className=" shrink-0 " href="/" title="Star Talk">
+            <Image
+              src={logo}
+              alt="Star Talk"
+              width={133}
+              height={33}
+            />
+          </Link>
+
+          {/* {isD ?
+            (<>
+              <Navigation />
+              <Link href="/" className="greenLink px-[23px] py-[15px] ">Замовити урок</Link>
+            </>) :
+            (<BurgerMenu />)} */}
+          {/* <BurgerMenu /> */}
+          <button title="меню" onClick={() => setOpen(prev => !prev)} className='flex flex-col justify-between items-center  icon p-1 !w-10 !h-10 z-20'>
+            <Icon name='/assets/icons/small.svg' id='menu2' className={cn('w-full h-1 transition-all duration-200 ', open ? 'rotate-45 translate-y-[14px] translate-x-[2px] w-[90%] ' : '')} />
+            <Icon name='/assets/icons/small.svg' id='menu2' className={cn('w-full h-1 transition-all duration-200', open ? 'w-0' : '')} />
+            <Icon name='/assets/icons/small.svg' id='menu2' className={cn('w-full h-1 transition-all duration-200', open ? '-rotate-45 -translate-y-[14px] translate-x-[2px] w-[90%]' : '')} />
+
+          </button>
+
+          <div className={cn(" bg-mainBg rounded-b-3xl pb-6 flex flex-col items-center border-[1px] border-solid border-grey-2 z-20",
+            "absolute right-0 bottom-0 translate-y-full -translate-x-[16px] t:-translate-x-[32px] d:-translate-x-[120px] overflow-hidden transition-[max-width] duration-300",
+            open ? "max-w-[300px] " : "max-w-0 border-none")}
+            onClick={() => setOpen(false)}>
+            <Navigation
+              wrapCn='mb-6  t:flex-col '
+              itemCn="border-b-[1px] border-grey-2 "
+              linkCn="mx-5 text-xl tracking-[-0.347px] leading-[70px] text-center " />
+            <Link href="/" className="greenLink px-[42px] py-[18px]">Замовити урок</Link>
+          </div>
+          {open ? <ModalPortal onCloseMenu={onCloseMenu} isOpen={open} className=" bg-overlay justify-center items-center" /> : null}
         </div>
       </div>
     </header>
