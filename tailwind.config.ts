@@ -45,7 +45,8 @@ const config: Config = {
       },
     screens: {
       d:`${SCREENS.d}px`,
-      t:`${SCREENS.t}px`,
+      t: `${SCREENS.t}px`,
+      tb:`${SCREENS.tb}px`,
       m:`${SCREENS.m}px`,
     },
     

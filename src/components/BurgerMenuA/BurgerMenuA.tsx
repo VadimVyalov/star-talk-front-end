@@ -7,7 +7,7 @@ import Navigation from "../Navigation";
 import { useState } from "react";
 
 
-export function BurgerMenu() {
+export function BurgerMenuA() {
 	const [open, setOpen] = useState(false);
 	const onOpenMenu = () => {
 		setOpen(true);

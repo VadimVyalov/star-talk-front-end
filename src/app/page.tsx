@@ -34,7 +34,7 @@ export default function Home() {
       <Gift />
       <Teachers />
       <Questions />
-      <ArrowUp className="fixed bottom-12 right-6 z-10" />
+      <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
 
     </div>
   );

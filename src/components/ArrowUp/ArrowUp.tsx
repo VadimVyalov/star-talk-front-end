@@ -1,4 +1,6 @@
 "use client";
+import cn from "@/helpers";
+import Icon from "../Icon";
 
 import { useEffect, useState } from "react";
 import { BsChevronUp } from "react-icons/bs";
@@ -37,8 +39,12 @@ export const ArrowUp = ({ className = "", ...props }: ButtonProps) => {
 
 			{...props}
 		>
-			<BsChevronUp className=" w-10 h-10 stroke-accent-100 stroke-1" />
-			<BsChevronUp className=" absolute w-10 h-10 fill-mainBg " />
+			{/* <BsChevronUp className=" w-10 h-10 stroke-accent-100 stroke-1" /> */}
+			{/* <BsChevronUp className=" absolute w-10 h-10 fill-mainBg " /> */}
+			<Icon name='/assets/icons/small.svg' id='chevronUp'
+				className={cn('w-12 h-12 stroke-accent-100 stroke-1 ')} />
+			<Icon name='/assets/icons/small.svg' id='chevronUp'
+				className={cn('absolute w-12 h-12 fill-mainBg ')} />
 		</button>
 	);
 }

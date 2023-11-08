@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import cn from "@/helpers"
-import { BsArrowRightShort } from "react-icons/bs";
 
 const hero_img = '/assets/image/hero.jpg'
 
@@ -17,7 +16,7 @@ const Hero = () => {
                         <Link href="/" className={cn("greenLink flex text-lg items-center gap-x-2",
                             " w-full t:w-fit px-[26px] py-[18px] justify-center")}>
                             <span>Визначте свій рівень</span>
-                            <BsArrowRightShort size={28} />
+                            {/* <BsArrowRightShort size={28} /> */}
                         </Link>
                     </div>
                     <Image className="rounded-3xl"

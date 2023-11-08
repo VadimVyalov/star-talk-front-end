@@ -11,7 +11,7 @@ interface NavigationProps {
 const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) => {
   const menuItems = [
     { id: 'm-01', title: 'Ціни', link: '/#prices' },
-    { id: 'm-02', title: 'Тривалість навчання', link: '/#prices' },
+    { id: 'm-02', title: 'Тривалість навчання', link: '/#calculator' },
     //   { id: 'm-03', title: 'Акції', link: '/#discounts' },
     { id: 'm-04', title: 'Про нас', link: '/#about' },
     { id: 'm-05', title: 'Викладачі', link: '/#teachers' },
@@ -20,13 +20,12 @@ const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) 
   ]
 
   return (
-    <nav >
-      <ul className={cn("flex gap-3 d:gap-6 flex-col d:mb-0 d:flex-row", wrapCn)}>
+    <nav className="w-fit" >
+      <ul className={cn("flex flex-col ", wrapCn)}>
         {
           menuItems.map(i => {
             return (
-              <li key={i.id} className={cn(itemCn, "hover:text-accent-50 transition active:shadow-lg")}>
-
+              <li key={i.id} className={cn(itemCn, "hover:text-accent-100 transition ")}>
                 <Link className={cn(" block whitespace-nowrap font-medium h-full ", linkCn)}
                   title={i.title}
                   href={i.link}

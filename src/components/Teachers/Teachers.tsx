@@ -2,7 +2,7 @@
 
 import Slider from "react-slick";
 import { teachersSlider } from "@/lib/sliderSettings";
-import useGetData from "@/hooks/useGetData";
+//import useGetData from "@/hooks/useGetData";
 import TeacherItem from "./TeacherItem";
 import data from "../../../public/data/teachers.json"
 import "./sliderStyle.css"
@@ -17,14 +17,13 @@ export type Teacher = {
 }
 
 
-const baseUrl = '/assets/icons/stars.svg'
 
 const Teachers = () => {
 
   const error = false;
   const isLoading = false;
 
-  //const { data, error, isLoading } = useGetData('price');
+  //const { data, error, isLoading } = useGetData('teacher');
   //   console.log(data)
 
   return (
@@ -44,7 +43,7 @@ const Teachers = () => {
 
                   )
                 })
-              ) : (['sk-1', 'sk-2', 'sk-3'].map(i => {
+              ) : (['te-1', 'te-2', 'te-3', 'te-4'].map(i => {
                 return (
                   <Sceleton key={i} />
                 )
@@ -52,7 +51,7 @@ const Teachers = () => {
               }
             </Slider>
           </div>
-        ) : <p className="text-error-100 text-center text-3xl"> Щось пышло не так </p>
+        ) : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
         }
       </div >
     </section >

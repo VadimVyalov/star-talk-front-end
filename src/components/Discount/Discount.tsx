@@ -29,7 +29,7 @@ const Discount = () => {
 
   const discount_data: Discount = data?.length > 0 ? data[0] : null;
 
-  // console.log(discount_data)
+  console.log(discount_data)
 
   return (
     (discount_data && !error)

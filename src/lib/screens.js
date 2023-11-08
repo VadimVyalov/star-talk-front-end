@@ -1,5 +1,6 @@
-export const SCREENS={
-    m: 280,
-    t: 591,
-    d: 1025
-}
+export const SCREENS = {
+  m: 320,
+  t: 591,
+  tb: 768,
+  d: 1024,
+};

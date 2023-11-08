@@ -3,7 +3,7 @@
 
 import useGetData from "@/hooks/useGetData";
 import Question from "./Question";
-import data from "../../../public/data/question.json"
+//import data from "../../../public/data/question.json"
 import Sceleton from "./Skeleton";
 
 
@@ -40,7 +40,7 @@ const Questions = () => {
 
                 )
               })
-            ) : (['sk-1', 'sk-2', 'sk-3'].map(i => {
+            ) : (['faq-1', 'faq-2', 'faq-3'].map(i => {
               return (
                 <Sceleton key={i} />
               )

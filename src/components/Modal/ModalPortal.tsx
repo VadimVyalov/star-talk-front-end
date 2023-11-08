@@ -6,7 +6,7 @@ import cn from "@/helpers";
 interface ModalProps {
 	className?: string;
 	isOpen?: boolean;
-	children: React.ReactNode;
+	children?: React.ReactNode;
 	onCloseMenu: () => void;
 }
 
@@ -14,8 +14,8 @@ export function ModalPortal({
 	onCloseMenu,
 	isOpen,
 	className = "",
-	children,
-	
+	children = null,
+
 }: ModalProps) {
 	const { lockScroll, unlockScroll } = useScrollLock();
 	useKeyPress("Escape", onCloseMenu);
@@ -23,22 +23,22 @@ export function ModalPortal({
 	useEffect(() => {
 		lockScroll();
 		return () => unlockScroll();
-	}, [isOpen,lockScroll,unlockScroll]);
+	}, [isOpen, lockScroll, unlockScroll]);
 
 	if (!isOpen) return null;
 
 	const portalContainerId = "modal-root";
 	const portalContainer = document.getElementById(portalContainerId);
 
-	if (!portalContainer) 	return null;
+	if (!portalContainer) return null;
 
 	const modalContent = (
 		<div
-			className={cn("fixed top-0 left-0 w-[100vw] h-[100vh] flex justify-center items-center z-10 ",className)}
+			className={cn("fixed top-0 left-0 w-[100vw] h-[100vh] flex  z-10 ", className)}
 			onClick={onCloseMenu}
-			>	
+		>
 			{children}
-		
+
 		</div>
 	);
 

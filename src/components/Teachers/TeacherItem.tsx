@@ -14,9 +14,9 @@ const TeacherItem = ({ teacher }: Props) => {
   const [flip, setFlip] = useState(false)
   return (
 
-    <div className=" items-center  slider-item bg-white-100 " >
+    <div className=" items-center  slider-item bg-white-100 overflow-hidden" >
       <div className="card " onClick={() => setFlip(!flip)}>
-        <div className={cn("  w-full card__face card__face--front  ", flip ? ' is-flipped' : '')}>
+        <div className={cn("w-full card__face card__face--front", flip ? ' is-flipped' : '')}>
           <Image
             alt={`${name} фото`}
             src={photo}

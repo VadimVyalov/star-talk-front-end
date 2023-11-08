@@ -30,7 +30,7 @@ button {
 
 /* advantage section styles */
 .container {
-  @apply mx-auto my-0 px-[16px] t:px-[32px] d:px-[120px] min-w-[320px] max-w-[590px] t:min-w-[591px] t:max-w-[1024px] d:min-w-[1025px] d:max-w-[1440px];
+  @apply mx-auto my-0 px-2 m:px-4 t:px-8 d:px-[120px] min-w-[300px] max-w-[590px] t:max-w-[1024px] d:max-w-[1440px];
 }
 
 /*  */
