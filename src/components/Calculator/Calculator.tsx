@@ -126,6 +126,7 @@ const Calculator = () => {
 
                         className="dateDrop"
                         classNamePrefix="dateDrop"
+                        aria-label="Not searchable"
                         isSearchable={false}
                         options={montsYear}
                         value={startDate}
@@ -248,6 +249,7 @@ const Calculator = () => {
                                             id="levelS"
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
+                                            aria-label="Not searchable"
                                             isSearchable={false}
                                             options={optionsStart}
                                         />
@@ -267,6 +269,7 @@ const Calculator = () => {
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
                                             isSearchable={false}
+                                            aria-label="Not searchable"
                                             options={optionsFinish}
                                         />
                                     )}
@@ -276,7 +279,7 @@ const Calculator = () => {
                             </div>
 
                             <div className="flex flex-col items-start grow mb-12 ">
-                                <label className="whitespace-nowrap text-white-100 ">Дата завершення</label>
+                                <label id="selectDate" className="whitespace-nowrap text-white-100 ">Дата завершення</label>
                                 <Controller
                                     control={control}
 
@@ -296,7 +299,7 @@ const Calculator = () => {
                                                 portalId="root-portal"
                                                 placeholderText=""
                                                 dateFormat="dd.MM.yyyy"
-
+                                                ariaLabelledBy="selectDate"
                                                 popperPlacement="bottom-end"
                                                 locale={uk}
                                                 minDate={minDate}
