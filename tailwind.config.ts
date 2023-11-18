@@ -10,7 +10,8 @@ const config: Config = {
       fontFamily: {
         montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" 0 , "liga" 0'}],
         roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
-        bree: ['var(--font-bree)',{ fontFeatureSettings: '"clig" 0 , "liga" 0'}],
+       bree: ['var(--font-bree)', { fontFeatureSettings: '"clig" 0 , "liga" 0' }],
+        
       },
 
       colors: {
@@ -34,7 +35,8 @@ const config: Config = {
         },
         error: {
         100: "#DC0C31"
-      }
+        },
+        gold:"#F9C53A",
     },
 
     },

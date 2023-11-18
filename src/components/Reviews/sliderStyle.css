@@ -1,0 +1,30 @@
+.slider-rewiew .slider-item {
+  @apply !flex flex-col justify-between items-center p-6 border-[1px] border-black-30 rounded-[5px] h-[inherit];
+}
+.slider-rewiew .slick-slide {
+  height: unset;
+}
+.slider-rewiew .slick-slide > div {
+  @apply h-full mx-[2%];
+}
+.slider-rewiew .slick-track {
+  display: flex;
+}
+.slider-rewiew .slick-list {
+  @apply mb-12 mx-[-2%] t:mx-[-2%] d:mx-[-1%];
+}
+.slider-rewiew .slick-dots {
+  position: unset;
+}
+.slider-rewiew .slick-dots button::before {
+  content: none;
+}
+.slider-rewiew .slick-dots button {
+  @apply w-[18px] h-[18px] border-[1px] border-solid border-black-30 rounded-full;
+}
+.slider-rewiew .slick-dots .slick-active button {
+  @apply bg-accent-100 border-accent-100;
+}
+.slider-rewiew .slick-dots button:hover {
+  @apply bg-accent-100;
+}

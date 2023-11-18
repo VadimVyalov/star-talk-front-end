@@ -10,26 +10,13 @@ export type Discount = {
   description: Array<{ id: string, text: string }>,
 }
 
-// const discount_data = {
-//   title: "«Приведи друга»",
-//   description: [
-//     {
-//       id: "ds-01",
-//       text: "Якщо ви приводите друга, він оплатив і пройшов 5 і більше занять, кожен з вас отримує по одному безкоштовному уроку."
-//     },
-//     {
-//       id: "ds-02",
-//       text: "Пропозиція поширюється тільки на індивідуальні заняття викладачем за тарифами, зазначеними на сайті. На інші курси акція розраховується індивідуально."
-//     }
-//   ]
-// }
 
 const Discount = () => {
   const { data, error, isLoading } = useGetData('discounts');
 
   const discount_data: Discount = data?.length > 0 ? data[0] : null;
 
-  console.log(discount_data)
+  // console.log(discount_data)
 
   return (
     (discount_data && !error)

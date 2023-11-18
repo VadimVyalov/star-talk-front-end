@@ -16,7 +16,7 @@ const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) 
     { id: 'm-04', title: 'Про нас', link: '/#about' },
     { id: 'm-05', title: 'Викладачі', link: '/#teachers' },
     { id: 'm-06', title: 'Статті', link: '/articles' },
-    { id: 'm-07', title: 'Відгуки', link: '/test' }
+    { id: 'm-07', title: 'Відгуки', link: '/#reviews' }
   ]
 
   return (

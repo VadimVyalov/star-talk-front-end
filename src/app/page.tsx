@@ -14,10 +14,12 @@ import Discount from "@/components/Discount";
 import Gift from "@/components/Gift";
 import Teachers from "@/components/Teachers";
 import Questions from "@/components/Questions";
+import Reviews from "@/components/Reviews";
 import { ArrowUp } from "@/components/ArrowUp/ArrowUp";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 
 
 export default function Home() {
@@ -34,6 +36,7 @@ export default function Home() {
       <Gift />
       <Teachers />
       <Questions />
+      <Reviews />
       <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
 
     </div>
