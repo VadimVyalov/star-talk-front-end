@@ -30,7 +30,7 @@ const About = () => {
       <div className="container">
         <h2 className="sectionTitle">Про нас</h2>
         <div className="grid grid-cols-1 d:grid-cols-[minmax(345px,500px)_auto_minmax(445px,650px)] d:gap-x-auto w-full">
-          <div className="d:max-w-[500px] d:min-h-[500px] relative h-[90vw] d:h-auto t:min-h-[600px]  ">
+          <div className="relative h-[70vw] d:max-w-[500px] d:min-h-[500px] d:h-auto   ">
             <Image className="rounded-3xl"
               src={about_img}
               alt="about image"
