@@ -8,10 +8,12 @@ const config: Config = {
   theme: {
    extend: { 
       fontFamily: {
-        montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" 0 , "liga" 0'}],
-        roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
-       bree: ['var(--font-bree)', { fontFeatureSettings: '"clig" 0 , "liga" 0' }],
-        
+      //   montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" off , "liga" off'},],
+      //   roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
+      //  bree: ['var(--font-bree)', { fontFeatureSettings: '"clig" 0 , "liga" 0' }],
+        montserrat: ['Montserrat , sans-serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        roboto: ['"Roboto Slab", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        bree: ['"Bree Serif", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
       },
 
       colors: {
