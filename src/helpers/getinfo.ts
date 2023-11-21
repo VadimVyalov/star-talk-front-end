@@ -44,12 +44,7 @@ export async function getData(id: string) {
 
 
 export const getinfo = async () => {
-   
 
 console.log('access');
-
-
-   
-    
     
 }

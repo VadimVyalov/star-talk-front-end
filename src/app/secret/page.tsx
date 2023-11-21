@@ -58,7 +58,7 @@ const initialValue: Descendant[] = [
 
 
 
-export default function secret() {
+export default function Secret() {
 
   const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, [])
   const renderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, [])
