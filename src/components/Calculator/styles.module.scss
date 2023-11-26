@@ -1,10 +1,10 @@
 .bg {
   background-image: url(/assets/image/calculator/calculator-m-x1.jpg);
-  @media screen and (min-resolution: 2dppx) {
+  @media only screen and (min-resolution: 2dppx) {
     background-image: url(/assets/image/calculator/calculator-m-x2.jpg);
   }
 
-  @media screen and (min-width: 590px) {
+  @media screen and (min-width: 591px) {
     background-image: url(/assets/image/calculator/calculator-t-x1.jpg);
     @media screen and (min-resolution: 2dppx) {
       background-image: url(/assets/image/calculator/calculator-t-x2.jpg);

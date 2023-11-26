@@ -13,6 +13,7 @@ interface Props {
 const ArticleItem = ({ article }: Props) => {
 
   const { id, image_preview, title, date, seo_description, keyword } = article
+  // console.log(`/https://star-talk.foradmin.pp.ua/api/v1/article/image_preview/${id}`);
 
   return (
 
@@ -21,9 +22,9 @@ const ArticleItem = ({ article }: Props) => {
       <div className={cn("w-full h-full flex flex-col ")}>
         <Image
           alt={`${image_preview} фото`}
-          src={image_preview}
-          height={530}
-          width={280}
+          src={`https://star-talk.foradmin.pp.ua/api/v1/article/image_preview/${id}`}
+          height={280}
+          width={530}
 
           style={{
             width: '100%',

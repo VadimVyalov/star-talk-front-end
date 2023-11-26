@@ -1,0 +1,22 @@
+.article-viever {
+  @apply flex flex-col gap-y-3;
+}
+.article-viever .editor-list-unordered {
+  @apply ml-4 pl-4 list-disc;
+}
+
+.article-viever .editor-list-ordered {
+  @apply ml-4 pl-4 list-decimal;
+}
+
+/* .article-viever .editor-list-element {
+  @apply bg-gray-600;
+} */
+
+.article-viever .editor-title {
+  @apply text-[1.25em];
+}
+
+.article-viever .editor-quote {
+  @apply text-black-75 italic m-2 ml-6 w-2/3;
+}

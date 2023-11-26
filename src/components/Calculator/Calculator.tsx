@@ -230,7 +230,7 @@ const Calculator = () => {
     }
 
     return (
-        <section id='calculator' className={cn(style.bg, "bg-center bg-no-repeat ", "mb-[72px] t:mb-[100px] d:mb-[120px]")}>
+        <section id='calculator' className={cn(style.bg, "bg-center bg-no-repeat bg-cover bg-grey-1", "mb-[72px] t:mb-[100px] d:mb-[120px]")}>
             <div className="container  ">
 
                 <div className="flex flex-col items-center pt-10 t:py-10 d:py-14 ">

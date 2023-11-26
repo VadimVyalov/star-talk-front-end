@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Star Talk",
   description: "English school",
+
   robots: {
     index: false,
     follow: false,

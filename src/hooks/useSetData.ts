@@ -1,4 +1,4 @@
-import  useSWR  from "swr";
+import  useSWRMutation  from "swr";
 
 const fetcher = async (url:string) => {
     const res = await fetch(url);
@@ -9,8 +9,8 @@ const fetcher = async (url:string) => {
   };
    
   
-  const useGetData = (path:string) => {
-    const { data, error } = useSWR (`https://star-talk.foradmin.pp.ua/api/v1/${path}`, fetcher, {
+  const useSetData = (path:string) => {
+    const { data, error } = useSWRMutation (`https://star-talk.foradmin.pp.ua/api/v1/${path}`, fetcher, {
       keepPreviousData: true
     });
    
@@ -19,4 +19,4 @@ const fetcher = async (url:string) => {
     return { data, error, isLoading };
   };
    
-  export default useGetData;
+  export default useSetData;
