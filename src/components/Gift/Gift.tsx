@@ -13,12 +13,12 @@ interface InputNP {
 }
 
 const schema = yup.object().shape({
-  name: yup.string().required("Введіть ім'я").min(2, "Введіть корректне ім'я"),
+  name: yup.string().required("Введіть ім'я").min(2, "Введіть корректне ім'я").max(256, "Введіть до 256 символів"),
   phone: yup
     .string()
     .required("Введіть номер телефону")
     .matches(
-      /^\+380\d{9}$/,
+      /^\+\d{12}$/,
       "Введіть корректний номер"
     )
 });
@@ -55,19 +55,19 @@ const Gift = () => {
           </div>
 
           <div className="d:col-start-2 d:row-start-3 d:mt-5 ">
-            <p className="ml-6 mb-6"> Залиште свій телефон та ім’я </p>
+            <p className=" mb-8 d:mb-12"> Залиште свій телефон та ім’я </p>
 
 
             <form className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-wrap gap-x-5 gap-y-4 mr-auto ">
                 <div className="flex flex-col min-w-[200px] ">
                   <label className="text-[0]  border-b-2 border-black-15 
-                              hover:border-accent-100 transition-colors">Ваше Ім’я
-                    <input {...register("name")} placeholder="Ваше Ім’я"
+                              hover:border-accent-100 transition-colors">Ваше ім’я
+                    <input {...register("name")} placeholder="Ваше ім’я"
                       className="outline-none bg-transparent text-base leading-[1.5]  w-full pt-3 pb-2 shadow-[inset_0_0_0_300px_rgba(254,251,244,1)]" />
                   </label>
 
-                  {errors.name ? <p className=" text-error-100 text-xs">{errors.name.message}</p> : <p className="text-xs">все гаразд</p>}
+                  {errors.name ? <p className=" text-error-100 text-xs">{errors.name.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
                 </div>
 
                 <div className="flex flex-col min-w-[200px] ">
@@ -76,7 +76,7 @@ const Gift = () => {
                     <input {...register("phone")} placeholder="Номер телефону"
                       className="outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2  shadow-[inset_0_0_0_300px_rgba(254,251,244,1)] " />
                   </label>
-                  {errors.phone ? <p className=" text-error-100 text-xs">{errors.phone.message}</p> : <p className="text-xs">все гаразд</p>}
+                  {errors.phone ? <p className=" text-error-100 text-xs">{errors.phone.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
                 </div>
               </div>
 

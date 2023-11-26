@@ -360,7 +360,7 @@ const Calculator = () => {
                         </li>
                     </ul>
 
-                    <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>зрозуміло</button>
+                    <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>Зрозуміло</button>
                 </ModalWrapper>}
 
         </section>
