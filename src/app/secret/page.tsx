@@ -13,7 +13,7 @@ import { withHistory } from 'slate-history'
 import { BlockButton, Element, Leaf, MarkButton, Toolbar } from '@/components/Editor/components'
 import { getData, getinfo, login } from '@/helpers/getinfo'
 //import { getinfo } from '@/helpers/getinfo'
-
+import "./writerStyle.css"
 
 const initialValue: Descendant[] = [
   {
@@ -55,9 +55,6 @@ const initialValue: Descendant[] = [
 
 
 
-
-
-
 export default function Secret() {
 
   const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, [])
@@ -65,7 +62,7 @@ export default function Secret() {
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
   const writer = useMemo(() => withHistory(withReact(createEditor())), [])
 
-  const readValue: Descendant[] =
+  let readValue: Descendant[] =
     [
       {
         type: 'paragraph',
@@ -96,12 +93,7 @@ export default function Secret() {
             <BlockButton format="justify" icon="align-justify" />
           </Toolbar>
           <Editable
-            style={{
-              backgroundColor: 'rgb(255, 230, 156)',
-              minHeight: '200px',
-
-              outline: 'rgb(0, 128, 0) solid 2px',
-            }}
+            className='writer'
             renderElement={renderElement}
             renderLeaf={renderLeaf}
             placeholder="Enter some rich text…"
@@ -113,22 +105,38 @@ export default function Secret() {
 
 
         <button className='p-2 m-2 border-2'
-          // onClick={async () => {
-          //   // console.log('==')
-          //   // const data = await login('aaa@mail.com', 'A102030a')
-          //   // console.log(data);
 
-          // }}
+          disabled={pending}
           onClick={() => {
+
             startTransition(async () => {
               try {
-                await login('aaa@mail.com', 'A102030a')
+                const c = await login('aaa@mail.com', 'A102030a')
+                console.log(c)
               } catch (e) {
                 alert('error');
               }
             });
           }}
         > Login </button>
+
+        <button className='p-2 m-2 border-2'
+
+          disabled={pending}
+          onClick={() => {
+            let c;
+            startTransition(async () => {
+              try {
+                c = await getinfo()
+                console.log(c)
+              } catch (e) {
+                console.log('error', e);
+                ;
+              }
+
+            });
+          }}
+        > FAQ </button>
 
         <button className='p-2 m-2 border-2'
           onClick={() => {
@@ -142,12 +150,15 @@ export default function Secret() {
 
         <button onClick={async () => {
           // const content = JSON.parse(localStorage.getItem('content') || '{}')
-          const data = await getData('65556bfa225e9773ac1f15e9')
+          const data = await getData('655e9b1aaa47d6e609e23e79')
           const content = await JSON.parse(data.text)
 
+          // console.log(data);
           // startTransition(async () => {
           //   try {
+
           //     await login('aaa@mail.com', 'A102030a')
+
           //   } catch (e) {
           //     alert('error');
           //   }
@@ -164,6 +175,7 @@ export default function Secret() {
               at: [totalNodes - i - 1],
             });
           }
+
 
           for (const value of content) {
             Transforms.insertNodes(writer, value, {

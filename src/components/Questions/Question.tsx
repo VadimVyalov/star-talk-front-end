@@ -27,7 +27,7 @@ const Question = ({ question }: Props) => {
         </button>
         <h3 className=" text-2xl   font-semibold "> {title} </h3>
       </div >
-      <div className={cn("overflow-hidden transition-[max-height] duration-300", isOpen ? "max-h-96 " : "max-h-0 ")}>
+      <div className={cn("overflow-hidden transition-[max-height] duration-300", isOpen ? "max-h-[500px] " : "max-h-0 ")}>
         <p className={cn("  pl-[72px] mt-1 ")}>  {answer} </p>
       </div>
 

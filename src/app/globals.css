@@ -21,7 +21,9 @@ html,
 body {
   @apply font-montserrat font-normal text-base leading-[1.5] text-black-100 bg-mainBg scroll-smooth;
 }
-
+img {
+  @apply font-montserrat font-normal text-base leading-[1.5] !text-black-100 bg-grey-1;
+}
 /* body {
   font-family: "Montserrat", serif;
   font-feature-settings:

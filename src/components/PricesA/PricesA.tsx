@@ -30,7 +30,7 @@ const PricesA = () => {
   // const isLoading = false;
 
   const { data, error, isLoading } = useGetData('price');
-  console.log(data)
+  //console.log(data)
 
   return (
     <section id="prices" className="mb-[72px] t:mb-[100px] d:mb-[120px]">

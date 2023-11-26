@@ -1,6 +1,6 @@
 "use client";
 
-//import useGetData from "@/hooks/useGetData";
+import useGetData from "@/hooks/useGetData";
 import ArticleItem from "./ArticleItem";
 import data from "../../../public/data/articles.json"
 import Sceleton from "./Skeleton";
@@ -23,27 +23,27 @@ export type Article = {
 
 
 
-const Articles = () => {
+const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: Number, offset?: Number, title?: string }) => {
 
-  const error = false;
-  const isLoading = false;
+  // const error = false;
+  // const isLoading = false;
 
-  //const { data, error, isLoading } = useGetData('teacher');
-  //   console.log(data)
+  const { data, error, isLoading } = useGetData(`article?limit=${limit}&offset=${offset}`);
+  // console.log(data)
 
   return (
     <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container flex flex-col items-center">
 
-        <h2 className="sectionTitle">Статті</h2>
+        {title ? <h2 className="sectionTitle">{title}</h2> : null}
         <div className="w-full grid grid-cols-1 t:grid-cols-2 gap-6">
           {!error ? (
 
             !isLoading ? (
 
-              data.map((teacher: Article) => {
+              data.map((article: Article) => {
                 return (
-                  <ArticleItem key={teacher.id} article={teacher} />
+                  <ArticleItem key={article.id} article={article} />
 
                 )
               })

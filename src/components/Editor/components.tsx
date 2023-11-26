@@ -106,7 +106,7 @@ export const Element = ({ attributes, children, element }: RenderElementProps) =
             )
         case 'list-ordered':
             return (
-                <ol style={style} className='editor-list-unordered' {...attributes}>
+                <ol style={style} className='editor-list-ordered' {...attributes}>
                     {children}
                 </ol>
             )
