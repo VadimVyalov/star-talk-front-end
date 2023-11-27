@@ -17,7 +17,7 @@ const Footer = () => {
 
       <div className="flex flex-col justify-center items-center t:items-start
       t:grid t:grid-cols-2 tb:grid-cols-3  pb-6 t:pb-10 d:pb-14 pt-8 t:pt-10 d:pt-16 ">
-        <Image
+        <Image className="bg-transparent"
           src={logo}
           alt="Star Talk"
           width={133}

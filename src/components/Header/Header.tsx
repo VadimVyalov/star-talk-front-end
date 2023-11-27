@@ -1,10 +1,9 @@
 'use client';
 import Image from "next/image";
-import useScreen from '@/hooks/useScreen';
+
 import ContactsPanel from "../ContactsPanel";
 import Navigation from "../Navigation";
 import Link from "next/link";
-import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { useState } from "react";
 import cn from "@/helpers";
 import Icon from "../Icon";
@@ -12,9 +11,7 @@ import { ModalPortal } from "../Modal/ModalPortal";
 const logo = "/assets/icons/logo.svg"
 
 const Header = () => {
-  //const { isD } = useScreen();
   const [open, setOpen] = useState(false);
-  //console.log(open)
   const onCloseMenu = () => {
     setOpen(false);
   };
@@ -24,21 +21,13 @@ const Header = () => {
         <ContactsPanel />
         <div className="flex justify-between items-center mt-7">
           <Link className=" shrink-0 " href="/" title="Star Talk">
-            <Image
+            <Image className="bg-transparent"
               src={logo}
               alt="Star Talk"
               width={133}
               height={33}
             />
           </Link>
-
-          {/* {isD ?
-            (<>
-              <Navigation />
-              <Link href="/" className="greenLink px-[23px] py-[15px] ">Замовити урок</Link>
-            </>) :
-            (<BurgerMenu />)} */}
-          {/* <BurgerMenu /> */}
           <button title="меню" onClick={() => setOpen(prev => !prev)} className='flex flex-col justify-between items-center  icon p-1 !w-10 !h-10 z-20'>
             <Icon name='/assets/icons/small.svg' id='menu2' className={cn('w-full h-1 transition-all duration-200 ', open ? 'rotate-45 translate-y-[14px] translate-x-[2px] w-[90%] ' : '')} />
             <Icon name='/assets/icons/small.svg' id='menu2' className={cn('w-full h-1 transition-all duration-200', open ? 'w-0' : '')} />

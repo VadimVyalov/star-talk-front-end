@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import cn from "@/helpers"
+import Icon from "../Icon";
 
 const hero_img = '/assets/image/hero.jpg'
 
@@ -10,12 +11,16 @@ const Hero = () => {
             <div className="container  ">
                 <div className="flex flex-col-reverse gap-y-10 t:grid t:grid-cols-2 t:gap-x-6">
                     <div className="flex flex-col  items-center text-center justify-center">
-                        <h1 className="font-roboto text-[27px] d:text-[84px] font-semibold leading-[1.3] mb-4 d:mb-10">Мовна школа “Star Talk”</h1>
+                        <h1 className="font-roboto text-[27px] d:text-[84px] font-semibold leading-[1.3] mb-4 d:mb-10 flex flex-wrap justify-center gap-x-2">
+                            <span className="">Мовна школа</span>
+                            <span className="whitespace-nowrap"> “Star Talk”</span>
+                        </h1>
                         <p className=" d:text-[20px] font-medium  d:mb-3">Англійська - це впевненість в собі і нові можливості</p>
                         <p className=" d:text-[20px] font-semibold t:font-bold d:font-extrabold mb-5 d:mb-10 "> БУДЬ ПОПЕРЕДУ!</p>
                         <Link href="/" className={cn("greenLink flex text-lg items-center gap-x-2",
-                            " w-full t:w-fit px-[26px] py-[18px] justify-center")}>
+                            " w-full t:w-fit px-[32px] py-[18px] justify-center")}>
                             <span>Визначте свій рівень</span>
+                            <Icon name="/assets/icons/small.svg" id="arrow-right" />
                             {/* <BsArrowRightShort size={28} /> */}
                         </Link>
                     </div>
@@ -25,6 +30,7 @@ const Hero = () => {
                         alt="hero image"
                         sizes="(max-width: 590px) 100vw, 50vw"
                         style={{
+
                             width: '100%',
                             height: 'auto',
                         }}

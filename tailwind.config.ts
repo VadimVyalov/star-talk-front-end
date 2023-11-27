@@ -8,16 +8,21 @@ const config: Config = {
   theme: {
    extend: { 
       fontFamily: {
-        montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" 0 , "liga" 0'}],
-        roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
-        bree: ['var(--font-bree)',{ fontFeatureSettings: '"clig" 0 , "liga" 0'}],
+      //   montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" off , "liga" off'},],
+      //   roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
+      //  bree: ['var(--font-bree)', { fontFeatureSettings: '"clig" 0 , "liga" 0' }],
+        montserrat: ['Montserrat , sans-serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        roboto: ['"Roboto Slab", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        bree: ['"Bree Serif", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
       },
 
       colors: {
       overlay: "rgba(21, 21, 21, 0.5)",
       mainBg:"#FEFBF4",
       black: {
-        100: "#26262B",
+        100:"#26262BFF",
+        75:"#26262BBF",
+        50:"#26262B80",
         30:"#26262B4D",
         15:"#26262B26",
       },
@@ -34,7 +39,8 @@ const config: Config = {
         },
         error: {
         100: "#DC0C31"
-      }
+        },
+        gold:"#F9C53A",
     },
 
     },

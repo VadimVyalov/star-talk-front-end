@@ -69,3 +69,38 @@ export const teachersSlider = {
     },
   ],
 };
+
+export const rewiewsSlider = {
+  speed: 500,
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  initialSlide: 0,
+  dots: true,
+  infinite: true,
+  arrows: false,
+  className: "slider-rewiew",
+  responsive: [
+    {
+      breakpoint: SCREENS.d,
+      settings: {
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        dots: true,
+        infinite: true,
+      },
+    },
+    {
+      breakpoint: SCREENS.t,
+      settings: {
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        dots: true,
+        infinite: true,
+      },
+    },
+  ],
+};

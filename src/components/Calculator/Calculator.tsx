@@ -126,6 +126,7 @@ const Calculator = () => {
 
                         className="dateDrop"
                         classNamePrefix="dateDrop"
+                        aria-label="Not searchable"
                         isSearchable={false}
                         options={montsYear}
                         value={startDate}
@@ -229,7 +230,7 @@ const Calculator = () => {
     }
 
     return (
-        <section id='calculator' className={cn(style.bg, "bg-center bg-no-repeat ", "mb-[72px] t:mb-[100px] d:mb-[120px]")}>
+        <section id='calculator' className={cn(style.bg, "bg-center bg-no-repeat bg-cover bg-grey-1", "mb-[72px] t:mb-[100px] d:mb-[120px]")}>
             <div className="container  ">
 
                 <div className="flex flex-col items-center pt-10 t:py-10 d:py-14 ">
@@ -248,6 +249,7 @@ const Calculator = () => {
                                             id="levelS"
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
+                                            aria-label="Not searchable"
                                             isSearchable={false}
                                             options={optionsStart}
                                         />
@@ -267,6 +269,7 @@ const Calculator = () => {
                                             className="levelDrop"
                                             classNamePrefix="levelDrop"
                                             isSearchable={false}
+                                            aria-label="Not searchable"
                                             options={optionsFinish}
                                         />
                                     )}
@@ -276,7 +279,7 @@ const Calculator = () => {
                             </div>
 
                             <div className="flex flex-col items-start grow mb-12 ">
-                                <label className="whitespace-nowrap text-white-100 ">Дата завершення</label>
+                                <label id="selectDate" className="whitespace-nowrap text-white-100 ">Дата завершення</label>
                                 <Controller
                                     control={control}
 
@@ -296,7 +299,7 @@ const Calculator = () => {
                                                 portalId="root-portal"
                                                 placeholderText=""
                                                 dateFormat="dd.MM.yyyy"
-
+                                                ariaLabelledBy="selectDate"
                                                 popperPlacement="bottom-end"
                                                 locale={uk}
                                                 minDate={minDate}
@@ -357,7 +360,7 @@ const Calculator = () => {
                         </li>
                     </ul>
 
-                    <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>зрозуміло</button>
+                    <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>Зрозуміло</button>
                 </ModalWrapper>}
 
         </section>
