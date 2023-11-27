@@ -14,6 +14,7 @@ import { BlockButton, Element, Leaf, MarkButton, Toolbar } from '@/components/Ed
 import { getData, getinfo, login } from '@/helpers/getinfo'
 //import { getinfo } from '@/helpers/getinfo'
 import "./writerStyle.css"
+import Icon from '@/components/Icon'
 
 const initialValue: Descendant[] = [
   {
@@ -208,6 +209,9 @@ export default function Secret() {
           />
         </Slate>
       </div>
+      <Icon name='/assets/icons/stars.svg' id='UA-18'
+        className="w-40 h-40 shrink-0"
+      />
     </section>
   )
 }
