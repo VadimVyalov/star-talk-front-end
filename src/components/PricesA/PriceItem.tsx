@@ -16,20 +16,15 @@ const PriceItem = ({ period, baseUrl = '' }: Props) => {
   const { title, slogan, price_description, lessons_amount, price_per_lesson, image, new: new_period, hot: hot_period } = period
   return (
 
-    <div className="flex flex-col justify-between items-center relative ">
+    <div className="flex flex-col justify-between items-center relative w-full">
       <div className="mb-[38px] h-[100px] w-auto">
-        {/* <Image
-          alt="Індивідуальні заняття"
-          src={`${baseUrl}${image}`}
-          height={100}
-          width={100}
-        /> */}
+
         <Icon name={baseUrl} id={image}
           className={cn(" h-full w-full ")}
         />
       </div>
       <div className="text-center leading-[1.5]">
-        <h3 className=" text-xl   font-semibold mb-[12px]">
+        <h3 className="text-xl leading-[1.5] font-semibold mb-[12px] h-[3em] flex items-center justify-center">
           {title}
         </h3>
         <p className=" text-base  font-semibold mb-[6px]">
@@ -42,7 +37,7 @@ const PriceItem = ({ period, baseUrl = '' }: Props) => {
           {price_per_lesson} грн/заняття
         </p>
       </div>
-      <ul className="flex flex-col gap-2.5 pl-8 mb-14">
+      <ul className="flex flex-col gap-2.5 pl-8 mb-14 w-full">
         {
           price_description.map((description, i) => {
             //const key = period.id + '-d-' + i
