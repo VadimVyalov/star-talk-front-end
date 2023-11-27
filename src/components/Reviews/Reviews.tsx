@@ -6,10 +6,10 @@ import { rewiewsSlider } from "@/lib/sliderSettings";
 
 import useGetData from "@/hooks/useGetData";
 import Rewiew from "./Rewiew";
-import data from "../../../public/data/rewiews.json"
+//import data from "../../../public/data/rewiews.json"
 import Sceleton from "./Skeleton";
 import "./sliderStyle.css"
-const baseUrl = '/assets/icons/stars.svg'
+//const baseUrl = '/assets/icons/stars.svg'
 
 export type Review = {
   id: string,
@@ -21,10 +21,10 @@ export type Review = {
 const Reviews = () => {
 
 
-  const error = false;
-  const isLoading = false;
+  // const error = false;
+  // const isLoading = false;
 
-  // const { data, error, isLoading } = useGetData('price');
+  const { data, error, isLoading } = useGetData('comments');
   //   console.log(data)
 
   return (

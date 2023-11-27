@@ -24,7 +24,7 @@ const Teachers = () => {
   // const isLoading = false;
 
   const { data, error, isLoading } = useGetData('teachers');
-  console.log(data)
+  // console.log(data)
 
   return (
     <section id="teachers" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
