@@ -3,4 +3,5 @@ export const SCREENS = {
   t: 591,
   tb: 768,
   d: 1024,
+  dm: 1200,
 };

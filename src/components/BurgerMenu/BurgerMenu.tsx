@@ -22,7 +22,7 @@ export function BurgerMenu() {
 					className={cn('w-full h-full shrink-0')}
 				/>
 			</button>
-			{
+			{/* {
 				open ? <ModalPortal onCloseMenu={onCloseMenu} isOpen={open} className=" bg-overlay justify-center items-center">
 					<div className={cn(" bg-mainBg rounded-b-3xl pb-6 flex flex-col items-center ", open ? "" : "")}>
 						<Navigation
@@ -32,6 +32,6 @@ export function BurgerMenu() {
 						<Link href="/" className="greenLink px-[42px] py-[18px]">Замовити урок</Link>
 					</div>
 				</ModalPortal> : null
-			}
+			} */}
 		</>);
 }

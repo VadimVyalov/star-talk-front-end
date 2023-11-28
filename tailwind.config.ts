@@ -8,12 +8,12 @@ const config: Config = {
   theme: {
    extend: { 
       fontFamily: {
-      //   montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" off , "liga" off'},],
-      //   roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
-      //  bree: ['var(--font-bree)', { fontFeatureSettings: '"clig" 0 , "liga" 0' }],
-        montserrat: ['Montserrat , sans-serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
-        roboto: ['"Roboto Slab", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
-        bree: ['"Bree Serif", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        montserrat: ['var(--font-montserrat)', { fontFeatureSettings: '"clig" off , "liga" off'},],
+        roboto: ['var(--font-roboto)',{ fontFeatureSettings: "'clig' 0 , 'liga' 0"}],
+       bree: ['var(--font-bree)', { fontFeatureSettings: '"clig" 0 , "liga" 0' }],
+        // montserrat: ['Montserrat , sans-serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        // roboto: ['"Roboto Slab", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
+        // bree: ['"Bree Serif", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
       },
 
       colors: {
@@ -36,6 +36,7 @@ const config: Config = {
       grey: {
         1: "#E5E4D8",
         2: "#DFE0E2",
+        3: "#18181b33",
         },
         error: {
         100: "#DC0C31"
@@ -50,9 +51,10 @@ const config: Config = {
         'arrow': 'url("/assets/icons/arrow.svg")',
       },
     screens: {
-      d:`${SCREENS.d}px`,
+      dm:`${SCREENS.dm}px`,
+      d: `${SCREENS.d}px`,
+      tb: `${SCREENS.tb}px`,
       t: `${SCREENS.t}px`,
-      tb:`${SCREENS.tb}px`,
       m:`${SCREENS.m}px`,
     },
     

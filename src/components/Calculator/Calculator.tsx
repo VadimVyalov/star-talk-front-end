@@ -230,8 +230,8 @@ const Calculator = () => {
     }
 
     return (
-        <section id='calculator' className={cn(style.bg, "bg-center bg-no-repeat bg-cover bg-grey-1", "mb-[72px] t:mb-[100px] d:mb-[120px]")}>
-            <div className="container  ">
+        <section id='calculator' className="mb-[72px] t:mb-[100px] d:mb-[120px]">
+            <div className={cn(style.bg, "bg-center bg-no-repeat bg-cover bg-grey-1", "container")} >
 
                 <div className="flex flex-col items-center pt-10 t:py-10 d:py-14 ">
                     <h2 className="font-roboto text-center text-white-100 text-[40px] font-semibold leading-[1.5] 
@@ -326,7 +326,7 @@ const Calculator = () => {
                 </div>
             </div>
             {openModal &&
-                <ModalWrapper isOpen={openModal} onCloseMenu={onCloseMenu} className="max-w-[310px] t:max-w-[400px] px-2 t:px-5 py-6">
+                <ModalWrapper isOpen={openModal} onCloseMenu={onCloseMenu} className="max-w-[310px] t:max-w-[400px] px-2 t:px-5 py-6 justify-center items-center">
                     <p className="indent-3 px-4 t:px-0"> Щоб досягти бажаного рівня до обраної дати Вам потрібно витрачати приблизно</p>
                     <p className="text-lg t:text-xl font-semibold py-2"> {timeMes(hourPerDay)} на день</p>
 
