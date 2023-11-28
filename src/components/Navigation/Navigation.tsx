@@ -5,25 +5,17 @@ interface NavigationProps {
   wrapCn?: ClassValue;
   itemCn?: ClassValue;
   linkCn?: ClassValue;
-
+  mobile?: boolean;
+  menuItems: { id: string, title: string, link: string }[];
 }
 
-const Navigation = ({ itemCn = "", linkCn = "", wrapCn = '' }: NavigationProps) => {
-  const menuItems = [
-    { id: 'm-01', title: 'Ціни', link: '/#prices' },
-    { id: 'm-02', title: 'Калькулятор', link: '/#calculator' },
-    //   { id: 'm-03', title: 'Акції', link: '/#discounts' },
-    { id: 'm-04', title: 'Про нас', link: '/#about' },
-    // { id: 'm-05', title: 'Викладачі', link: '/#teachers' },
-    // { id: 'm-06', title: 'Статті', link: '/articles' },
-    { id: 'm-07', title: 'Відгуки', link: '/#reviews' }
-  ]
+const Navigation = ({ mobile = false, itemCn = "", linkCn = "", wrapCn = '', menuItems }: NavigationProps) => {
 
   return (
-    <nav className="w-fit" >
+    <nav className={cn(mobile ? "w-full" : "w-fit")} >
       <ul className={cn("flex flex-col ", wrapCn)}>
         {
-          menuItems.map(i => {
+          menuItems?.map(i => {
             return (
               <li key={i.id} className={cn(itemCn, "hover:text-accent-100 transition ")}>
                 <Link className={cn(" block whitespace-nowrap font-medium h-full ", linkCn)}

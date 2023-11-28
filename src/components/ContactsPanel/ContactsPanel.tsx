@@ -1,5 +1,6 @@
 
 import cn from "@/helpers";
+import Link from "next/link";
 import Icon from "../Icon";
 import Social from "../Social";
 
@@ -14,15 +15,15 @@ const ContactsPanel = () => {
       </div>
 
       <div className="flex  items-end tb:items-center gap-y-2 gap-x-4 t:gap-x-6 shrink-0 flex-col-reverse tb:flex-row">
-        <a href="#viber" title="Viber" className='flex shrink-0 icon'>
+        <Link href="#viber" title="Viber" className='flex shrink-0 icon'>
           <Icon name='/assets/icons/social.svg' id='viber'
             className={cn('w-8 h-8 shrink-0')}
           />
-        </a>
-        <a href="tel:+380950963400" className="flex gap-x-2 ">
+        </Link>
+        <Link href="tel:+380950963400" className="flex gap-x-2 ">
 
           <span className="text-base t:text-[20px] d:text-2xl  font-medium hover:text-accent-100 transition ">+380950963400</span>
-        </a>
+        </Link>
       </div>
     </div>
   );

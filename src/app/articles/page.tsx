@@ -81,7 +81,8 @@ export default function Test() {
   return (
     <section id="about" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">
-        <Slate editor={editor} initialValue={initialValue} >
+        <h1 className='mx-auto text-4xl align-middle text-center'>Comming soon</h1>
+        {/* <Slate editor={editor} initialValue={initialValue} >
           <Toolbar>
             <BlockButton format="title" icon="title" />
             <BlockButton format="quote" icon="quote" />
@@ -167,7 +168,8 @@ export default function Test() {
 
 
           />
-        </Slate>
+        </Slate> */}
+
       </div>
     </section>
   )

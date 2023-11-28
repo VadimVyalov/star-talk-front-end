@@ -80,7 +80,7 @@ const Gift = () => {
                 </div>
               </div>
 
-              <button className={cn("greenLink", "block px-5 py-3 leading-[1.25]   h-fit w-full t:w-auto ")}>Надіслати</button>
+              <button className={cn("greenLink", "block px-[21px] py-3 leading-[1.25]   h-fit w-full t:w-auto ")}>Надіслати</button>
 
             </form>
           </div>

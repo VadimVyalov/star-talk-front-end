@@ -59,7 +59,7 @@ const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: N
         </div>
 
         <Link href="/articles" className={cn("greenLink flex text-lg items-center gap-x-2 mt-[60px] t:mt-12",
-          " w-full t:w-fit px-[35px] py-[18px] justify-center")}>
+          " w-full t:w-fit px-[22px] py-[18px] justify-center")}>
           <span>Дивитись більше</span>
 
           {/* <BsArrowRightShort size={28} /> */}
