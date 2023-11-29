@@ -45,7 +45,7 @@ const config: Config = {
     },
 
     },
-        content: {
+   content: {
         'check': 'url("/assets/icons/check.svg")',
         'star': 'url("/assets/icons/star.svg")',
         'arrow': 'url("/assets/icons/arrow.svg")',

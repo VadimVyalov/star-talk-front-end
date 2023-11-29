@@ -37,7 +37,7 @@ export default function Home() {
       <Discount />
       <Gift />
       <Teachers />
-      <Articles />
+      <Articles limit={2} />
       <Questions />
       <Reviews />
       <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
