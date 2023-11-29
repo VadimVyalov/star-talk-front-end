@@ -13,10 +13,11 @@ export type Discount = {
 
 const Discount = () => {
   const { data, error, isLoading } = useGetData('discounts');
-  const discount_data: Discount = data?.isArray ? data[data.length - 1] : null;
+  const discount_data: Discount = Array.isArray(data) ? data[data?.length - 1] : null;
 
-  // console.log('=========',  data)
 
+
+  console.log('+++++++', discount_data)
   // const discount_data = data;
   // const error = false
   // const isLoading = false
