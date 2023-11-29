@@ -9,6 +9,7 @@ export const priceSlider = {
   infinite: true,
   arrows: false,
   className: "slider-price",
+
   responsive: [
     {
       breakpoint: SCREENS.d,

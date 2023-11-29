@@ -13,9 +13,9 @@ export type Discount = {
 
 const Discount = () => {
   const { data, error, isLoading } = useGetData('discounts');
-  const discount_data: Discount = data?.length > 0 ? data[0] : null;
+  const discount_data: Discount = data?.isArray ? data[data.length - 1] : null;
 
-  // console.log(discount_data)
+  // console.log('=========',  data)
 
   // const discount_data = data;
   // const error = false
@@ -23,7 +23,7 @@ const Discount = () => {
 
 
   return (
-    (discount_data && !error)
+    (discount_data && !error && !isLoading)
       ? (<section id="discount" className={cn("mb-[72px] t:mb-[100px] d:mb-[120px]")} >
         <h2 className="sectionTitle">Акції та знижки</h2>
         <div className={cn(style.bg, "bg-center bg-no-repeat bg-cover ", "container t:max-w-[590px] d:max-w-[1440px]")}>
