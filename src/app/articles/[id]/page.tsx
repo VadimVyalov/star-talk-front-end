@@ -8,13 +8,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Icon from '@/components/Icon'
 import cn from "@/helpers"
-import Articles from '@/components/Articles'
+import Articles from '@/components/Sections/Articles'
 import useGetData from '@/hooks/useGetData'
 import Viewer from '@/components/Editor/viewer'
 
 import data from "../../../../public/data/articles.json"
 
 import "./viewerStyle.css"
+import { ArrowUp } from '@/components/ArrowUp/ArrowUp'
 
 
 
@@ -151,7 +152,8 @@ export default function Page({ params }: { params: { id: string } }) {
 
 
       </section >
-      <Articles title='Читай також' />
+      <Articles limit={2} title='Читай також' />
+      <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
     </>
   )
 }

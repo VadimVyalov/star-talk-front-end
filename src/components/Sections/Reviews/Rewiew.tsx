@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Icon from "../Icon";
+import Icon from "../../Icon";
 import cn from "@/helpers"
 import type { Review } from "./Reviews";
 

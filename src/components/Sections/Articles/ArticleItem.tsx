@@ -3,7 +3,7 @@ import cn from "@/helpers"
 import type { Article } from "./Articles";
 import { useState } from "react";
 import Link from "next/link";
-import Icon from "../Icon";
+import Icon from "../../Icon";
 
 interface Props {
   article: Article

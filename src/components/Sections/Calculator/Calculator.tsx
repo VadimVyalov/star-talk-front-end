@@ -1,7 +1,7 @@
 "use client"
 
 import cn from "@/helpers"
-import Icon from "../Icon";
+import Icon from "../../Icon";
 import { useForm, Controller } from "react-hook-form";
 import type {
     SubmitHandler,
@@ -20,7 +20,7 @@ import "./dateSelect.css"
 
 
 import { useEffect, useState } from "react";
-import { ModalWrapper } from "../ModalForm/ModalWrapper";
+import { ModalWrapper } from "../../ModalForm/ModalWrapper";
 
 
 type OptionType = {

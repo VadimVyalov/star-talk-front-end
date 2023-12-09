@@ -2,10 +2,10 @@
 
 import useGetData from "@/hooks/useGetData";
 import ArticleItem from "./ArticleItem";
-import data from "../../../public/data/articles.json"
+import data from "../../../../public/data/articles.json"
 import Sceleton from "./Skeleton";
 import Link from "next/link";
-import Icon from "../Icon";
+import Icon from "../../Icon";
 import cn from "@/helpers"
 
 export type Article = {

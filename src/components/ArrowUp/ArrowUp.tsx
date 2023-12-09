@@ -3,7 +3,6 @@ import cn from "@/helpers";
 import Icon from "../Icon";
 
 import { useEffect, useState } from "react";
-import { BsChevronUp } from "react-icons/bs";
 
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
