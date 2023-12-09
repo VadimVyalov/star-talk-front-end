@@ -26,7 +26,7 @@ const Header = () => {
         <ContactsPanel />
 
         <div className="flex justify-between items-center mt-7">
-          <Link className=" shrink-0 " href="/" title="Star Talk">
+          <Link className=" shrink-0 cursor-pointer " href="/" title="Star Talk">
             <Image className="bg-transparent"
               src={logo}
               alt="Star Talk"

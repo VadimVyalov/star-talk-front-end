@@ -1,7 +1,7 @@
 "use client";
 import cn from "@/helpers"
 import useGetData from "@/hooks/useGetData";
-import Icon from "../Icon";
+import Icon from "../../Icon";
 import style from "./styles.module.scss";
 // import data from "../../../public/data/discount.json"
 export type Discount = {

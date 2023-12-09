@@ -3,7 +3,7 @@ import cn from "@/helpers"
 import type { Teacher } from "./Teachers";
 import { useState } from "react";
 import "./card.css"
-import Icon from "../Icon";
+import Icon from "../../Icon";
 interface Props {
   teacher: Teacher
 }

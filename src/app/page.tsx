@@ -1,21 +1,21 @@
 
-import Hero from "@/components/Hero";
-import About from "@/components/About";
+import Hero from "@/components/Sections/Hero";
+import About from "@/components/Sections/About";
 
 // import dynamic from 'next/dynamic'
 // const Advantages = dynamic(() => import('@/components/Advantages'))
 // const PricesA = dynamic(() => import('@/components/PricesA/PricesA'))
 // const Calculator = dynamic(() => import('@/components/Calculator'))
 
-import Advantages from "@/components/Advantages";
-import PricesA from "@/components/PricesA";
-import Calculator from "@/components/Calculator";
-import Discount from "@/components/Discount";
-import Gift from "@/components/Gift";
-import Teachers from "@/components/Teachers";
-import Articles from "@/components/Articles";
-import Questions from "@/components/Questions";
-import Reviews from "@/components/Reviews";
+import Advantages from "@/components/Sections/Advantages";
+import PricesA from "@/components/Sections/PricesA";
+import Calculator from "@/components/Sections/Calculator";
+import Discount from "@/components/Sections/Discount";
+import Gift from "@/components/Sections/Gift";
+import Teachers from "@/components/Sections/Teachers";
+import Articles from "@/components/Sections/Articles";
+import Questions from "@/components/Sections/Questions";
+import Reviews from "@/components/Sections/Reviews";
 import { ArrowUp } from "@/components/ArrowUp/ArrowUp";
 
 import "slick-carousel/slick/slick.css";

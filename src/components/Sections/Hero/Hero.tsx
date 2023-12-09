@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import cn from "@/helpers"
-import Icon from "../Icon";
+import Icon from "../../Icon";
 
 const hero_img = '/assets/image/hero.jpg'
 

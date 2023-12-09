@@ -18,12 +18,15 @@ const Footer = () => {
 
       <div className=" justify-center items-center t:items-start
       grid t:grid-cols-3  pb-6 t:pb-10 d:pb-14 pt-8 t:pt-10 d:pt-16 ">
-        <Image className="bg-transparent col-start-1 row-start-1 mx-auto t:ml-0"
-          src={logo}
-          alt="Star Talk"
-          width={133}
-          height={33}
-        />
+
+        <Link className=" shrink-0 cursor-pointer " href="/" title="Star Talk">
+          <Image className="bg-transparent"
+            src={logo}
+            alt="Star Talk"
+            width={133}
+            height={33}
+          />
+        </Link>
 
         <div className="col-start-1 row-start-2 t:col-start-1 t:col-end-4 t:row-start-1 t:row-span-4 mx-auto
                         t:w-fit  flex justify-center ">

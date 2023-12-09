@@ -13,13 +13,13 @@ interface InputNP {
 }
 
 const schema = yup.object().shape({
-  name: yup.string().required("Введіть ім'я").min(2, "Введіть корректне ім'я").max(256, "Введіть до 256 символів"),
+  name: yup.string().required("Введіть ім'я").min(2, "Введіть коректне ім'я").max(256, "Введіть до 256 символів"),
   phone: yup
     .string()
     .required("Введіть номер телефону")
     .matches(
       /^\+\d{12}$/,
-      "Введіть корректний номер"
+      "Введіть коректний номер"
     )
 });
 
@@ -60,6 +60,16 @@ const Gift = () => {
 
             <form className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-wrap gap-x-5 gap-y-4 mr-auto ">
+
+                <div className="flex flex-col min-w-[200px] ">
+                  <label className="text-[0]  border-b-2 border-black-15 
+                              hover:border-accent-100 transition-colors">Номер телефону
+                    <input {...register("phone")} placeholder="Номер телефону"
+                      className="outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2  shadow-[inset_0_0_0_300px_rgba(254,251,244,1)] " />
+                  </label>
+                  {errors.phone ? <p className=" text-error-100 text-xs">{errors.phone.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
+                </div>
+
                 <div className="flex flex-col min-w-[200px] ">
                   <label className="text-[0]  border-b-2 border-black-15 
                               hover:border-accent-100 transition-colors">Ваше ім’я
@@ -70,14 +80,6 @@ const Gift = () => {
                   {errors.name ? <p className=" text-error-100 text-xs">{errors.name.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
                 </div>
 
-                <div className="flex flex-col min-w-[200px] ">
-                  <label className="text-[0]  border-b-2 border-black-15 
-                              hover:border-accent-100 transition-colors">Номер телефону
-                    <input {...register("phone")} placeholder="Номер телефону"
-                      className="outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2  shadow-[inset_0_0_0_300px_rgba(254,251,244,1)] " />
-                  </label>
-                  {errors.phone ? <p className=" text-error-100 text-xs">{errors.phone.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
-                </div>
               </div>
 
               <button className={cn("greenLink", "block px-[21px] py-3 leading-[1.25]   h-fit w-full t:w-auto ")}>Надіслати</button>
