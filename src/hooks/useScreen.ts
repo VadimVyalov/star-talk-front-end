@@ -3,7 +3,7 @@
 
 import { useMediaQuery } from "react-responsive";
 import  { useEffect, useState } from "react";
-import { SCREENS } from "@/lib/screens";
+import { SCREENS } from "@/constants/screens";
 const useScreen = () => {
    const [query, setQuery] = useState({isM:false,isT:false,isD:false})
   const isM = useMediaQuery({ query: `(min-width: ${SCREENS.m}px)`});

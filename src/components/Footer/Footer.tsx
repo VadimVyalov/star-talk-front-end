@@ -7,7 +7,7 @@ import Social from "../Social";
 import cn from "@/helpers";
 import Icon from "../Icon";
 const logo = "/assets/icons/logo.svg"
-import { menuFooter } from '@/lib/menuItems'
+import { menuFooter } from '@/constants/menuItems'
 
 const Footer = () => {
   const { isT } = useScreen();

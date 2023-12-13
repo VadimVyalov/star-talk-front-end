@@ -1,7 +1,7 @@
 "use client";
 
 import Slider from "react-slick";
-import { teachersSlider } from "@/lib/sliderSettings";
+import { teachersSlider } from "@/constants/sliderSettings";
 import useGetData from "@/hooks/useGetData";
 import TeacherItem from "./TeacherItem";
 //import data from "../../../public/data/teachers.json"

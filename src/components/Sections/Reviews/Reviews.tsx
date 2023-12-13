@@ -2,7 +2,7 @@
 
 import Slider from "react-slick";
 
-import { rewiewsSlider } from "@/lib/sliderSettings";
+import { rewiewsSlider } from "@/constants/sliderSettings";
 
 import useGetData from "@/hooks/useGetData";
 import Rewiew from "./Rewiew";
