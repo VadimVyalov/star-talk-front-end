@@ -11,7 +11,7 @@ import { ModalPortal } from "../Modal/ModalPortal";
 import useScreen from "@/hooks/useScreen";
 import { BurgerMenuA } from "../BurgerMenuA/BurgerMenuA";
 const logo = "/assets/icons/logo.svg"
-import { menuHeader } from '@/lib/menuItems'
+import { menuHeader } from '@/constants/menuItems'
 
 const Header = () => {
 

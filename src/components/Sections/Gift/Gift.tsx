@@ -5,23 +5,13 @@ import Image from "next/image";
 const about_img = '/assets/image/gift.jpg'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { gift } from "@/helpers/validation";
 
-interface InputNP {
+interface GiftForm {
   name: string;
   phone: string;
 }
 
-const schema = yup.object().shape({
-  name: yup.string().required("Введіть ім'я").min(2, "Введіть коректне ім'я").max(256, "Введіть до 256 символів"),
-  phone: yup
-    .string()
-    .required("Введіть номер телефону")
-    .matches(
-      /^\+\d{12}$/,
-      "Введіть коректний номер"
-    )
-});
 
 const Gift = () => {
 
@@ -29,9 +19,9 @@ const Gift = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<InputNP>({ resolver: yupResolver(schema) });
-  const onSubmit = (data: InputNP) => {
-    console.log(data);
+  } = useForm<GiftForm>({ resolver: yupResolver(gift) });
+  const onSubmit = (data: GiftForm) => {
+    // console.log(data);
   };
 
   return (

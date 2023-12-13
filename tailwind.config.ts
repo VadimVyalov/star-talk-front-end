@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { SCREENS } from "./src/lib/screens";
+import { SCREENS } from "./src/constants/screens";
 const config: Config = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +18,9 @@ const config: Config = {
 
       colors: {
       overlay: "rgba(21, 21, 21, 0.5)",
+        shadow: {
+          link:"rgba(70, 187, 89, 0.25)",
+        },
       mainBg:"#FEFBF4",
       black: {
         100:"#26262BFF",
@@ -38,10 +41,11 @@ const config: Config = {
         2: "#DFE0E2",
         3: "#18181b33",
         },
-        error: {
+      error: {
         100: "#DC0C31"
         },
-        gold:"#F9C53A",
+      gold: "#F9C53A",
+      disabled:"#D0D0D0"
     },
 
     },

@@ -2,7 +2,7 @@
 
 import Slider from "react-slick";
 
-import { priceSlider } from "@/lib/sliderSettings";
+import { priceSlider } from "@/constants/sliderSettings";
 
 import useGetData from "@/hooks/useGetData";
 import PriceItem from "./PriceItem";

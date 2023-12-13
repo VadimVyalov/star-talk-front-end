@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ModalPortal } from "../Modal/ModalPortal";
 import Navigation from "../Navigation";
 import { useState } from "react";
-import { menuHeader } from '@/lib/menuItems'
+import { menuHeader } from '@/constants/menuItems'
 
 export function BurgerMenuA() {
 

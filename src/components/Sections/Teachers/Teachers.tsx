@@ -1,7 +1,7 @@
 "use client";
 
 import Slider from "react-slick";
-import { teachersSlider } from "@/lib/sliderSettings";
+import { teachersSlider } from "@/constants/sliderSettings";
 import useGetData from "@/hooks/useGetData";
 import TeacherItem from "./TeacherItem";
 //import data from "../../../public/data/teachers.json"
@@ -43,7 +43,7 @@ const Teachers = () => {
 
                   )
                 })
-              ) : (['te-1', 'te-2', 'te-3', 'te-4'].map(i => {
+              ) : (['teacher-1', 'teacher-2', 'teacher-3', 'teacher-4'].map(i => {
                 return (
                   <Sceleton key={i} />
                 )
