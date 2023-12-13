@@ -43,11 +43,12 @@ const Footer = () => {
                 className={cn('w-8 h-8 shrink-0')}
               />
             </Link>
-            <Link href="tel:+380950963400">
-              <span className="text-base t:text-[20px] font-medium  hover:text-accent-100 transition ">+380950963400</span>
-            </Link>
+            <a href="tel:+380950963400 text-base t:text-[20px] font-medium  hover:text-accent-100 transition">
+            +380950963400
+              {/* <span className="text-base t:text-[20px] font-medium  hover:text-accent-100 transition ">+380950963400</span> */}
+            </a>
           </div>
-          <Link className=" hover:text-accent-100 transition " href='mailto:startalk.school@gmail.com'>startalk.school@gmail.com</Link>
+          <a className=" hover:text-accent-100 transition " href='mailto:startalk.school@gmail.com'>startalk.school@gmail.com</a>
         </div>
 
         <Social className="t:col-start-1 t:row-start-2 mx-auto mt-6 t:ml-0 t:mt-5" />
