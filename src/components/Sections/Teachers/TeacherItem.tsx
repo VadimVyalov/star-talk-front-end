@@ -52,8 +52,9 @@ const TeacherItem = ({ teacher }: Props) => {
             description.map((description) => {
 
               return (
-                <li key={description.id} className="prices-list-item">{description.text}</li>
+                description.id !== '' ? <li key={description.id} className="prices-list-item">{description.text}</li> : null
               )
+
             })}
         </ul>
       </div>

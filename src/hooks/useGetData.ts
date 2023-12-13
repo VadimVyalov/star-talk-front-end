@@ -8,9 +8,11 @@ const fetcher = async (url:string) => {
     return res.json();
   };
    
-  
-  const useGetData = (path:string) => {
-    const { data, error } = useSWR (`https://star-talk.foradmin.pp.ua/api/v1/${path}`, fetcher, {
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+const useGetData = (path: string) => {
+        
+    const { data, error } = useSWR (`${BASE_URL}${path}`, fetcher, {
       keepPreviousData: true
     });
    

@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Sections/Hero";
 import About from "@/components/Sections/About";
 
@@ -20,15 +19,17 @@ import { ArrowUp } from "@/components/ArrowUp/ArrowUp";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-
+import Feedback from "@/components/Sections/Feedback";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
 
-
   return (
     <div className="relative overflow-hidden">
+
+
       <Hero />
       <Advantages />
       <PricesA />
@@ -40,8 +41,10 @@ export default function Home() {
       <Articles limit={2} />
       <Questions />
       <Reviews />
+      <Feedback />
       <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
-
-    </div>
+      <ToastContainer />
+      {/* <Toaster /> */}
+    </div >
   );
 }
