@@ -21,6 +21,7 @@ const ArticleItem = ({ article }: Props) => {
 
       <div className={cn("w-full h-full flex flex-col ")}>
         <Image
+          className="rounded-[5px] overflow-hidden"
           alt={`${image_preview} фото`}
           src={`https://star-talk.foradmin.pp.ua/api/v1/article/image_preview/${id}`}
           height={280}

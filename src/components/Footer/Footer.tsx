@@ -19,7 +19,7 @@ const Footer = () => {
       <div className=" justify-center items-center t:items-start
       grid t:grid-cols-3  pb-6 t:pb-10 d:pb-14 pt-8 t:pt-10 d:pt-16 ">
 
-        <Link className=" shrink-0 cursor-pointer " href="/" title="Star Talk">
+        <Link className="col-start-1 row-start-1 mx-auto t:ml-0 shrink-0 cursor-pointer " href="/" title="Star Talk">
           <Image className="bg-transparent"
             src={logo}
             alt="Star Talk"
@@ -29,7 +29,7 @@ const Footer = () => {
         </Link>
 
         <div className="col-start-1 row-start-2 t:col-start-1 t:col-end-4 t:row-start-1 t:row-span-4 mx-auto
-                        t:w-fit  flex justify-center ">
+                        t:w-fit  flex justify-center z-10 ">
           <Navigation menuItems={menuFooter} itemCn="gap-x-4" wrapCn="gap-y-3 d:flex-row  gap-x-6  mt-10 t:mt-1  " />
         </div>
 
@@ -59,7 +59,8 @@ const Footer = () => {
       </div>
 
       <div className="flex flex-col gap-2 justify-center">
-        <p className="text-center ">Copyright © 2023 WebUzvar.  <span className="whitespace-nowrap"> All Rights Reserved</span> </p>
+        {/* <p className="text-center ">Copyright © 2023 WebUzvar.  <span className="whitespace-nowrap"> All Rights Reserved</span> </p> */}
+        <p className="text-center ">© 2023 WebUzvar | Усі права захищено </p>
       </div>
 
     </div>

@@ -123,7 +123,7 @@ const Calculator = () => {
                 </div >
                 <div className="flex h-8">
                     <ReactSelect
-
+                        id="dateDropHeader"
                         className="dateDrop"
                         classNamePrefix="dateDrop"
                         aria-label="Not searchable"
