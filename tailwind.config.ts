@@ -40,6 +40,7 @@ const config: Config = {
         1: "#E5E4D8",
         2: "#DFE0E2",
         3: "#18181b33",
+        4:"#E4E4E4"
         },
       error: {
         100: "#DC0C31"
