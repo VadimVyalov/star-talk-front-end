@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import useScreen from '@/hooks/useScreen';
+//import useScreen from '@/hooks/useScreen';
 import Navigation from "../Navigation";
 import Social from "../Social";
 import cn from "@/helpers";
@@ -10,7 +10,7 @@ const logo = "/assets/icons/logo.svg"
 import { menuFooter } from '@/constants/menuItems'
 
 const Footer = () => {
-  const { isT } = useScreen();
+  // const { isT } = useScreen();
   //console.log(isT)
   return (
 
@@ -43,12 +43,13 @@ const Footer = () => {
                 className={cn('w-8 h-8 shrink-0')}
               />
             </Link>
-            <a href="tel:+380950963400 text-base t:text-[20px] font-medium  hover:text-accent-100 transition">
-            +380950963400
-              {/* <span className="text-base t:text-[20px] font-medium  hover:text-accent-100 transition ">+380950963400</span> */}
+            <a href="tel:+380950963400" className="text-base t:text-[20px] font-medium  hover:text-accent-100 transition">
+              +380950963400
             </a>
           </div>
-          <a className=" hover:text-accent-100 transition " href='mailto:startalk.school@gmail.com'>startalk.school@gmail.com</a>
+          <a href='mailto:startalk.school@gmail.com' className=" hover:text-accent-100 transition ">
+            startalk.school@gmail.com
+          </a>
         </div>
 
         <Social className="t:col-start-1 t:row-start-2 mx-auto mt-6 t:ml-0 t:mt-5" />

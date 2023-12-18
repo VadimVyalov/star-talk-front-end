@@ -1,28 +1,12 @@
 "use client"
-
+import React from "react"
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import cn from "@/helpers"
 import Image from "next/image";
+import GiftForm from "./GiftForm";
 const about_img = '/assets/image/gift.jpg'
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { gift } from "@/helpers/validation";
-
-interface GiftForm {
-  name: string;
-  phone: string;
-}
-
 
 const Gift = () => {
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<GiftForm>({ resolver: yupResolver(gift) });
-  const onSubmit = (data: GiftForm) => {
-    // console.log(data);
-  };
 
   return (
     <section id="gift" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
@@ -30,7 +14,6 @@ const Gift = () => {
 
         <div className="grid  d:gap-x-12 d:grid-cols-[minmax(285px,500px)_auto]">
           <h2 className={cn(" text-center font-roboto text-[40px] font-semibold", " d:col-start-2  d:row-start-2 ")}>Отримати подарунок</h2>
-
           <div className=" py-8 t:px-[12vw] d:p-0 d:row-span-4 d:max-w-[500px] d:col-span-1 ">
             <Image className="rounded-3xl "
               src={about_img}
@@ -46,38 +29,21 @@ const Gift = () => {
 
           <div className="d:col-start-2 d:row-start-3 d:mt-5 ">
             <p className=" mb-8 d:mb-12"> Залиште свій телефон та ім’я </p>
+            <GoogleReCaptchaProvider
+              reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
+              scriptProps={{
+                async: false,
+                defer: false,
+                appendTo: "head",
+                nonce: undefined,
 
+              }}
+            >
+              <GiftForm />
+            </GoogleReCaptchaProvider>
 
-            <form className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto" onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex flex-wrap gap-x-5 gap-y-4 mr-auto ">
-
-                <div className="flex flex-col min-w-[200px] ">
-                  <label className="text-[0]  border-b-2 border-black-15 
-                              hover:border-accent-100 transition-colors">Номер телефону
-                    <input {...register("phone")} placeholder="Номер телефону"
-                      className="outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2  shadow-[inset_0_0_0_300px_rgba(254,251,244,1)] " />
-                  </label>
-                  {errors.phone ? <p className=" text-error-100 text-xs">{errors.phone.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
-                </div>
-
-                <div className="flex flex-col min-w-[200px] ">
-                  <label className="text-[0]  border-b-2 border-black-15 
-                              hover:border-accent-100 transition-colors">Ваше ім’я
-                    <input {...register("name")} placeholder="Ваше ім’я"
-                      className="outline-none bg-transparent text-base leading-[1.5]  w-full pt-3 pb-2 shadow-[inset_0_0_0_300px_rgba(254,251,244,1)]" />
-                  </label>
-
-                  {errors.name ? <p className=" text-error-100 text-xs">{errors.name.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
-                </div>
-
-              </div>
-
-              <button className={cn("greenLink", "block px-[21px] py-3 leading-[1.25]   h-fit w-full t:w-auto ")}>Надіслати</button>
-
-            </form>
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Icon from "../../Icon";
 import cn from "@/helpers"
 import type { Period } from "./PricesA";
@@ -8,7 +7,6 @@ interface Props {
   period: Period,
   baseUrl: string
 }
-
 
 const PriceItem = ({ period, baseUrl = '' }: Props) => {
   const cl = period.lessons_amount > 20 ? Number(period.lessons_amount.toString().slice(-1)) : period.lessons_amount;
@@ -30,19 +28,22 @@ const PriceItem = ({ period, baseUrl = '' }: Props) => {
         <p className=" text-base  font-semibold mb-[6px]">
           {lessons_amount} {`занят${cz} в місяць`}
         </p>
-        <p className="text-base  mb-4">
-          ({slogan})
-        </p>
+        {slogan.trim() !== ''
+          ?
+          <p className="text-base  mb-4">({slogan})</p>
+          : null
+        }
         <p className=" text-[28px] font-bold mb-5 ">
           {price_per_lesson} грн/заняття
         </p>
       </div>
       <ul className="flex flex-col gap-2.5 pl-8 mb-14 w-full">
         {
-          price_description.map((description, i) => {
-            //const key = period.id + '-d-' + i
+          price_description.map((description) => {
             return (
-              <li key={description.id} className="prices-list-item">{description.text}</li>
+              description?.text?.trim() !== ''
+                ? <li key={description.id} className="prices-list-item">{description.text}</li>
+                : null
             )
           })}
       </ul>
@@ -50,10 +51,7 @@ const PriceItem = ({ period, baseUrl = '' }: Props) => {
         <Icon name='/assets/icons/newHot.svg' id={hot_period ? 'hot' : 'new'}
           className={cn(" h-[66px] w-[66px] shrink-0 absolute -top-[34px] -left-[28px]")}
         />) : (null)
-
       }
-
-
     </div>
 
 

@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import { teachersSlider } from "@/constants/sliderSettings";
 import useGetData from "@/hooks/useGetData";
 import TeacherItem from "./TeacherItem";
-//import data from "../../../public/data/teachers.json"
 import "./sliderStyle.css"
 import Sceleton from "./Skeleton";
 
@@ -16,42 +15,38 @@ export type Teacher = {
   photo: string
 }
 
-
-
 const Teachers = () => {
 
-  // const error = false;
-  // const isLoading = false;
-
   const { data, error, isLoading } = useGetData('teachers');
-  // console.log(data)
+  const unData = !Array.isArray(data) && data?.length < 1
 
   return (
     <section id="teachers" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">
 
         <h2 className="sectionTitle">Викладачі</h2>
-        {!error ? (
-
-          <div className="">
-            <Slider {...teachersSlider}>
-              {!isLoading ? (
-                data.map((teacher: Teacher) => {
-                  return (
-
-                    <TeacherItem key={teacher.id} teacher={teacher} />
-
+        {(!error && !unData)
+          ? (
+            <div className="">
+              <Slider {...teachersSlider}>
+                {!isLoading
+                  ? (
+                    data.map((teacher: Teacher) => {
+                      return (
+                        <TeacherItem key={teacher.id} teacher={teacher} />
+                      )
+                    })
                   )
-                })
-              ) : (['teacher-1', 'teacher-2', 'teacher-3', 'teacher-4'].map(i => {
-                return (
-                  <Sceleton key={i} />
-                )
-              }))
-              }
-            </Slider>
-          </div>
-        ) : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
+                  : (['teacher-1', 'teacher-2', 'teacher-3', 'teacher-4'].map(i => {
+                    return (
+                      <Sceleton key={i} />
+                    )
+                  }))
+                }
+              </Slider>
+            </div>
+          )
+          : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
         }
       </div >
     </section >

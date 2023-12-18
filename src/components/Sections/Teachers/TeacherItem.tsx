@@ -4,14 +4,14 @@ import type { Teacher } from "./Teachers";
 import { useState } from "react";
 import "./card.css"
 import Icon from "../../Icon";
+
 interface Props {
   teacher: Teacher
 }
 
-
 const TeacherItem = ({ teacher }: Props) => {
 
-  const { id, name, short_description, description } = teacher
+  const { name, short_description, description, photo } = teacher
   const [flip, setFlip] = useState(false)
   return (
 
@@ -23,20 +23,14 @@ const TeacherItem = ({ teacher }: Props) => {
           />
           <Image
             alt={`${name} фото`}
-            // src={photo}
-            src={`https://star-talk.foradmin.pp.ua/api/v1/teachers/image/${id}`}
+            src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${photo}`}
             height={375}
             width={280}
-
-
             style={{
               width: '100%',
               height: 'auto',
             }}
-
           />
-
-
 
           <div className="flex flex-col gap-y-2 text-left leading-[1.5] pt-5 pb-2 px-2 w-full">
             <p className=" text-xl   font-semibold ">

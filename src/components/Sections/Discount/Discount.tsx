@@ -3,25 +3,16 @@ import cn from "@/helpers"
 import useGetData from "@/hooks/useGetData";
 import Icon from "../../Icon";
 import style from "./styles.module.scss";
-// import data from "../../../public/data/discount.json"
+
 export type Discount = {
   id: string,
   title: string,
   description: Array<{ id: string, text: string }>,
 }
 
-
 const Discount = () => {
   const { data, error, isLoading } = useGetData('discounts');
   const discount_data: Discount = Array.isArray(data) ? data[data?.length - 1] : null;
-
-
-
-  //console.log('+++++++', discount_data)
-  // const discount_data = data;
-  // const error = false
-  // const isLoading = false
-
 
   return (
     (discount_data && !error && !isLoading)
@@ -33,7 +24,7 @@ const Discount = () => {
 
             <div className="w-[340px] d:w-[540px] px-3 t:px-5 d:px-6 text-white-100  overflow-hidden h-full">
               <h3 className=" flex justify-center flex-wrap gap-x-2 font-roboto font-semibold  text-center text-2xl d:leading-[1.5] d:text-[40px] 
-                     mb-3 t:mb-4 d:mb-[60px]"><span >Акція</span> <span >{discount_data.title}</span></h3>
+                    mb-3 t:mb-4 d:mb-[60px]"><span >Акція</span> <span >{discount_data.title}</span></h3>
 
               <ul className="flex flex-col gap-y-2 d:gap-y-8  ">
                 {discount_data.description.map(item => {
@@ -56,8 +47,6 @@ const Discount = () => {
       </section >)
       : null
   );
-
-
 };
 
 export default Discount;
