@@ -6,11 +6,11 @@ export const Check: FC<ElementCheck> = ({ id, items }) => {
   const { register } = useFormContext();
 
   return (
-    <div>
+    <ul className='flex flex-col gap-2'>
 
-      {items.map((item, i) => {
+      {items.map((item) => {
         return (
-          <div key={item.id}>
+          <li key={item.id} className='flex gap-3' >
             <input className='none'
               id={item.id}
               type={ElementType.check}
@@ -20,10 +20,10 @@ export const Check: FC<ElementCheck> = ({ id, items }) => {
             <label htmlFor={item.id}>
               {item.value}
             </label>
-          </div>
+          </li>
         )
       })}
 
-    </div>
+    </ul>
   );
 };

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import cn from "@/helpers"
 import Icon from "../../Icon";
-
 const hero_img = '/assets/image/hero.jpg'
 
 const Hero = () => {
@@ -21,7 +20,6 @@ const Hero = () => {
                             " w-full t:w-fit px-[32px] py-[18px] justify-center")}>
                             <span>Визначте свій рівень</span>
                             <Icon name="/assets/icons/small.svg" id="arrow-right" />
-                            {/* <BsArrowRightShort size={28} /> */}
                         </Link>
                     </div>
                     <Image className="rounded-3xl"
@@ -36,7 +34,6 @@ const Hero = () => {
                         }}
                         width={587}
                         height={445} />
-
                 </div>
             </div>
         </section>

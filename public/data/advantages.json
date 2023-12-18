@@ -1,0 +1,38 @@
+ [
+  {
+    "id": "advntage-01",
+    "title": "Доступна вартість",
+    "img": "/assets/image/advantages/01.png",
+    "description": "Ціна на індивідуальні заняття найвигідніша"
+  },
+  {
+    "id": "advntage-02",
+    "title": "Подарунки і сертифікати",
+    "img": "/assets/image/advantages/02.png",
+    "description": "Подарунки. Сертифікати при закінченні навчання"
+  },
+  {
+    "id": "advntage-03",
+    "title": "Словниковий запас",
+    "img": "/assets/image/advantages/03.png",
+    "description": "Високий рівень словникового запасу"
+  },
+  {
+    "id": "advntage-04",
+    "title": "Різний підхід до кожного",
+    "img": "/assets/image/advantages/04.png",
+    "description": "Різний підхід для різних видів"
+  },
+  {
+    "id": "advntage-05",
+    "title": "Зручний час навчання",
+    "img": "/assets/image/advantages/05.png",
+    "description": "Різний підхід для різних видів"
+  },
+  {
+    "id": "advntage-06",
+    "title": "Мовне середовище",
+    "img": "/assets/image/advantages/06.png",
+    "description": "Мова якою можуть оволодіти всі в короткий проміжок часу"
+  }
+]

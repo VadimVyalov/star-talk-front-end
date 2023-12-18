@@ -31,18 +31,18 @@ const PricesA = () => {
 
   const { data, error, isLoading } = useGetData('price');
   //console.log(data)
-
+  const unData = !Array.isArray(data) && data?.length < 1
   return (
     <section id="prices" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">
 
         <h2 className="sectionTitle">Ціни на індивідуальні заняття</h2>
-        {!error ? (
+        {(!error && !unData) ? (
 
           <div className="">
             <Slider {...priceSlider}>
               {!isLoading ? (
-                data.map((period: Period) => {
+                data?.map((period: Period) => {
                   return (
                     <div key={period.id} className="slider-item">
                       <PriceItem period={period} baseUrl={baseUrl} />

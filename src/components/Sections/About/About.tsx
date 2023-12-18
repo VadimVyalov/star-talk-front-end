@@ -1,29 +1,7 @@
 import Image from "next/image";
 const about_img = '/assets/image/about.jpg'
-const principles_list = [
-  {
-    id: 'pl-01',
-    text: 'Коучинговий індивідуальний підхід, глибоке занурення в особистість'
-  }, {
-    id: 'pl-02',
-    text: 'Визначення психотипу людини'
-  }, {
-    id: 'pl-03',
-    text: 'Визначення цілей, аналіз попереднього досвіду навчання'
-  }, {
-    id: 'pl-04',
-    text: 'Створення індивідуального плану навчання'
-  }, {
-    id: 'pl-05',
-    text: 'Підбір темпу, методик навчання, манери пояснення матеріалу'
-  }, {
-    id: 'pl-06',
-    text: '  Встановлення зв’язку, позитивного емоційного стану'
-  }, {
-    id: 'pl-07',
-    text: 'Робота на результат, на досягнення цілей студента'
-  },
-]
+import principles_list from '../../../../public/data/principles.json'
+
 const About = () => {
   return (
     <section id="about" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
@@ -36,13 +14,7 @@ const About = () => {
               alt="about image"
               sizes="(max-width: 590px) 100vw, 42vw"
               fill
-              style={{
-                //   width: 'auto',
-                //height: '100%',
-                objectFit: 'cover'
-              }}
-            // width={587}
-            // height={445}
+              style={{ objectFit: 'cover' }}
             />
           </div>
 
@@ -56,7 +28,7 @@ const About = () => {
 
             <h3 className="font-roboto text-2xl leading-[1.5] font-medium mb-5 ">Принципи роботи школи</h3>
             <ul className="flex flex-col gap-y-4">
-              {principles_list.map(item => {
+              {principles_list?.map(item => {
                 return (
                   <li key={item.id} className="flex before:content-star before:mr-2 ml-6 ">
                     {item.text}

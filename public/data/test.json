@@ -8,7 +8,7 @@
       { "id": "test-01-q-03", "value": "engineer" },
       { "id": "test-01-q-04", "value": "lawyer" }
     ],
-    "ansver": "teacher"
+    "ansver":[ "teacher"]
 
   },
   {
@@ -20,7 +20,7 @@
       { "id": "test-02-q-03", "value": "country" },
       { "id": "test-02-q-04", "value": "hip hop" }
     ],
-    "ansver": "classical"
+    "ansver": ["classical"]
 
   }
 ]
