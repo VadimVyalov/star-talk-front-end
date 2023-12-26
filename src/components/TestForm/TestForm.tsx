@@ -1,111 +1,66 @@
 //'use client'
+import Link from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-
-import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup'
-import { ElementType } from './types';
-import { Check, Radio } from './elements';
-import { test } from "@/helpers/validation";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import ContactForm from './elements/ContactForm';
 import { toast } from "react-toastify";
-
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { FormData } from './types';
 import cn from "@/helpers"
-
-type FormData = {
-  id: string;
-  title: string;
-  variants: { id: string, value: string }[]
-  ansver: string[];
-};
-
-import dataQuestion from '../../../public/data/test.json'
+import { test } from "@/helpers/validation";
 import { sendFeedBack } from '@/helpers/sendFeedBack';
-import Link from 'next/link';
+
+import ContactForm from './elements/ContactForm';
+import makeSchema from './helpers/makeShema';
+import makeAnswer from './helpers/makeAnswer';
+import { Element } from './Element';
+
+import questions from '../../../public/data/test.json' assert { type: 'json' }
+
 
 export const TestForm = () => {
 
 
-  const [isLoading, setIsLoading] = useState(false);
+
   const [state, setState] = useState(false);
 
   const [step, setStep] = useState(-1);
-  const [data, setData] = useState<FormData | null>(null);
+  const [question, setQuestion] = useState<FormData | null>(null);
+
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
+  const dataQuestion = JSON.parse(JSON.stringify(questions)) as FormData[]
+  const isLoading = false
+  const isError = false
 
   const questionNum = dataQuestion.length - 1
 
-  const defaultSchema: { [key: string]: any } = {}
-  const validateKey = data?.id || 'dataKey'
+  let validationSchema = step < 0 ? test : makeSchema(question)
 
-  defaultSchema[validateKey] = yup.string().required()
-
-  const radioSchema = yup.object({ ...defaultSchema })
-
-  const makeSchema = (data: FormData | null) => {
-
-    if (!data) return yup.object().shape({ ...defaultSchema })
-
-    const questions = data.id
-
-    const variants = data.variants.reduce((acc: { [key: string]: any }, i) => {
-      return { ...acc, [i.id]: yup.bool() }
-    }, {})
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      return;
+    }
+    const token = await executeRecaptcha("test");
+    return token;
+  }, [executeRecaptcha]);
 
 
-    const Schema = yup.object().shape({
-      [questions]: yup.object().shape({ ...variants })
-        .test((questions) => Object.values(questions).some(i => i))
-    })
-    return Schema
-  }
-
-
-  let validationSchema
-
-  const checkSchema = data ? makeSchema(data) : yup.object().shape({ ...defaultSchema })
-
-  validationSchema = step < 0 ? test : checkSchema
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const formMetods = useForm({
-
     resolver: yupResolver(validationSchema),
     mode: "onTouched",
-
   });
-  const nextQ = () => {
 
-  }
-
-  const prevQ = () => {
-    if (step > -1)
-      setStep(prev => prev - 1)
-  }
-
-  const makeAnswer = async (data: any) => {
-
-
-    const checked = dataQuestion.map(item => {
-      const checked_answer = item.variants.filter(v => data[item.id][v.id])
-      const answer_variant = item.variants.map(a => a.value)
-      const checked_answer_value = checked_answer.map(i => i.value)
-      const answer = item.ansver as unknown as string[]
-
-      return {
-        'question': item.title,
-        'ansver_varian': answer_variant,
-        'answer': answer,
-        'checked_answer_id': checked_answer.map(i => i.id),
-        'checked_answer_value': checked_answer_value,
-        'result': answer.filter(i => !checked_answer_value.includes(i))
-          .concat(checked_answer_value.filter(i => !item.ansver.includes(i))).length === 0
-      }
-    })
-    const total = checked.filter(i => i.result).length
-    // console.log(`Вірних відповідей ${total} з ${dataQuestion.length} === `, checked)
-    // console.log(checked.result);
-    return `Тест завершено. Вірних відповідей ${total} з ${dataQuestion.length} `
-  };
+  //-= for test =-
+  // const nextQ = () => {
+  //   if (step < questionNum)
+  //     setStep(prev => prev + 1)
+  // }
+  // const prevQ = () => {
+  //   if (step > -1)
+  //     setStep(prev => prev - 1)
+  // }
 
 
   const action: () => void = formMetods.handleSubmit(async (data) => {
@@ -115,7 +70,9 @@ export const TestForm = () => {
       return
     }
 
-    const answer = await makeAnswer(data)
+    const answer = await makeAnswer(data, dataQuestion)
+    // console.log(data);
+
     const token = await handleReCaptchaVerify();
     if (token) {
       data.message = answer
@@ -134,23 +91,24 @@ export const TestForm = () => {
   });
 
 
-  useEffect(() => { setData(dataQuestion[step] as unknown as FormData) }, [step])
-
-  const handleReCaptchaVerify = useCallback(async () => {
-    if (!executeRecaptcha) {
-      return;
-    }
-    const token = await executeRecaptcha("test");
-    return token;
-  }, [executeRecaptcha]);
+  useEffect(() => { setQuestion(dataQuestion[step]) }, [step])
 
 
   if (isLoading) {
     return <p>Зачекай...</p>;
   }
 
-  if (!data && step > -1) {
+  if ((!question && step > -1) || isError) {
     return <p>помилка завантаження даних</p>;
+  }
+
+
+
+  const answerVariants =
+  {
+    type: question?.type || 'multiCheck',
+    id: question?.id || 'notVariantId',
+    items: question?.variants || [{ 'id': 'notVariant', 'value': 'notVariant' }]
   }
 
   return (
@@ -173,31 +131,25 @@ export const TestForm = () => {
         </div>
         : null}
 
-      <form action={action}
-
+      <form
+        // action={action}
+        onSubmit={action}
         className={cn('flex flex-col', step < 0 ? ' t:flex-row justify-between gap-x-6 items-end' : '')}>
 
         {
           step < 0
             ? <ContactForm />
             : <div>
-              <h3 className='mb-6'>{`${step + 1}. ${data?.title}`}</h3>
-              <Check type={ElementType.check} id={data?.id || 'notVariantId'} items={data?.variants || [{ id: 'notVariant', value: 'notVariant' }]} />
-              {/* <Radio type={ElementType.radio} id={data?.id || 'notVariantId'} items={data?.variants || [{ id: 'notVariant', value: 'notVariant' }]} /> */}
+              <h3 className='mb-6'>{`${step + 1}. ${question?.title}`}</h3>
+              <Element element={answerVariants} />
             </div>
         }
-
-        {/* <button type={step < questionNum ? 'button' : 'submit'} onClick={nextQ} disabled={!formMetods.formState.isValid}
-          className={cn('greenLink py-3.5 w-full t:w-[279px] mt-12 shrink-0 h-fit')} >{step < 0 ? 'Почати тест' : 'Продовжити'} </button>
-         */}
-
-        {/* <button type='submit'
-          className='greenLink py-3.5 w-full t:w-[279px] mt-12' >Перевірка</button> */}
 
         <button type={'submit'} disabled={!formMetods.formState.isValid}
           className={cn('greenLink py-3.5 w-full t:w-[279px] mt-12 shrink-0 h-fit')} >{step < 0 ? 'Почати тест' : 'Продовжити'} </button>
 
       </form>
+
       {step < 0
         ?
         null
@@ -210,9 +162,9 @@ export const TestForm = () => {
         </div>
       }
 
-
+      {/* -= for test =-
       <button type='button' onClick={prevQ} className='h-6 w-12 m-2 border border-accent-100 rounded'> prev </button>
-      <button type='button' onClick={nextQ} className='h-6 w-12 m-2 border border-accent-100 rounded disabled:bg-red-600' > next</button>
+      <button type='button' onClick={nextQ} className='h-6 w-12 m-2 border border-accent-100 rounded disabled:bg-red-600' > next</button> */}
 
 
     </FormProvider>

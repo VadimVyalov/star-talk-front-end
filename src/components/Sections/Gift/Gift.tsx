@@ -13,8 +13,8 @@ const Gift = () => {
       <div className="container">
 
         <div className="grid  d:gap-x-12 d:grid-cols-[minmax(285px,500px)_auto]">
-          <h2 className={cn(" text-center font-roboto text-[40px] font-semibold", " d:col-start-2  d:row-start-2 ")}>Отримати подарунок</h2>
-          <div className=" py-8 t:px-[12vw] d:p-0 d:row-span-4 d:max-w-[500px] d:col-span-1 ">
+          <h2 className={cn(" text-center sectionTitle leading-[1.25] d:mb-8", " d:col-start-2  d:row-start-2 ")}>Отримати подарунок</h2>
+          <div className=" py-8 t:px-[12vw] d:p-0 d:row-span-4 d:max-w-[500px] d:col-span-1 my-auto">
             <Image className="rounded-3xl "
               src={about_img}
               alt="about image"
@@ -28,7 +28,7 @@ const Gift = () => {
           </div>
 
           <div className="d:col-start-2 d:row-start-3 d:mt-5 ">
-            <p className=" mb-8 d:mb-12"> Залиште свій телефон та ім’я </p>
+            <p className=" mb-8 "> Залиште свій телефон та ім’я </p>
             <GoogleReCaptchaProvider
               reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
               scriptProps={{

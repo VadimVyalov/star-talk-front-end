@@ -65,10 +65,12 @@ const GiftForm = () => {
     }
 
     return (
-        <form className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto" action={action}>
+        <form className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto"
+            action={action}
+        >
             <div className="flex flex-wrap gap-x-5 gap-y-4 mr-auto ">
 
-                <div className={cn(Style.error)}>
+                <div className={cn(Style.wraper)}>
                     <label className={cn(Style.label, errors.phone ? 'hover:border-error-100' : ' hover:border-accent-100')}>Номер телефону
                         <input {...register("phone")}
                             placeholder="Номер телефону"
@@ -77,7 +79,7 @@ const GiftForm = () => {
                     {errors.phone ? <p className={cn(Style.error)}>{errors.phone.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
                 </div>
 
-                <div className={cn(Style.error)}>
+                <div className={cn(Style.wraper)}>
                     <label className={cn(Style.label, errors.name ? 'hover:border-error-100' : ' hover:border-accent-100')}>Ваше ім’я
                         <input {...register("name")}
                             placeholder="Ваше ім’я"
@@ -90,7 +92,7 @@ const GiftForm = () => {
             <button
                 type="submit"
                 disabled={isSubmitting || !isValid}
-                className={cn("greenLink", "block px-[21px] py-3 leading-[1.25]   h-fit w-full t:w-auto ")}>
+                className={cn("greenLink", "block px-[21px] py-[22px] t:py-[13px] leading-[1.25]   h-fit w-full t:w-auto ")}>
                 Надіслати
             </button>
 

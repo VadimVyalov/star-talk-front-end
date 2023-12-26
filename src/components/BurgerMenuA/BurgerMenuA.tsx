@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import Link from "next/link";
 import { ModalPortal } from "../Modal/ModalPortal";
 import Navigation from "../Navigation";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { menuHeader } from '@/constants/menuItems'
 
 export function BurgerMenuA() {
@@ -12,10 +12,23 @@ export function BurgerMenuA() {
 
 
 	const [open, setOpen] = useState(false);
+	//const [ringButton, setRef] = useState<HTMLElement | null>(null);
+
+	useLayoutEffect(() => {
+		//setRef(document.getElementById('ringButton'))
+
+		const ringButton = document.getElementById('ringButton')
+
+		if (ringButton) {
+			open ? ringButton.style.visibility = 'hidden' : ringButton.style.visibility = 'visible'
+		}
+
+	}, [open]);
 
 	const onCloseMenu = () => {
 		setOpen(false);
 	};
+
 	return (
 		<>
 			{/* <button onClick={onOpenMenu} className='flex shrink-0 icon !w-10 !h-10'> */}

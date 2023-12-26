@@ -7,7 +7,7 @@ const ContactForm = () => {
     const { register, formState: { errors } } = useFormContext<{ [key: string]: string }>();
     const Style = {
         wraper: 'flex flex-col gap-y-2 w-full  ',
-        label: 'text-[0] border-b-2 border-black-15 hover:border-accent-100 transition-colors',
+        label: 'text-[0] border-b-2 border-black-15  transition-colors text-black-100',
         input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2 ',
         error: ' text-error-100 text-xs/[15px]'
     }
@@ -15,7 +15,7 @@ const ContactForm = () => {
         <div className="flex  flex-col gap-x-5 gap-y-5 d:gap-y-6 w-full t:max-w-[384px]"  >
 
             <div className={cn(Style.wraper)}>
-                <label className={cn(Style.label)}>Ім’я*
+                <label className={cn(Style.label, errors.name ? 'hover:border-error-100' : ' hover:border-accent-100')}>Ім’я*
 
                     <input {...register("name")} placeholder="Ваше ім’я*"
                         className={cn(Style.input)} />
@@ -25,7 +25,7 @@ const ContactForm = () => {
             </div>
 
             <div className={cn(Style.wraper)}>
-                <label className={cn(Style.label)}>Телефон або нік в Telegram*
+                <label className={cn(Style.label, errors.phone ? 'hover:border-error-100' : ' hover:border-accent-100')}>Телефон або нік в Telegram*
                     <input {...register("phone")} placeholder="Телефон або нік в Telegram*"
 
                         className={cn(Style.input)} />
@@ -34,7 +34,7 @@ const ContactForm = () => {
             </div>
 
             <div className={cn(Style.wraper)}>
-                <label className={cn(Style.label)}>Електронна пошта*
+                <label className={cn(Style.label, errors.email ? 'hover:border-error-100' : ' hover:border-accent-100')}>Електронна пошта*
                     <input {...register("email")} placeholder="Електронна пошта*"
                         className={cn(Style.input)} />
                 </label>

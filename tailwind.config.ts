@@ -15,7 +15,10 @@ const config: Config = {
         // roboto: ['"Roboto Slab", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
         // bree: ['"Bree Serif", serif', { fontFeatureSettings: '"clig" 0 , "liga" 0'},],
       },
-
+fontSize: {
+  hero_d: "clamp(2rem, 4.7vw, 5rem)",
+  hero_m: "clamp(1.5rem, 6.5vw, 2.5rem)",
+      },
       colors: {
       overlay: "rgba(21, 21, 21, 0.5)",
         shadow: {
@@ -51,7 +54,8 @@ const config: Config = {
 
     },
    content: {
-        'check': 'url("/assets/icons/check.svg")',
+     'check': 'url("/assets/icons/check.svg")',
+     'check-small': 'url("/assets/icons/check-small.svg")',
         'star': 'url("/assets/icons/star.svg")',
         'arrow': 'url("/assets/icons/arrow.svg")',
       },

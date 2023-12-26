@@ -1,4 +1,4 @@
 export {Input} from './Input';
 export {Radio} from './Radio';
-export {Check} from './Check';
+export {MultiCheck} from './MultiCheck';
 export {Text} from './Text';

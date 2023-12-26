@@ -39,7 +39,8 @@ const FeedbackForm = () => {
                 }
             );
         } else { toast.error('Спрацював захист від ботів') }
-    });
+    }
+    );
 
     useEffect(() => {
         if (formState.isSubmitSuccessful) {
@@ -65,7 +66,10 @@ const FeedbackForm = () => {
     }
 
     return (
-        <form className="flex  flex-col gap-x-5 gap-y-5 d:gap-y-6  " action={action} >
+        <form className="flex  flex-col gap-x-5 gap-y-5 d:gap-y-6  "
+            //action={action}
+            onSubmit={action}
+        >
 
             <div className={cn(Style.wraper)}>
                 <label className={cn(Style.label)}>Ім’я*

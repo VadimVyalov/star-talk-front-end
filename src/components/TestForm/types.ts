@@ -1,46 +1,50 @@
-export type ElementBase<Type, ExtraProps> = {
-  type: Type;
+
+export type ElementBase< ExtraProps> = {
+   type: 'radio'|'multiCheck';
   id: string;
 } & ExtraProps;
 
-export enum ElementType {
-  text = 'text',
-  input = 'input',
-  radio = 'radio',
-  check = 'checkbox'
-}
 
-export type ElementText = ElementBase<
-  ElementType.text,
-  {
-    text: string;
-  }
->;
-
-export type ElementInput = ElementBase<
-  ElementType.input,
-  {
-    value?: string;
-    placeholder: string;
-  }
->;
 
 export type ElementRadio = ElementBase<
-  ElementType.radio,
+
   {
  items: { id: string, value: string }[]
   }
 >;
 
-export type ElementCheck = ElementBase<
-  ElementType.check,
+export type ElementMultiCheck = ElementBase<
+
   {
     items: { id: string, value: string }[]
   }
->;
+  >;
+
+export type ElementInput = ElementBase<
+
+  {
+    value?: string;
+    placeholder: string;
+  }
+  >;
+
+ export type ElementText = ElementBase<
+  
+  {
+    text: string;
+  }
+>; 
 
 export type ElementVariant =
-  | ElementText
-  | ElementInput
+
   | ElementRadio
-  | ElementCheck;
+  | ElementMultiCheck;
+  
+
+export type FormData = {
+  type: 'radio'|'multiCheck';
+  id: string;
+  title: string;
+  variants: { id: string, value: string }[]
+  ansver: string[];
+};

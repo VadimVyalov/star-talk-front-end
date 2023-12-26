@@ -79,7 +79,7 @@ button {
 
 @layer components {
   .container {
-    @apply mx-auto my-0 px-2 m:px-4 t:px-8 d:px-[120px] min-w-[300px] max-w-[590px] t:max-w-[1024px] d:max-w-[1440px];
+    @apply mx-auto my-0 px-4 t:px-8 d:px-[120px] min-w-[300px] max-w-[590px] t:max-w-[1024px] d:max-w-[1440px];
   }
 
   /*  */
@@ -94,12 +94,12 @@ button {
   }
 
   .greenLink {
-    @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-100   bg-accent-100 text-white-100 hover:text-accent-100 hover:bg-mainBg 
+    @apply rounded-bl-3xl rounded-tr-3xl border border-accent-100   bg-accent-100 text-white-100 hover:text-accent-100 hover:bg-mainBg 
    text-center font-semibold whitespace-nowrap active:shadow-lg transition disabled:bg-disabled disabled:border-disabled disabled:hover:text-white-100;
   }
 
   .whiteLink {
-    @apply rounded-bl-3xl rounded-tr-3xl border-[1px] border-accent-100  hover:bg-accent-100 hover:text-white-100 text-accent-100 bg-mainBg 
+    @apply rounded-bl-3xl rounded-tr-3xl border border-accent-100  hover:bg-accent-100 hover:text-white-100 text-accent-100 bg-mainBg 
    text-center font-semibold whitespace-nowrap active:shadow-lg transition;
   }
 

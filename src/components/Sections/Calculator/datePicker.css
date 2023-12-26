@@ -58,11 +58,11 @@
 
 .react-datepicker__day {
   @apply w-10 h-10 t:w-12 t:h-12 m-[1px] flex items-center justify-center  text-base text-black-100 leading-[1] 
-  transition   rounded-full border-[1px] border-solid border-transparent;
+  transition   rounded-full border border-solid border-transparent;
 }
 
 .react-datepicker__day:hover {
-  @apply border-accent-100 rounded-full bg-mainBg;
+  @apply border-accent-100  rounded-full bg-mainBg;
 }
 .react-datepicker__day--today {
   @apply border-accent-100 text-blue-500 font-normal;
@@ -70,6 +70,9 @@
 
 .react-datepicker__day--selected {
   @apply bg-accent-100 text-white-100;
+}
+.react-datepicker__day--selected:hover {
+  @apply text-accent-100;
 }
 
 .react-datepicker__day--disabled {

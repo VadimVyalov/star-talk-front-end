@@ -37,6 +37,7 @@ const Article = ({ id }: { id: string }) => {
       },
     ]
   }
+
   return (
     <section id="article" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container flex flex-col items-center ">
@@ -46,10 +47,6 @@ const Article = ({ id }: { id: string }) => {
             className={cn('w-5 h-5 shrink-0 rotate-90')}
           />
           <Link href="/articles" title="Статті" className=' hover:text-accent-100 transition'> Статті  </Link>
-          <Icon name='/assets/icons/small.svg' id='chevronUp'
-            className={cn('w-5 h-5 shrink-0 rotate-90')}
-          />
-
         </div>
 
 

@@ -14,10 +14,10 @@ const Footer = () => {
   //console.log(isT)
   return (
 
-    <div id="footer" className="container pb-8">
+    <div id="footer" className="container pb-8 mb-[68px] t:mb-0">
 
       <div className=" justify-center items-center t:items-start
-      grid t:grid-cols-3  pb-6 t:pb-10 d:pb-14 pt-8 t:pt-10 d:pt-16 ">
+      grid t:grid-cols-3  pb-6  t:pb-10 d:pb-14 pt-8 t:pt-10 d:pt-16 ">
 
         <Link className="col-start-1 row-start-1 mx-auto t:ml-0 shrink-0 cursor-pointer " href="/" title="Star Talk">
           <Image className="bg-transparent"

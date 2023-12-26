@@ -18,8 +18,15 @@ const PriceItem = ({ period, baseUrl = '' }: Props) => {
       <div className="mb-[38px] h-[100px] w-auto">
 
         <Icon name={baseUrl} id={image}
-          className={cn(" h-full w-full ")}
+          className={cn(" h-full w-full")}
         />
+        {/* <Image
+          src='/assets/icons/Group.svg'
+          alt='aaa'
+          width={100}
+          height={100}
+        /> */}
+
       </div>
       <div className="text-center leading-[1.5]">
         <h3 className="text-xl leading-[1.5] font-semibold mb-[12px] h-[3em] flex items-center justify-center">

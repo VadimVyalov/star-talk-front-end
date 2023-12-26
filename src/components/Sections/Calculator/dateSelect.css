@@ -21,7 +21,7 @@
 }
 
 .dateDrop .dateDrop__option {
-  @apply bg-white-100 hover:bg-grey-2 active:bg-accent-100 border-[1px] border-solid border-transparent hover:border-grey-1;
+  @apply bg-white-100 hover:bg-grey-2 active:bg-accent-100 border border-solid border-transparent hover:border-grey-1;
 }
 
 .dateDrop .dateDrop__option--is-selected {

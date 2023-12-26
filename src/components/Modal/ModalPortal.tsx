@@ -18,6 +18,8 @@ export function ModalPortal({
 
 }: ModalProps) {
 	const { lockScroll, unlockScroll } = useScrollLock();
+
+
 	useKeyPress("Escape", onCloseMenu);
 
 	useEffect(() => {
@@ -25,16 +27,21 @@ export function ModalPortal({
 		return () => unlockScroll();
 	}, [isOpen, lockScroll, unlockScroll]);
 
+
 	if (!isOpen) return null;
 
 	const portalContainerId = "modal-root";
+
 	const portalContainer = document.getElementById(portalContainerId);
 
 	if (!portalContainer) return null;
 
+
+
 	const modalContent = (
 		<div
-			className={cn("fixed top-0 left-0 w-[100vw] h-[100vh] flex  z-10 ", className)}
+
+			className={cn("absolute top-0 left-0 right-0 h-[100vh] flex  z-10 ", className)}
 			onClick={onCloseMenu}
 		>
 			{children}

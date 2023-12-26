@@ -8,7 +8,7 @@ import {
 } from 'slate'
 import { withHistory } from 'slate-history'
 
-import { BlockButton, Element, Leaf, MarkButton, Toolbar } from '@/components/Editor/components'
+import { Element, Leaf } from '@/components/Editor/components'
 
 
 const initialValue: Descendant[] = [

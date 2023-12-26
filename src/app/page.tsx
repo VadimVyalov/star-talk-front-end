@@ -1,4 +1,4 @@
-import Hero from "@/components/Sections/Hero";
+import HeroA from "@/components/Sections/HeroA";
 import About from "@/components/Sections/About";
 
 // import dynamic from 'next/dynamic'
@@ -22,6 +22,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Feedback from "@/components/Sections/Feedback";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { RingButton } from "@/components/RingButton/RingButton";
+
 //import { Toaster } from 'react-hot-toast';
 
 
@@ -31,7 +33,7 @@ export default function Home() {
     <div className="relative overflow-hidden">
 
 
-      <Hero />
+      <HeroA />
       <Advantages />
       <PricesA />
       <Calculator />
@@ -43,7 +45,8 @@ export default function Home() {
       <Questions />
       <Reviews />
       <Feedback />
-      <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
+      <ArrowUp className="fixed bottom-36 t:bottom-12 right-6 z-10" />
+      <RingButton className="greenLink" />
       <ToastContainer />
       {/* <Toaster /> */}
     </div >
