@@ -5,13 +5,12 @@ import ContactsPanel from "../ContactsPanel";
 import Navigation from "../Navigation";
 import Link from "next/link";
 import { useState } from "react";
-import cn from "@/helpers";
-import Icon from "../Icon";
-import { ModalPortal } from "../Modal/ModalPortal";
+
 import useScreen from "@/hooks/useScreen";
 import { BurgerMenuA } from "../BurgerMenuA/BurgerMenuA";
 const logo = "/assets/icons/logo.svg"
 import { menuHeader } from '@/constants/menuItems'
+import ModalForm from "../ModalForm";
 
 const Header = () => {
 
@@ -40,7 +39,13 @@ const Header = () => {
 
             <><Navigation menuItems={menuHeader} wrapCn='flex-row gap-x-6' />
 
-              <Link href="/" className="greenLink px-[24px] py-[16px]">Записатись на урок</Link></>
+              <button className="greenLink px-[24px] py-[16px]"
+                type='button'
+                onClick={() => { setOpen(true) }}>
+                Записатись на урок
+              </button>
+              <ModalForm isOpen={open} onCloseMenu={onCloseMenu} />
+            </>
 
           ) : (<BurgerMenuA />
 

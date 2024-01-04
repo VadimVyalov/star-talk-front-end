@@ -13,7 +13,12 @@ export type InputGift ={
   phone: string;
 }
 
-export async function sendFeedBack(data:{ [key: string]: string },token:(string|null)) {
+export type InputLesson ={
+  name: string;
+  phone: string;
+}
+
+export async function sendFeedBack(data:{ [x: string]: string },token:(string|null)) {
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
    
     if (token) {

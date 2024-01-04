@@ -17,7 +17,7 @@ import "./dateSelect.css"
 
 
 import React, { useEffect, useState } from "react";
-import { ModalWrapper } from "../../ModalForm/ModalWrapper";
+import { ModalWrapper } from "../../Modal/ModalWrapper";
 import { timeMes, timeMesShort } from "./helper";
 import { FormValues } from "./types";
 import { maxHourPerDay, optionsList, startDay, totalMonth } from "./helper/constant";
@@ -204,42 +204,50 @@ const Calculator = () => {
                 </div>
             </div>
             {openModal &&
-                <ModalWrapper isOpen={openModal} onCloseMenu={onCloseMenu} className="max-w-[310px] t:max-w-[400px] px-2 t:px-5 py-6 justify-center items-center">
-                    <p className="indent-3 px-4 t:px-0"> Щоб досягти бажаного рівня до обраної дати Вам потрібно витрачати приблизно</p>
-                    <p className="text-lg t:text-xl font-semibold py-2"> {timeMes(hourPerDay)} на день</p>
+                <ModalWrapper isOpen={openModal} onCloseMenu={onCloseMenu}
+                    className="bg-overlay justify-center items-center ">
 
-                    <p className="p-4 text-xl t:text-2xl font-semibold">Щотижня витрачати:</p>
-                    <ul className="text-left pl-6 t:pl-8 mb-6 w-full">
+                    <div className="bg-mainBg rounded  p-5 flex flex-col items-center z-20 max-w-[310px] t:max-w-[400px] px-2 t:px-5 py-6 justify-center">
+                        <p className="indent-3 px-4 t:px-0"> Щоб досягти бажаного рівня до обраної дати Вам потрібно витрачати приблизно</p>
+                        <p className="text-lg t:text-xl font-semibold py-2"> {timeMes(hourPerDay)} на день</p>
 
-                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
-                            Перегляд відео
-                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
-                            {timeMesShort(hourPerDay * 7 * 0.3)}
-                        </li>
-                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1 ", "flex whitespace-nowrap items-center")}>
-                            Розмовний клуб
-                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
-                            {timeMesShort(hourPerDay * 7 * 0.4)}
-                        </li>
-                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
-                            З репетитором
-                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
-                            {timeMesShort(hourPerDay * 7 * 0.1)}
-                        </li>
-                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
-                            Самостійно писати
-                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
-                            {timeMesShort(hourPerDay * 7 * 0.1)}
-                        </li>
-                        <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
-                            Самостійно читати
-                            <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
-                            {timeMesShort(hourPerDay * 7 * 0.1)}
-                        </li>
-                    </ul>
+                        <p className="p-4 text-xl t:text-2xl font-semibold">Щотижня витрачати:</p>
+                        <ul className="text-left pl-6 t:pl-8 mb-6 w-full">
 
-                    <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>Зрозуміло</button>
+                            <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                                Перегляд відео
+                                <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                                {timeMesShort(hourPerDay * 7 * 0.3)}
+                            </li>
+                            <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1 ", "flex whitespace-nowrap items-center")}>
+                                Розмовний клуб
+                                <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                                {timeMesShort(hourPerDay * 7 * 0.4)}
+                            </li>
+                            <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                                З репетитором
+                                <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                                {timeMesShort(hourPerDay * 7 * 0.1)}
+                            </li>
+                            <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                                Самостійно писати
+                                <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                                {timeMesShort(hourPerDay * 7 * 0.1)}
+                            </li>
+                            <li className={cn("prices-list-item", "text-base ml-1 before:ml-1 mb-1", "flex whitespace-nowrap items-center")}>
+                                Самостійно читати
+                                <span className=" w-full h-3 m-1 shrink border-b-[1px] border-solid border-black-30"></span>
+                                {timeMesShort(hourPerDay * 7 * 0.1)}
+                            </li>
+                        </ul>
+
+                        <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>Зрозуміло</button>
+
+                    </div>
+
                 </ModalWrapper>}
+
+
 
         </section>
     )

@@ -1,8 +1,13 @@
 export default function Politics() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <p className="text-4xl">Comming soon</p>
+    <main className="">
+      <div className="">
+        <div className="w-36 h-40 border border-red-500"></div>
+        <div className="w-36 h-40 border border-red-500"></div>
+        <div className="w-36 h-40 border border-red-500"></div>
+        <div className="w-36 h-40 border border-red-500"></div>
+        <div className="w-36 h-40 border border-red-500"></div>
+
       </div>
     </main>
   )
