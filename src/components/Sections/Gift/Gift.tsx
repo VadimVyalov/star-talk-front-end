@@ -1,6 +1,5 @@
-"use client"
+
 import React from "react"
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import cn from "@/helpers"
 import Image from "next/image";
 import GiftForm from "./GiftForm";
@@ -29,18 +28,8 @@ const Gift = () => {
 
           <div className="d:col-start-2 d:row-start-3 d:mt-5 ">
             <p className=" mb-8 "> Залиште свій телефон та ім’я </p>
-            <GoogleReCaptchaProvider
-              reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
-              scriptProps={{
-                async: false,
-                defer: false,
-                appendTo: "head",
-                nonce: undefined,
 
-              }}
-            >
-              <GiftForm />
-            </GoogleReCaptchaProvider>
+            <GiftForm />
 
           </div>
         </div>

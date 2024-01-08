@@ -1,102 +1,52 @@
+"use client"
 import React from "react"
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { gift } from "@/helpers/validation";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useCallback, useEffect, useState } from "react";
-import { InputGift, sendFeedBack } from "@/helpers/sendFeedBack";
-import { toast } from "react-toastify";
 import cn from "@/helpers"
-
-
+import FormWrapperWithCaptcha from "@/components/ModalForm/FormWrapperWithCaptcha";
+import FormInput from "@/components/NestedForm/FormInput";
+import FormSubmit from "@/components/NestedForm/FormSubmit";
+import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { phone, name } from "@/helpers/validation";
 
 const GiftForm = () => {
-    const { executeRecaptcha } = useGoogleReCaptcha();
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState,
-        formState: { errors, isSubmitting, isValid },
-    } = useForm<InputGift>({
-        mode: 'onTouched',
-        resolver: yupResolver(gift)
-    });
-
-    const action: () => void = handleSubmit(async (data) => {
-
-        const token = await handleReCaptchaVerify();
-        if (token) {
-
-            toast.promise(
-                sendFeedBack(data, token),
-                {
-                    pending: 'очікую відповідь сервера...',
-                    success: 'Дякуємо, запит успішно надіслано. Найближчим часом ми з Вами сконтактуємо',
-                    error: 'Щось пішло не так, спробуйте пізніше'
-                },
-                {
-                    autoClose: 3000,
-                }
-            );
-        } else { toast.error('Спрацював захист від ботів') }
-    });
-
-    useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-            reset();
-        }
-    }, [formState.isSubmitSuccessful, reset]);
 
 
-    const handleReCaptchaVerify = useCallback(async () => {
-        if (!executeRecaptcha) {
-            return;
-        }
-        const token = await executeRecaptcha("gift");
-        return token;
-    }, [executeRecaptcha]);
-
-    const Style = {
-        wraper: 'flex flex-col min-w-[200px]',
+    const giftInputStyle = {
+        wraper: 'flex flex-col min-w-[200px] w-full t:w-auto',
         label: 'text-[0]  border-b-2 border-black-15 transition-colors',
         input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2',
         error: ' text-error-100 text-xs/[15px]'
     }
 
     return (
-        <form className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto"
-            action={action}
+
+        <GoogleReCaptchaProvider
+            reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
+            scriptProps={{
+                async: false,
+                defer: false,
+                appendTo: "head",
+                nonce: undefined,
+
+            }}
         >
-            <div className="flex flex-wrap gap-x-5 gap-y-4 mr-auto ">
+            <FormWrapperWithCaptcha
+                schema={{ name, phone }}
+                captchaName='gift'
+                className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto"
+            >
+                <FormInput type='text' name="phone"
+                    label="phone" placeholder="Номер телефону"
+                    styles={giftInputStyle} />
+                <FormInput type='text' name="name"
+                    label="name" placeholder="Ваше ім’я"
+                    styles={giftInputStyle} />
+                <FormSubmit label="Надіслати"
+                    className={cn("greenLink",
+                        " block px-[21px] py-[22px] t:py-[13px] leading-[1.25]   h-fit w-full t:w-auto ")} />
+            </FormWrapperWithCaptcha>
 
-                <div className={cn(Style.wraper)}>
-                    <label className={cn(Style.label, errors.phone ? 'hover:border-error-100' : ' hover:border-accent-100')}>Номер телефону
-                        <input {...register("phone")}
-                            placeholder="Номер телефону"
-                            className={cn(Style.input)} />
-                    </label>
-                    {errors.phone ? <p className={cn(Style.error)}>{errors.phone.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
-                </div>
+        </GoogleReCaptchaProvider>
 
-                <div className={cn(Style.wraper)}>
-                    <label className={cn(Style.label, errors.name ? 'hover:border-error-100' : ' hover:border-accent-100')}>Ваше ім’я
-                        <input {...register("name")}
-                            placeholder="Ваше ім’я"
-                            className={cn(Style.input)} />
-                    </label>
-                    {errors.name ? <p className={cn(Style.error)}>{errors.name.message}</p> : <p className="text-xs text-transparent">все гаразд</p>}
-                </div>
-            </div>
-
-            <button
-                type="submit"
-                disabled={isSubmitting || !isValid}
-                className={cn("greenLink", "block px-[21px] py-[22px] t:py-[13px] leading-[1.25]   h-fit w-full t:w-auto ")}>
-                Надіслати
-            </button>
-
-        </form>
     )
 }
 

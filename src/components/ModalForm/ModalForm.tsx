@@ -40,15 +40,16 @@ const ModalForm = ({ isOpen, onCloseMenu, className = '' }: IModalForm) => {
                     <button className="flex items-center justify-center h-5 w-5 border border-transparent icon ml-auto mr-0 " onClick={onCloseMenu}>
                         <Icon name='/assets/icons/small.svg' id='close' className={cn('w-full h-full ')} />
                     </button>
-                    <p className="text-xl font-semibold mx-auto mt-5 mb-3"> Записатись на урок</p>
+                    <p className="text-xl font-semibold mx-auto mt-5 mb-8"> Записатись на урок</p>
                     <FormWrapperWithCaptcha
                         schema={{ name, phone }}
                         captchaName='lesson'
-                        onAction={onCloseMenu}>
+                        onFinally={onCloseMenu}
+                        className='flex flex-col gap-y-8'>
                         <FormInput type='text' name="name" label="Ім’я*" placeholder="Ім’я*" styles={contactInputStyle} />
                         <FormInput type='text' name="phone" label="Телефон*" placeholder="Телефон*" styles={contactInputStyle} />
-                        <FormInput type='text' name="message" label="comment" value={'lesson'} styles={{ wraper: 'invisible h-0 -mt-6' }} />
-                        <FormSubmit label="Надіслати" />
+                        <FormSubmit label="Надіслати"
+                            className="greenLink mt-3 px-[21px] py-[27px] leading-[10px]  w-full  mx-auto" />
                     </FormWrapperWithCaptcha>
                 </div>
             </GoogleReCaptchaProvider>

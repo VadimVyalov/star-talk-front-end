@@ -1,5 +1,4 @@
 'use client'
-import cn from "@/helpers"
 import { memo } from "react";
 
 import { useFormContext } from 'react-hook-form';
@@ -16,7 +15,7 @@ const FormSubmit = memo(({ label, className = '', ...props }: IFormSubmit) => {
         <button
             type='submit'
             disabled={isSubmitting || !isValid}
-            className={cn("greenLink", "mt-3 px-[21px] py-[27px] leading-[10px]  w-full  mx-auto")}
+            className={className}
             {...props}
         >
             {label}

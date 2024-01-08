@@ -1,6 +1,6 @@
 
 export type ElementBase< ExtraProps> = {
-   type: 'radio'|'multiCheck';
+  type: 'radio'|'multiCheck';
   id: string;
 } & ExtraProps;
 

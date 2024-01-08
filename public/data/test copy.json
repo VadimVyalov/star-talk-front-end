@@ -1,0 +1,337 @@
+ [
+  {
+    "title": "My sister is a ________ and she teaches at a university. ",
+    "id": "test-01",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-01-q-01", "value": "doctor" },
+      { "id": "test-01-q-02", "value": "teacher" },
+      { "id": "test-01-q-03", "value": "engineer" },
+      { "id": "test-01-q-04", "value": "lawyer" }
+    ],
+    "ansver":[ "teacher"]
+
+  },
+  {
+    "title": "I love listening to ________ music when I'm studying.",
+    "id": "test-02",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-02-q-01", "value": "classical" },
+      { "id": "test-02-q-02", "value": "rock" },
+      { "id": "test-02-q-03", "value": "country" },
+      { "id": "test-02-q-04", "value": "hip hop" }
+    ],
+    "ansver": ["classical"]
+
+  },
+    {
+    "title": "Please ________ me if you are going to be late.",
+    "id": "test-03",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-03-q-01", "value": "tell" },
+      { "id": "test-03-q-02", "value": "say" },
+      { "id": "test-03-q-03", "value": "speak" },
+      { "id": "test-03-q-04", "value": "talk" }
+    ],
+    "ansver": ["tell"]
+  },
+    {
+    "title": "The company has a strict ________ policy to ensure the safety of its employees.",
+    "id": "test-04",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-04-q-01", "value": "vacation" },
+      { "id": "test-04-q-02", "value": "dress" },
+      { "id": "test-04-q-03", "value": "lunch break" },
+      { "id": "test-04-q-04", "value": "security" }
+    ],
+    "ansver": ["security"]
+  },
+    {
+    "title": "I can't find my keys. I must have ________ them at home.",
+    "id": "test-05",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-05-q-01", "value": "left" },
+      { "id": "test-05-q-02", "value": "lost" },
+      { "id": "test-05-q-03", "value": "forgotten" },
+      { "id": "test-05-q-04", "value": "remembered" }
+    ],
+    "ansver": ["left"]
+  },
+    {
+    "title": "Yesterday, I ________ to the grocery store and ________ some fruits and vegetables.",
+    "id": "test-06",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-06-q-01", "value": "went, bought" },
+      { "id": "test-06-q-02", "value": "go, bought" },
+      { "id": "test-06-q-03", "value": "went, buy" },
+      { "id": "test-06-q-04", "value": "go, buy" }
+    ],
+    "ansver": ["went, bought"]
+  },
+    {
+    "title": "Sarah ________ her homework every day.",
+    "id": "test-07",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-07-q-01", "value": "finishes" },
+      { "id": "test-07-q-02", "value": "finish" },
+      { "id": "test-07-q-03", "value": "finished" },
+      { "id": "test-07-q-04", "value": "finishing" }
+    ],
+    "ansver": ["finishes"]
+  },
+    {
+    "title": "We ________ a lot of fun at the beach last summer.",
+    "id": "test-08",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-08-q-01", "value": "had" },
+      { "id": "test-08-q-02", "value": "have" },
+      { "id": "test-08-q-03", "value": "has" },
+      { "id": "test-08-q-04", "value": "having" }
+    ],
+    "ansver": ["had"]
+  },
+    {
+    "title": "If it ________ tomorrow, we will cancel the picnic.",
+    "id": "test-09",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-09-q-01", "value": "will rain" },
+      { "id": "test-09-q-02", "value": "rains" },
+      { "id": "test-09-q-03", "value": "rained" },
+      { "id": "test-09-q-04", "value": "rain" }
+    ],
+    "ansver": ["rains"]
+  },
+    {
+    "title": "He ________ English for two years before he moved to the United States.",
+    "id": "test-10",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-10-q-01", "value": "studied" },
+      { "id": "test-10-q-02", "value": "studies" },
+      { "id": "test-10-q-03", "value": "has studied" },
+      { "id": "test-10-q-04", "value": "had studied" }
+    ],
+    "ansver": ["had studied"]
+  },
+    {
+    "title": " I __________ my breakfast at 7am every day.",
+    "id": "test-11",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-11-q-01", "value": "have" },
+      { "id": "test-11-q-02", "value": "had" },
+      { "id": "test-11-q-03", "value": "has" },
+      { "id": "test-11-q-04", "value": "have had" }
+    ],
+    "ansver": ["have"]
+  },
+    {
+    "title": "My sister is __________ years old.",
+    "id": "test-12",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-12-q-01", "value": "twelfth" },
+      { "id": "test-12-q-02", "value": "twelve" },
+      { "id": "test-12-q-03", "value": "twelves" },
+      { "id": "test-12-q-04", "value": "twelf" }
+    ],
+    "ansver": ["twelve"]
+  },
+    {
+    "title": "Can you __________ me the salt, please?",
+    "id": "test-13",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-13-q-01", "value": "pass" },
+      { "id": "test-13-q-02", "value": "passed" },
+      { "id": "test-13-q-03", "value": "passing" },
+      { "id": "test-13-q-04", "value": "to pass" }
+    ],
+    "ansver": ["pass"]
+  },
+    {
+    "title": "The weather is nice today, __________ we can go for a walk.",
+    "id": "test-14",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-14-q-01", "value": "so" },
+      { "id": "test-14-q-02", "value": "but" },
+      { "id": "test-14-q-03", "value": "or" },
+      { "id": "test-14-q-04", "value": "and" }
+    ],
+    "ansver": ["so"]
+  },
+    {
+    "title": "I've just seen ___ car coming up the drive.",
+    "id": "test-15",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-15-q-01", "value": "the" },
+      { "id": "test-15-q-02", "value": "a" },
+      { "id": "test-15-q-03", "value": "-" }
+    ],
+    "ansver": ["a"]
+  },
+    {
+    "title": "She has ____ pets.",
+    "id": "test-16",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-16-q-01", "value": "many" },
+      { "id": "test-16-q-02", "value": "more" },
+      { "id": "test-16-q-03", "value": "much" }
+    ],
+    "ansver": ["many"]
+  },
+    {
+    "title": "I would like to have ___ apple for lunch.",
+    "id": "test-17",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-17-q-01", "value": "a" },
+      { "id": "test-17-q-02", "value": "an" },
+      { "id": "test-17-q-03", "value": "the" }
+    ],
+    "ansver": ["an"]
+  },
+    {
+    "title": "__ 8 o'clock I must leave.",
+    "id": "test-18",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-18-q-01", "value": "at" },
+      { "id": "test-18-q-02", "value": "in" },
+      { "id": "test-18-q-03", "value": "on" }
+    ],
+    "ansver": ["at"]
+  },
+    {
+    "title": " I like ____ Italy this time of year.",
+    "id": "test-19",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-19-q-01", "value": "the" },
+      { "id": "test-19-q-02", "value": "a" },
+      { "id": "test-19-q-03", "value": "-" }
+    ],
+    "ansver": ["-"]
+  },
+    {
+    "title": "How ___ money do you make?",
+    "id": "test-20",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-20-q-01", "value": "many" },
+      { "id": "test-20-q-02", "value": "much" },
+      { "id": "test-20-q-03", "value": "-" }
+    ],
+    "ansver": ["much"]
+  },
+    {
+    "title": "The factory closed __ June.",
+    "id": "test-21",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-21-q-01", "value": "on" },
+      { "id": "test-21-q-02", "value": "in" },
+      { "id": "test-21-q-03", "value": "at" }
+    ],
+    "ansver": ["in"]
+  },
+    {
+    "title": "I went sailing around ____ Lake Svitiaz.",
+    "id": "test-22",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-22-q-01", "value": "-" },
+      { "id": "test-22-q-02", "value": "a" },
+      { "id": "test-22-q-03", "value": "the" }
+    ],
+    "ansver": ["-"]
+  },
+    {
+    "title": "You are talking too ___",
+    "id": "test-23",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-23-q-01", "value": "many" },
+      { "id": "test-23-q-02", "value": "much" },
+      { "id": "test-23-q-03", "value": "very" }
+    ],
+    "ansver": ["much"]
+  },
+    {
+    "title": "The ship should cross ___ Pacific Ocean to deliver the goods.",
+    "id": "test-24",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-24-q-01", "value": "a" },
+      { "id": "test-24-q-02", "value": "-" },
+      { "id": "test-24-q-03", "value": "the" }
+    ],
+    "ansver": ["the"]
+  },
+    {
+    "title": "She ________________ her old photos and found a picture of herself as a child.",
+    "id": "test-25",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-25-q-01", "value": "looked through" },
+      { "id": "test-25-q-02", "value": "looked after" },
+      { "id": "test-25-q-03", "value": "looked for" }
+    ],
+    "ansver": ["looked through"]
+  },
+    {
+    "title": "The doctor told her to ________________ smoking if she wanted to improve her health.",
+    "id": "test-26",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-26-q-01", "value": "give away" },
+      { "id": "test-26-q-02", "value": "give out" },
+      { "id": "test-26-q-03", "value": "give up" }
+    ],
+    "ansver": ["give up"]
+  },
+    {
+    "title": "My friend ________________ my bike for the weekend while I was out of town.",
+    "id": "test-27",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-27-q-01", "value": "lent" },
+      { "id": "test-27-q-02", "value": "borrowed" },
+      { "id": "test-27-q-03", "value": "gave" }
+    ],
+    "ansver": ["borrowed"]
+  },
+    {
+    "title": "He always ________________ excuses for why he can't come to work on time.",
+    "id": "test-28",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-28-q-01", "value": "makes out" },
+      { "id": "test-28-q-02", "value": "makes into" },
+      { "id": "test-28-q-03", "value": "makes up" }
+    ],
+    "ansver": ["makes up"]
+  },
+    {
+    "title": "We need to ________________ the meeting until next week because some of the participants are unavailable.",
+    "id": "test-29",
+    "type":"multiCheck",
+    "variants": [
+      { "id": "test-29-q-01", "value": "postpone" },
+      { "id": "test-29-q-02", "value": "hold" },
+      { "id": "test-29-q-03", "value": "have" }
+    ],
+    "ansver": ["postpone"]
+  }
+]

@@ -5,6 +5,7 @@ import { TestForm } from "@/components/TestForm";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { TestFormB } from "@/components/TestForm/TestFormB";
 
 
 export default function Test() {
@@ -24,7 +25,7 @@ export default function Test() {
 
           }}
         >
-          <TestForm />
+          <TestFormB />
         </GoogleReCaptchaProvider>
 
       </div>
