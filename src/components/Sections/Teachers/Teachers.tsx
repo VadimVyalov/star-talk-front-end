@@ -18,7 +18,9 @@ export type Teacher = {
 const Teachers = () => {
 
   const { data, error, isLoading } = useGetData('teachers');
-  const unData = !Array.isArray(data) && data?.length < 1
+  console.log('Tdata', data);
+  const unData = !Array.isArray(data) || data?.length < 1
+  console.log('Tundata', unData);
 
   return (
     <section id="teachers" className="mb-[72px] t:mb-[100px] d:mb-[120px]">

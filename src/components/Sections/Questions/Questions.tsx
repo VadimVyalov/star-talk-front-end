@@ -16,7 +16,7 @@ export type FAQ = {
 const Questions = () => {
 
   const { data, error, isLoading } = useGetData('faq');
-  const unData = !Array.isArray(data) && data?.length < 1
+  const unData = !Array.isArray(data) || data?.length < 1
   const [opened, SetOpened] = useState('close')
 
   // if (!unData && !isLoading) console.log(data[0]?.id);

@@ -52,7 +52,7 @@ export default async function Page({ params, searchParams }: Props) {
 
   return (
     <>
-      <Article id={params.id} />
+      {/* <Article id={params.id} /> */}
       <Articles limit={2} offset={Number(offset)} title='Читай також' />
       <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
     </>
