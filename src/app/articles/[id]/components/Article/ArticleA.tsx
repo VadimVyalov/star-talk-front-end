@@ -11,9 +11,9 @@ import useGetData from '@/hooks/useGetData'
 import Viewer from '@/components/Editor/viewer'
 import "./viewerStyle.css"
 
-const Article = ({ params }: { params: any }) => {
+const ArticleA = ({ id }: { id: string }) => {
 
-  const { data: article, error, isLoading } = params//useGetData(`article/${id}`);
+  const { data: article, error, isLoading } = useGetData(`article/${id}`);
 
   if (error || isLoading) return (
     <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
@@ -120,4 +120,4 @@ const Article = ({ params }: { params: any }) => {
   )
 }
 
-export default Article
+export default ArticleA

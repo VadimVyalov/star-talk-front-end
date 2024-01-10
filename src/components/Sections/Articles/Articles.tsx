@@ -27,7 +27,7 @@ const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: n
   const nextOff = offset === 0 ? 0 : offset - 1
   const { data, error, isLoading } = useGetData(`article?limit=${limit + 1}&offset=${nextOff}`);
   // console.log('Article-', offset)
-  const unData = !Array.isArray(data) && data?.length < 1
+  const unData = !Array.isArray(data) || data?.length < 1
   const dataNum = data?.length
   if (dataNum === limit + 1 && !unData) {
     data.pop()
