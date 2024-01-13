@@ -6,28 +6,18 @@ import ArticleItem from "./ArticleItem";
 import Sceleton from "./Skeleton";
 import Link from "next/link";
 import cn from "@/helpers"
+import { Article } from "@/types/data";
 
-export type Article = {
-  id: string,
-  image: string,
-  image_preview: string,
-  title: string,
-  author: string,
-  text: string,
-  date: string,
-  seo_description: string,
-  keyword: string,
 
-}
 
 const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: number, offset?: number, title?: string }) => {
 
   // const error = false;
   // const isLoading = false;
   const nextOff = offset === 0 ? 0 : offset - 1
-  const { data, error, isLoading } = useGetData(`article?limit=${limit + 1}&offset=${nextOff}`);
+  const { data, error, isLoading } = useGetData<Article[]>(`article?limit=${limit + 1}&offset=${nextOff}`);
   // console.log('Article-', offset)
-  const unData = !Array.isArray(data) && data?.length < 1
+  const unData = !Array.isArray(data) || data?.length < 1
   const dataNum = data?.length
   if (dataNum === limit + 1 && !unData) {
     data.pop()
@@ -49,7 +39,7 @@ const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: n
 
                 return (
                   // <ArticleItem key={article.id} article={article} offset={nextlink} />
-                  <ArticleItem key={article.id} article={article} offset={0} />
+                  <ArticleItem key={article.id} article={article} />
                 )
               })
             ) : (['art-1', 'art-2'].map(i => {

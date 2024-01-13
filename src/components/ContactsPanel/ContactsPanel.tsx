@@ -20,8 +20,8 @@ const ContactsPanel = () => {
             className={cn('w-8 h-8 shrink-0')}
           />
         </Link>
-        <a href="tel:+380950963400" className="flex gap-x-2 text-base t:text-[20px] d:text-2xl  font-medium hover:text-accent-100 transition">
-        +380950963400
+        <a href="tel:+380950963400" className="flex gap-x-2 text-base t:text-[20px] font-medium hover:text-accent-100 transition">
+          +380950963400
           {/* <span className="text-base t:text-[20px] d:text-2xl  font-medium hover:text-accent-100 transition ">+380950963400</span> */}
         </a>
       </div>

@@ -1,16 +1,15 @@
 import Image from "next/image"
 import cn from "@/helpers"
-import type { Article } from "./Articles";
 import Link from "next/link";
 import Icon from "../../Icon";
+import { Article } from "@/types/data";
 
 interface Props {
-  article: Article,
-  offset: Number
+  article: Article
 }
 
 
-const ArticleItem = ({ article, offset }: Props) => {
+const ArticleItem = ({ article }: Props) => {
 
   const { id, image_preview, title, date } = article
 
@@ -40,7 +39,7 @@ const ArticleItem = ({ article, offset }: Props) => {
             <p className=" text-xs t:text-[10px] d:text-base text-black-30 font-medium ml-3"> {date}  </p>
           </div>
 
-          <Link href={`/articles/${id}?offset=${offset}`} className={cn("  flex items-center gap-x-3 group w-fit mt-3 d:mt-5 font-semibold text-sm t:text-[8px] d:text-sm")}>
+          <Link href={`/articles/${id}`} className={cn("  flex items-center gap-x-3 group w-fit mt-3 d:mt-5 font-semibold text-sm t:text-[8px] d:text-sm")}>
             <span className="flex items-center justify-center w-9 h-9 t:w-[21px] t:h-[21px] d:w-9 d:h-9 border-[1px]
           
            border-accent-100 rounded-full group-hover:bg-white-100

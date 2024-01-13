@@ -1,6 +1,7 @@
 import Icon from "../../Icon";
 import cn from "@/helpers"
-import type { Review } from "./Reviews";
+import { Review } from "@/types/data";
+
 
 interface Props {
   rewiew: Review
