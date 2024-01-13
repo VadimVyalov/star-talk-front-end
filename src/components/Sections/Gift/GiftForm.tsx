@@ -22,11 +22,7 @@ const GiftForm = () => {
         <GoogleReCaptchaProvider
             reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
             scriptProps={{
-                async: false,
-                defer: false,
-                appendTo: "head",
-                nonce: undefined,
-
+                id: 'gift_GoogleReCaptchaProvider'
             }}
         >
             <FormWrapperWithCaptcha

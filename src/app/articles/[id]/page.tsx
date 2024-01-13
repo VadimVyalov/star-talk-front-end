@@ -1,10 +1,11 @@
 
 import React from 'react'
-import Articles from '@/components/Sections/Articles'
+//import Articles from '@/components/Sections/Articles'
 import ArticleA from './components/Article/ArticleA'
 import { ArrowUp } from '@/components/ArrowUp/ArrowUp'
 
 import { Metadata, ResolvingMetadata } from 'next'
+import Articles from './components/Article/Articles';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -55,7 +56,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(
   { params }: Props,
-  //parent: ResolvingMetadata
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
 
   try {
@@ -82,7 +83,7 @@ export default async function Page({ params, searchParams }: Props) {
   return (
     <>
       <ArticleA id={params.id} />
-      <Articles limit={2} offset={Number(offset)} title='Читай також' />
+      <Articles id={params.id} />
       <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
     </>
   )

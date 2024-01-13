@@ -8,10 +8,11 @@ import { toast } from "react-toastify";
 import * as yup from "yup";
 // import { DevTool } from "@hookform/devtools";
 
-type TData = { [x: string]: any }
+type TData = Record<string, string>
+
 type TFormWrapper = {
     children: React.ReactNode,
-    schema: { [x: string]: yup.AnySchema },
+    schema: Record<string, yup.AnySchema>,//{ [x: string]: yup.AnySchema },
     captchaName?: string,
     className?: string,
 
@@ -40,10 +41,14 @@ const FormWrapperWithCaptcha: FC<TFormWrapper> = (
     });
 
     const { executeRecaptcha } = useGoogleReCaptcha();
+    // console.log(executeRecaptcha);
 
 
     const action: () => void = formMetods.handleSubmit(async (data) => {
+
         const token = await handleReCaptchaVerify();
+        // console.log(captchaName);
+        // console.log(token);
         if (token) {
 
             toast.promise(
@@ -82,21 +87,28 @@ const FormWrapperWithCaptcha: FC<TFormWrapper> = (
     }
     );
 
-    useEffect(() => {
-        if (formMetods.formState.isSubmitSuccessful) {
-            formMetods.reset();
-        }
-    }, [formMetods.formState.isSubmitSuccessful, formMetods.reset, onFinally]);
-
-
     const handleReCaptchaVerify = useCallback(async () => {
         if (!executeRecaptcha) {
+            console.log('executeRecaptcha error');
+
             return;
         }
 
         const token = await executeRecaptcha(captchaName);
+
+
         return token;
     }, [executeRecaptcha]);
+
+    useEffect(() => {
+        if (formMetods.formState.isSubmitSuccessful) {
+            formMetods.reset();
+        }
+
+    }, [formMetods.formState.isSubmitSuccessful, formMetods.reset, onFinally]);
+
+
+
 
     return (
 

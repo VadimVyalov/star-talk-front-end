@@ -6,10 +6,13 @@ import { priceSlider } from "@/constants/sliderSettings";
 
 import useGetData from "@/hooks/useGetData";
 import PriceItem from "./PriceItem";
-//import data from "../../../public/data/price.json"
 import Sceleton from "./Skeleton";
 import "./sliderStyle.css"
-const baseUrl = '/assets/icons/stars.svg'
+import ModalForm from "@/components/ModalForm";
+import { useState } from "react";
+
+//import data from "../../../public/data/price.json"
+//const baseUrl = '/assets/icons/stars.svg'
 
 export type Period = {
   id: string,
@@ -32,6 +35,8 @@ const PricesA = () => {
   const { data, error, isLoading } = useGetData('price');
   //console.log(data)
   const unData = !Array.isArray(data) || data?.length < 1
+  const [open, setOpen] = useState(false);
+  const onCloseMenu = () => { setOpen(false) };
   return (
     <section id="prices" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">
@@ -45,8 +50,11 @@ const PricesA = () => {
                 data?.map((period: Period) => {
                   return (
                     <div key={period.id} className="slider-item">
-                      <PriceItem period={period} baseUrl={baseUrl} />
-                      <button className=" w-[95%] h-[60px] text-lg  font-semibold mx-1.5 whiteLink">
+                      <PriceItem period={period} />
+                      <button
+                        className=" w-[95%] h-[60px] text-lg  font-semibold mx-1.5 whiteLink"
+                        onClick={() => { setOpen(true) }}
+                      >
                         Записатись  </button>
                     </div>
                   )
@@ -58,6 +66,7 @@ const PricesA = () => {
               }))
               }
             </Slider>
+            <ModalForm isOpen={open} onCloseMenu={onCloseMenu} />
           </div>
         ) : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
         }

@@ -5,18 +5,14 @@ import useGetData from "@/hooks/useGetData";
 import Rewiew from "./Rewiew";
 import Sceleton from "./Skeleton";
 import "./sliderStyle.css"
+import { Review } from "@/types/data";
 
-export type Review = {
-  id: string,
-  rate: number,
-  message: string,
-  author: string
-}
+
 
 const Reviews = () => {
 
-  const { data, error, isLoading } = useGetData('comments');
-  const unData = !Array.isArray(data) && data?.length < 1
+  const { data, error, isLoading } = useGetData<Review[]>('comments');
+  const unData = !Array.isArray(data) || data?.length < 1
   return (
     <section id="reviews" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">

@@ -1,4 +1,4 @@
-import  useSWR  from "swr";
+import useSWR from "swr";
 
 const fetcher = async (url:string) => {
     const res = await fetch(url);
@@ -10,15 +10,15 @@ const fetcher = async (url:string) => {
    
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-const useGetData = (path: string) => {
+const useGetData =<T> (path: string) => {
         
-    const { data, error } = useSWR (`${BASE_URL}${path}`, fetcher, {
+    const { data , error } = useSWR<T> (`${BASE_URL}${path}`, fetcher, {
       keepPreviousData: true
     });
    
     const isLoading = !data && !error;
    
-    return { data, error, isLoading };
+    return { data , error, isLoading };
   };
    
   export default useGetData;

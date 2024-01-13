@@ -30,10 +30,7 @@ const ModalForm = ({ isOpen, onCloseMenu, className = '' }: IModalForm) => {
             <GoogleReCaptchaProvider
                 reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
                 scriptProps={{
-                    async: false,
-                    defer: false,
-                    appendTo: "head",
-                    nonce: undefined,
+                    id: 'lesson_GoogleReCaptchaProvider'
                 }}
             >
                 <div className={cn("flex flex-col bg-mainBg rounded p-5 max-w-[320px] t:min-w-[440px] ", className)}>

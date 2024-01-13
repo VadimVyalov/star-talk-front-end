@@ -18,7 +18,7 @@ export type InputLesson ={
   phone: string;
 }
 
-export async function sendFeedBack(data:{ [x: string]: string },token:(string|null)) {
+export async function sendFeedBack(data:Record<string, string>,token:(string|null)) {
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
    
     if (token) {

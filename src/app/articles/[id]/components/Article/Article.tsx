@@ -10,10 +10,11 @@ import cn from "@/helpers"
 import useGetData from '@/hooks/useGetData'
 import Viewer from '@/components/Editor/viewer'
 import "./viewerStyle.css"
+import { Article } from '@/types/data'
 
 const Article = ({ id }: { id: string }) => {
 
-  const { data: article, error, isLoading } = useGetData(`article/${id}`);
+  const { data: article, error, isLoading } = useGetData<Article>(`article/${id}`);
 
   if (error || isLoading) return (
     <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
@@ -23,7 +24,7 @@ const Article = ({ id }: { id: string }) => {
     </section>
   )
 
-  const { title, date, author, text, image } = article
+  const { title, date, author, text, image } = article as Article
 
   let content
 

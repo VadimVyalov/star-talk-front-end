@@ -22,11 +22,9 @@ const FeedbackForm = () => {
         <GoogleReCaptchaProvider
             reCaptchaKey={`${process.env.NEXT_PUBLIC_CAPCHA_CLIENT}`}
             scriptProps={{
-                async: false,
-                defer: false,
-                appendTo: "head",
-                nonce: undefined,
+                id: 'feedback_GoogleReCaptchaProvider'
             }}
+
         >
             <FormWrapperWithCaptcha
                 schema={{ name, email, message }}
@@ -47,7 +45,7 @@ const FeedbackForm = () => {
                     className="greenLink px-[21px] t:px-[73px] py-6 leading-[10px]  w-full t:w-auto mt-4 mx-auto" />
             </FormWrapperWithCaptcha>
 
-        </GoogleReCaptchaProvider>
+        </GoogleReCaptchaProvider >
     )
 }
 

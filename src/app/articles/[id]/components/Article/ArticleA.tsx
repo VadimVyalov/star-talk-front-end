@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import { Descendant } from 'slate'
-
+import { Article } from '@/types/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import Icon from '@/components/Icon'
@@ -11,9 +11,11 @@ import useGetData from '@/hooks/useGetData'
 import Viewer from '@/components/Editor/viewer'
 import "./viewerStyle.css"
 
+
+
 const ArticleA = ({ id }: { id: string }) => {
 
-  const { data: article, error, isLoading } = useGetData(`article/${id}`);
+  const { data: article, error, isLoading } = useGetData<Article>(`article/${id}`);
 
   if (error || isLoading) return (
     <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
@@ -23,7 +25,7 @@ const ArticleA = ({ id }: { id: string }) => {
     </section>
   )
 
-  const { title, date, author, text, image } = article
+  const { title, date, author, text, image } = article as Article
 
   let content
 
@@ -58,7 +60,7 @@ const ArticleA = ({ id }: { id: string }) => {
             <p className="text-left w-full text-lg leading-[1.5] font-medium mb-6">{date}</p>
             <div className={cn("w-full h-full flex flex-col rounded-[5px] ")}>
               <Image
-                alt={`фото ${title} `}
+                alt={`article ${title} photo `}
                 src={`${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${image}`}
                 height={555}
                 width={1200}

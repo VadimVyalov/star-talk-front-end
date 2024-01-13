@@ -1,14 +1,15 @@
 import Icon from "../../Icon";
 import cn from "@/helpers"
 import type { Period } from "./PricesA";
+import Image from "next/image";
 
 
 interface Props {
   period: Period,
-  baseUrl: string
+  // baseUrl: string
 }
 
-const PriceItem = ({ period, baseUrl = '' }: Props) => {
+const PriceItem = ({ period }: Props) => {
   const cl = period.lessons_amount > 20 ? Number(period.lessons_amount.toString().slice(-1)) : period.lessons_amount;
   const cz = cl > 0 && cl < 5 ? 'тя' : 'ь'
   const { title, slogan, price_description, lessons_amount, price_per_lesson, image, new: new_period, hot: hot_period } = period
@@ -17,15 +18,16 @@ const PriceItem = ({ period, baseUrl = '' }: Props) => {
     <div className="flex flex-col justify-between items-center relative w-full">
       <div className="mb-[38px] h-[100px] w-auto">
 
-        <Icon name={baseUrl} id={image}
+        {/* <Icon name={baseUrl} id={image}
           className={cn(" h-full w-full")}
-        />
-        {/* <Image
-          src='/assets/icons/Group.svg'
-          alt='aaa'
+        /> */}
+        <Image
+          className="bg-transparent"
+          src={`/assets/image/price/${image}.png`}
+          alt={`star-${image}`}
           width={100}
           height={100}
-        /> */}
+        />
 
       </div>
       <div className="text-center leading-[1.5]">

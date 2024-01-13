@@ -16,11 +16,11 @@ export const metadata: Metadata = {
   title: "Star Talk",
   description: "English school",
 
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true
-  }
+  // robots: {
+  //   index: false,
+  //   follow: false,
+  //   nocache: true
+  // }
 };
 export default function RootLayout({
   children,
@@ -32,6 +32,7 @@ export default function RootLayout({
       <body className={`${montserrat.variable} ${roboto.variable} ${bree_serif.variable} `}>
         {/* <body> */}
         <Header />
+
         <main>{children}</main>
         <Footer />
         <div id="modal-root"></div>
