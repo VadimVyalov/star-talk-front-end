@@ -12,6 +12,7 @@ import Viewer from '@/components/Editor/viewer'
 import "./viewerStyle.css"
 import { Article } from '@/types/data'
 
+
 const Article = ({ id }: { id: string }) => {
 
   const { data: article, error, isLoading } = useGetData<Article>(`article/${id}`);

@@ -1,176 +1,138 @@
 'use client'
-import React, { useCallback, useMemo } from 'react'
-import { Editable, withReact, Slate, RenderElementProps, RenderLeafProps } from 'slate-react'
-import {
-  Transforms,
-  createEditor,
-  Descendant,
-} from 'slate'
-import { withHistory } from 'slate-history'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import useGetData from "@/hooks/useGetData";
 
-import { Element, Leaf } from '@/components/Editor/components'
-
-
-const initialValue: Descendant[] = [
-  {
-    type: 'paragraph',
-    children: [
-      { text: 'This is editable ' },
-      { text: 'rich', bold: true },
-      { text: ' text, ' },
-      { text: 'much', italic: true },
-      { text: ' better than a ' },
-      { text: '<textarea>', strike: true },
-      { text: '!' },
-    ],
-  },
-  {
-    type: 'paragraph',
-    children: [
-      {
-        text: "Since it's rich text, you can do things like turn a selection of text ",
-      },
-      { text: 'bold', bold: true },
-      {
-        text: ', or add a semantically rendered block quote in the middle of the page, like this:',
-      },
-    ],
-  },
-  {
-    type: 'quote',
-    children: [{ text: 'A wise quote.' }],
-  },
-  {
-    type: 'paragraph',
-    align: 'center',
-    children: [{ text: 'Try it out for yourself!' }],
-  },
-]
+import ArticleItem from "@/components/Sections/Articles/ArticleItem";
+import Sceleton from "@/components/Sections/Articles/Skeleton";
+import { Article } from "@/types/data";
+import { ArrowUp } from '@/components/ArrowUp/ArrowUp';
+import useScreen from '@/hooks/useScreen';
 
 
 
-async function getData(id: string) {
-  const baseUrl = 'https://star-talk.foradmin.pp.ua/api/v1/'
-  const res = await fetch(`${baseUrl}article/${id}`)
+
+export default function Page() {
 
 
-  if (!res.ok) {
+  const screen = useScreen()
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
 
-    throw new Error('Failed to fetch data')
+  const { data: unsortData, error, isLoading } = useGetData<Article[]>(`article?limit=50`);
+  const offset = Number(searchParams.get('page')) || 1
+
+  // const perPage = 6
+  const dataNum = unsortData?.length || 0
+  const unData = !Array.isArray(unsortData) || dataNum < 1
+
+  const [data, setData] = useState<Article[]>()
+  const [currentPage, setCurrentPage] = useState(offset)
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+
+      return params.toString()
+    },
+    [searchParams]
+  )
+
+
+  const prevPage = () => {
+    if (currentPage > 1) setCurrentPage(prev => prev - 1)
   }
 
-  return res.json()
-}
+  const nextPage = () => {
+    if (currentPage < pageCount) setCurrentPage(prev => prev + 1)
+  }
+
+  const perPage = useMemo(() => {
+    switch (true) {
+      case screen.isD: return 6;
+      case screen.isT: return 4;
+      case screen.isM: return 3;
+      default: return 6;
+
+    }
+  }, [screen])
+
+  const pageCount = useMemo(() => {
+    return dataNum > perPage ? Math.ceil(dataNum / perPage) : 1
+  }, [dataNum, perPage])
+
+  const sceletonData = [...Array(perPage).fill('').map((_, i) => `artAll-${i + 1}`)]
+
+  useEffect(() => {
+
+    if (!unData) {
+      setData([...unsortData.slice((currentPage - 1) * perPage, currentPage * perPage)])
+
+      router.push(pathname + '?' +
+        createQueryString('page', `${currentPage > pageCount ? pageCount : currentPage}`),
+        { scroll: true })
+
+      if (currentPage > pageCount) setCurrentPage(pageCount)
+    }
+    //console.log(pageCount);
+
+  }, [unData, currentPage, perPage, pageCount])
+
+
+  if ((unData || error) && !isLoading) {
+
+    return <h2 className="sectionTitle">Помилка завантаження даних</h2>
+
+  }
 
 
 
-export default function Test() {
-
-  const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, [])
-  const renderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, [])
-  const editor = useMemo(() => withHistory(withReact(createEditor())), [])
-  const writer = useMemo(() => withHistory(withReact(createEditor())), [])
-
-  const readValue: Descendant[] =
-    [
-      {
-        type: 'paragraph',
-        children: [{ text: 'A line of text in a paragraph.' }],
-      },
-    ]
   return (
-    <section id="about" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
-      <div className="container">
-        <h1 className='mx-auto text-4xl align-middle text-center'>Comming soon</h1>
-        {/* <Slate editor={editor} initialValue={initialValue} >
-          <Toolbar>
-            <BlockButton format="title" icon="title" />
-            <BlockButton format="quote" icon="quote" />
-            <BlockButton format="list-ordered" icon="list-numbered" />
-            <BlockButton format="list-unordered" icon="list-bulleted" />
+    <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
+      <div className="container flex flex-col items-center">
+        <h2 className="sectionTitle">Статті</h2>
 
-            <MarkButton format="bold" icon="bold" />
-            <MarkButton format="italic" icon="italic" />
-            <MarkButton format="underline" icon="underlined" />
-            <MarkButton format="strike" icon="strike" />
+        <div className="w-full grid grid-cols-1 t:grid-cols-2 gap-6">
+          {(
+            !isLoading ? (
 
-            <BlockButton format="left" icon="align-left" />
-            <BlockButton format="center" icon="align-center" />
-            <BlockButton format="right" icon="align-right" />
-            <BlockButton format="justify" icon="align-justify" />
-          </Toolbar>
-          <Editable
-            style={{
-              backgroundColor: 'rgb(255, 230, 156)',
-              minHeight: '200px',
+              data?.map((article: Article, i: number) => {
 
-              outline: 'rgb(0, 128, 0) solid 2px',
-            }}
-            renderElement={renderElement}
-            renderLeaf={renderLeaf}
-            placeholder="Enter some rich text…"
-            autoFocus
-          // readOnly
-
-          />
-        </Slate>
-
-        <button onClick={() => {
-          console.log('==')
-          const content = JSON.stringify(editor.children)
-          console.log(content)
-          localStorage.setItem('content', content)
-
-        }}
-        > Save</button>
-
-        <button onClick={async () => {
-          // const content = JSON.parse(localStorage.getItem('content') || '{}')
-          const data = await getData('65556bfa225e9773ac1f15e9')
-          const content = await JSON.parse(data.text)
-
-          console.log(content)
-
-          let totalNodes = writer.children.length;
-          if (content.length <= 0) return;
-
-          for (let i = 0; i < totalNodes - 1; i++) {
-            console.log(i)
-            Transforms.removeNodes(writer, {
-              at: [totalNodes - i - 1],
-            });
+                return (
+                  <ArticleItem key={article.id} article={article} />
+                )
+              })
+            ) : (sceletonData.map(i => <Sceleton key={i} />))
+          )
           }
-
-          for (const value of content) {
-            Transforms.insertNodes(writer, value, {
-              at: [writer.children.length],
-            });
-          }
-
-          Transforms.removeNodes(writer, {
-            at: [0],
-          });
-
-        }}> Read</button>
-
-        <Slate editor={writer} initialValue={readValue}>
-
-          <Editable
-            style={{
-              backgroundColor: 'rgb(156, 230, 255)',
-              minHeight: '200px',
-
-              outline: 'rgb(0, 128, 0) solid 2px',
-            }}
-            renderElement={renderElement}
-            renderLeaf={renderLeaf}
-            readOnly
+        </div>
 
 
-          />
-        </Slate> */}
 
-      </div>
-    </section>
-  )
+        {pageCount > 1 ?
+          <div className='flex flex-col t:flex-row gap-6 mt-10 w-full items-center justify-center'>
+            <button
+              onClick={prevPage}
+              disabled={currentPage === 1}
+              className='greenLink  w-full t:w-[150px]'>
+              Попередні
+            </button>
+            <p className='text-lg/[18px] p-4 items-center justify-center flex border rounded border-accent-100 w-auto   ' >
+              {currentPage}/{pageCount}</p>
+            <button
+              onClick={nextPage}
+              disabled={currentPage === pageCount}
+              className='greenLink w-full t:w-[150px]'>
+              Наступні
+            </button>
+          </div>
+          : null}
+
+      </div >
+      <ArrowUp className="fixed bottom-40 t:bottom-12 right-6 z-10" />
+    </section >
+  );
+
 }

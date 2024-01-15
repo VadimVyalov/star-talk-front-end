@@ -7,9 +7,10 @@ interface NavigationProps {
   linkCn?: ClassValue;
   mobile?: boolean;
   menuItems: { id: string, title: string, link: string }[];
+  onClick?: () => void;
 }
 
-const Navigation = ({ mobile = false, itemCn = "", linkCn = "", wrapCn = '', menuItems }: NavigationProps) => {
+const Navigation = ({ mobile = false, itemCn = "", linkCn = "", wrapCn = '', menuItems, onClick }: NavigationProps) => {
 
   return (
     <nav className={cn(mobile ? "w-full" : "w-fit")} >
@@ -17,7 +18,8 @@ const Navigation = ({ mobile = false, itemCn = "", linkCn = "", wrapCn = '', men
         {
           menuItems?.map(i => {
             return (
-              <li key={i.id} className={cn(itemCn, "hover:text-accent-100 transition ")}>
+              <li key={i.id} className={cn(itemCn, "hover:text-accent-100 transition ")}
+                onClick={onClick}>
                 <Link className={cn(" block whitespace-nowrap font-medium h-full ", linkCn)}
                   title={i.title}
                   href={i.link}

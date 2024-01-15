@@ -54,8 +54,10 @@ export function BurgerMenuA() {
 
 
 			<ModalWrapper onCloseMenu={onCloseMenu} isOpen={openMenu} className=" bg-overlay justify-center items-center">
-				<div className={cn(" bg-mainBg rounded-b-3xl pb-6 flex flex-col items-center ", openMenu ? "" : "")}>
+				<div className={cn(" bg-mainBg rounded-b-3xl pb-6 flex flex-col items-center ", openMenu ? "" : "")}
+				>
 					<Navigation
+						onClick={onCloseMenu}
 						menuItems={menuHeader}
 						mobile={true}
 						wrapCn='mb-12 '

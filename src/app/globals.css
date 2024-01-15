@@ -95,7 +95,8 @@ button {
 
   .greenLink {
     @apply rounded-bl-3xl rounded-tr-3xl border border-accent-100   bg-accent-100 text-white-100 hover:text-accent-100 hover:bg-mainBg 
-   text-center font-semibold whitespace-nowrap active:shadow-lg transition disabled:bg-disabled disabled:border-disabled disabled:hover:text-white-100;
+   text-lg/[18px] py-5 font-semibold
+   text-center  whitespace-nowrap active:shadow-lg transition disabled:bg-disabled disabled:border-disabled disabled:hover:text-white-100;
   }
 
   .whiteLink {

@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image"
 import cn from "@/helpers"
 import Link from "next/link";
@@ -7,7 +8,6 @@ import { Article } from "@/types/data";
 interface Props {
   article: Article
 }
-
 
 const ArticleItem = ({ article }: Props) => {
 
@@ -33,18 +33,17 @@ const ArticleItem = ({ article }: Props) => {
 
         <div className="flex h-full w-full flex-col justify-between">
           <div className="flex flex-row justify-between leading-[1.5] mt-3 d:mt-5 w-full">
-            <p className="text-sm t:text-xs d:text-lg font-semibold ">
+            <p className="text-sm d:text-lg font-semibold line-clamp-2 ">
               {title}
             </p>
-            <p className=" text-xs t:text-[10px] d:text-base text-black-30 font-medium ml-3"> {date}  </p>
+            <p className=" text-xs d:text-base text-black-30 font-medium ml-3 whitespace-nowrap"> {date}  </p>
           </div>
 
-          <Link href={`/articles/${id}`} className={cn("  flex items-center gap-x-3 group w-fit mt-3 d:mt-5 font-semibold text-sm t:text-[8px] d:text-sm")}>
-            <span className="flex items-center justify-center w-9 h-9 t:w-[21px] t:h-[21px] d:w-9 d:h-9 border-[1px]
-          
+          <Link href={`/articles/${id}`} className={cn("  flex items-center gap-x-3 group w-fit mt-3 d:mt-5 font-semibold text-sm ")}>
+            <span className="flex items-center justify-center w-9 h-9  border
            border-accent-100 rounded-full group-hover:bg-white-100
            bg-accent-100 group-hover:text-accent-100 text-white-100 transition-colors">
-              <Icon name="/assets/icons/small.svg" id="arrow-right" className="w-4 h-4 t:w-2 t:h-2 d:w-4 d:h-4" />
+              <Icon name="/assets/icons/small.svg" id="arrow-right" />
             </span>
             Читати далі
           </Link>
