@@ -1,9 +1,7 @@
 "use client";
-
+import React from 'react'
 import useGetData from "@/hooks/useGetData";
-//import ArticleItem from "./ArticleItem";
-//import data from "../../../../public/data/articles.json"
-//import Sceleton from "./Skeleton";
+
 import Link from "next/link";
 import cn from "@/helpers"
 import ArticleItem from "@/components/Sections/Articles/ArticleItem";
@@ -15,7 +13,7 @@ import { Article } from "@/types/data";
 const Articles = ({ id }: { id: string }) => {
   const title = 'Читай також'
 
-  const { data: unsortData, error, isLoading } = useGetData<Article[]>(`article`);
+  const { data: unsortData, error, isLoading } = useGetData<Article[]>(`article?limit=100`);
 
   const dataNum = unsortData?.length || 0
   const unData = !Array.isArray(unsortData) || dataNum < 2

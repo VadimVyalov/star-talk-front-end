@@ -13,7 +13,7 @@ const makeAnswer = async (data: any, questios: FormData[]) => {
             
         const answer_variant = item.variants.map(a => a.value)
         const checked_answer_value = checked_answer.map(i => i.value)
-        const answer = item.ansver
+        const answer = item.answer
 
     return {
         'question': item.title,
@@ -22,7 +22,7 @@ const makeAnswer = async (data: any, questios: FormData[]) => {
         'checked_answer_id': checked_answer.map(i => i.id),
         'checked_answer_value': checked_answer_value,
         'result': answer.filter(i => !checked_answer_value.includes(i))
-                .concat(checked_answer_value.filter(i => !item.ansver.includes(i))).length === 0
+                .concat(checked_answer_value.filter(i => !item.answer.includes(i))).length === 0
         }
     })
     const total = checked.filter(i => i.result).length

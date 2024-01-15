@@ -9,7 +9,7 @@
       { "id": "test-01-q-03", "value": "engineer" },
       { "id": "test-01-q-04", "value": "lawyer" }
     ],
-    "ansver":[ "teacher"]
+    "answer":[ "teacher"]
 
   },
   {
@@ -22,7 +22,7 @@
       { "id": "test-02-q-03", "value": "country" },
       { "id": "test-02-q-04", "value": "hip hop" }
     ],
-    "ansver": ["classical"]
+    "answer": ["classical"]
 
   },
     {
@@ -35,7 +35,7 @@
       { "id": "test-03-q-03", "value": "speak" },
       { "id": "test-03-q-04", "value": "talk" }
     ],
-    "ansver": ["tell"]
+    "answer": ["tell"]
   },
     {
     "title": "The company has a strict ________ policy to ensure the safety of its employees.",
@@ -47,7 +47,7 @@
       { "id": "test-04-q-03", "value": "lunch break" },
       { "id": "test-04-q-04", "value": "security" }
     ],
-    "ansver": ["security"]
+    "answer": ["security"]
   },
     {
     "title": "I can't find my keys. I must have ________ them at home.",
@@ -59,7 +59,7 @@
       { "id": "test-05-q-03", "value": "forgotten" },
       { "id": "test-05-q-04", "value": "remembered" }
     ],
-    "ansver": ["left"]
+    "answer": ["left"]
   },
     {
     "title": "Yesterday, I ________ to the grocery store and ________ some fruits and vegetables.",
@@ -71,7 +71,7 @@
       { "id": "test-06-q-03", "value": "went, buy" },
       { "id": "test-06-q-04", "value": "go, buy" }
     ],
-    "ansver": ["went, bought"]
+    "answer": ["went, bought"]
   },
     {
     "title": "Sarah ________ her homework every day.",
@@ -83,7 +83,7 @@
       { "id": "test-07-q-03", "value": "finished" },
       { "id": "test-07-q-04", "value": "finishing" }
     ],
-    "ansver": ["finishes"]
+    "answer": ["finishes"]
   },
     {
     "title": "We ________ a lot of fun at the beach last summer.",
@@ -95,7 +95,7 @@
       { "id": "test-08-q-03", "value": "has" },
       { "id": "test-08-q-04", "value": "having" }
     ],
-    "ansver": ["had"]
+    "answer": ["had"]
   },
     {
     "title": "If it ________ tomorrow, we will cancel the picnic.",
@@ -107,7 +107,7 @@
       { "id": "test-09-q-03", "value": "rained" },
       { "id": "test-09-q-04", "value": "rain" }
     ],
-    "ansver": ["rains"]
+    "answer": ["rains"]
   },
     {
     "title": "He ________ English for two years before he moved to the United States.",
@@ -119,7 +119,7 @@
       { "id": "test-10-q-03", "value": "has studied" },
       { "id": "test-10-q-04", "value": "had studied" }
     ],
-    "ansver": ["had studied"]
+    "answer": ["had studied"]
   },
     {
     "title": " I __________ my breakfast at 7am every day.",
@@ -131,7 +131,7 @@
       { "id": "test-11-q-03", "value": "has" },
       { "id": "test-11-q-04", "value": "have had" }
     ],
-    "ansver": ["have"]
+    "answer": ["have"]
   },
     {
     "title": "My sister is __________ years old.",
@@ -143,7 +143,7 @@
       { "id": "test-12-q-03", "value": "twelves" },
       { "id": "test-12-q-04", "value": "twelf" }
     ],
-    "ansver": ["twelve"]
+    "answer": ["twelve"]
   },
     {
     "title": "Can you __________ me the salt, please?",
@@ -155,7 +155,7 @@
       { "id": "test-13-q-03", "value": "passing" },
       { "id": "test-13-q-04", "value": "to pass" }
     ],
-    "ansver": ["pass"]
+    "answer": ["pass"]
   },
     {
     "title": "The weather is nice today, __________ we can go for a walk.",
@@ -167,7 +167,7 @@
       { "id": "test-14-q-03", "value": "or" },
       { "id": "test-14-q-04", "value": "and" }
     ],
-    "ansver": ["so"]
+    "answer": ["so"]
   },
     {
     "title": "I've just seen ___ car coming up the drive.",
@@ -178,7 +178,7 @@
       { "id": "test-15-q-02", "value": "a" },
       { "id": "test-15-q-03", "value": "-" }
     ],
-    "ansver": ["a"]
+    "answer": ["a"]
   },
     {
     "title": "She has ____ pets.",
@@ -189,7 +189,7 @@
       { "id": "test-16-q-02", "value": "more" },
       { "id": "test-16-q-03", "value": "much" }
     ],
-    "ansver": ["many"]
+    "answer": ["many"]
   },
     {
     "title": "I would like to have ___ apple for lunch.",
@@ -200,7 +200,7 @@
       { "id": "test-17-q-02", "value": "an" },
       { "id": "test-17-q-03", "value": "the" }
     ],
-    "ansver": ["an"]
+    "answer": ["an"]
   },
     {
     "title": "__ 8 o'clock I must leave.",
@@ -211,7 +211,7 @@
       { "id": "test-18-q-02", "value": "in" },
       { "id": "test-18-q-03", "value": "on" }
     ],
-    "ansver": ["at"]
+    "answer": ["at"]
   },
     {
     "title": " I like ____ Italy this time of year.",
@@ -222,7 +222,7 @@
       { "id": "test-19-q-02", "value": "a" },
       { "id": "test-19-q-03", "value": "-" }
     ],
-    "ansver": ["-"]
+    "answer": ["-"]
   },
     {
     "title": "How ___ money do you make?",
@@ -233,7 +233,7 @@
       { "id": "test-20-q-02", "value": "much" },
       { "id": "test-20-q-03", "value": "-" }
     ],
-    "ansver": ["much"]
+    "answer": ["much"]
   },
     {
     "title": "The factory closed __ June.",
@@ -244,7 +244,7 @@
       { "id": "test-21-q-02", "value": "in" },
       { "id": "test-21-q-03", "value": "at" }
     ],
-    "ansver": ["in"]
+    "answer": ["in"]
   },
     {
     "title": "I went sailing around ____ Lake Svitiaz.",
@@ -255,7 +255,7 @@
       { "id": "test-22-q-02", "value": "a" },
       { "id": "test-22-q-03", "value": "the" }
     ],
-    "ansver": ["-"]
+    "answer": ["-"]
   },
     {
     "title": "You are talking too ___",
@@ -266,7 +266,7 @@
       { "id": "test-23-q-02", "value": "much" },
       { "id": "test-23-q-03", "value": "very" }
     ],
-    "ansver": ["much"]
+    "answer": ["much"]
   },
     {
     "title": "The ship should cross ___ Pacific Ocean to deliver the goods.",
@@ -277,7 +277,7 @@
       { "id": "test-24-q-02", "value": "-" },
       { "id": "test-24-q-03", "value": "the" }
     ],
-    "ansver": ["the"]
+    "answer": ["the"]
   },
     {
     "title": "She ________________ her old photos and found a picture of herself as a child.",
@@ -288,7 +288,7 @@
       { "id": "test-25-q-02", "value": "looked after" },
       { "id": "test-25-q-03", "value": "looked for" }
     ],
-    "ansver": ["looked through"]
+    "answer": ["looked through"]
   },
     {
     "title": "The doctor told her to ________________ smoking if she wanted to improve her health.",
@@ -299,7 +299,7 @@
       { "id": "test-26-q-02", "value": "give out" },
       { "id": "test-26-q-03", "value": "give up" }
     ],
-    "ansver": ["give up"]
+    "answer": ["give up"]
   },
     {
     "title": "My friend ________________ my bike for the weekend while I was out of town.",
@@ -310,7 +310,7 @@
       { "id": "test-27-q-02", "value": "borrowed" },
       { "id": "test-27-q-03", "value": "gave" }
     ],
-    "ansver": ["borrowed"]
+    "answer": ["borrowed"]
   },
     {
     "title": "He always ________________ excuses for why he can't come to work on time.",
@@ -321,7 +321,7 @@
       { "id": "test-28-q-02", "value": "makes into" },
       { "id": "test-28-q-03", "value": "makes up" }
     ],
-    "ansver": ["makes up"]
+    "answer": ["makes up"]
   },
     {
     "title": "We need to ________________ the meeting until next week because some of the participants are unavailable.",
@@ -332,6 +332,6 @@
       { "id": "test-29-q-02", "value": "hold" },
       { "id": "test-29-q-03", "value": "have" }
     ],
-    "ansver": ["postpone"]
+    "answer": ["postpone"]
   }
 ]

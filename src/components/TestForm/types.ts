@@ -46,5 +46,5 @@ export type FormData = {
   id: string;
   title: string;
   variants: { id: string, value: string }[]
-  ansver: string[];
+  answer: string[];
 };

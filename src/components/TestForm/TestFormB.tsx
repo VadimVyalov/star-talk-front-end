@@ -10,7 +10,8 @@ import { Element } from './Element';
 import { name, email, telegramOrPhone as phone } from "@/helpers/validation";
 import makeSchemaA from './helpers/makeShemaA';
 //import makeAnswer from './helpers/makeAnswer';
-import questions from '../../../public/data/test.json' assert { type: 'json' }
+//import questions from '../../../public/data/test.json' assert { type: 'json' }
+import useGetData from '@/hooks/useGetData';
 
 const contactInputStyle = {
   wraper: 'flex flex-col gap-y-2 w-full  ',
@@ -25,11 +26,15 @@ export const TestFormB = () => {
   const [status, setStatus] = useState<Status>('contact')
   const [question, setQuestion] = useState<FormData | null>(null);
 
-  const dataQuestion = JSON.parse(JSON.stringify(questions)) as FormData[]
-  const isLoading = false
-  const isError = false
+  // const dataQuestion = JSON.parse(JSON.stringify(questions)) as FormData[]
 
-  const questionNum = dataQuestion.length - 1
+  // const isLoading = false
+  // const error = false
+
+  const { data: dataQuestion, error, isLoading } = useGetData<FormData[]>(`quizzes`);
+
+  const questionNum = dataQuestion ? dataQuestion.length - 1 : 0
+  const unData = !Array.isArray(dataQuestion) || questionNum < 1
 
   const nextQ = () => {
     if (step < questionNum) setStep(prev => prev + 1)
@@ -41,7 +46,7 @@ export const TestFormB = () => {
 
   useEffect(() => {
 
-    if (step <= questionNum) setQuestion(dataQuestion[step])
+    if (step <= questionNum && dataQuestion) setQuestion(dataQuestion[step])
     if (step > -1) setStatus('questions')
     if (step > questionNum - 1) setStatus('submit')
 
@@ -63,7 +68,7 @@ export const TestFormB = () => {
     return <p>Завантаження даних ...</p>
   }
 
-  if (isError) {
+  if (error || (unData && !isLoading)) {
     return (
 
       <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >

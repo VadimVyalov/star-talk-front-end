@@ -12,11 +12,11 @@ const fetcher = async (url:string) => {
 
 const useGetData =<T> (path: string) => {
         
-    const { data , error } = useSWR<T> (`${BASE_URL}${path}`, fetcher, {
+    const { data , error,isLoading } = useSWR<T> (`${BASE_URL}${path}`, fetcher, {
       keepPreviousData: true
     });
    
-    const isLoading = !data && !error;
+   // const isLoading = !data && !error;
    
     return { data , error, isLoading };
   };
