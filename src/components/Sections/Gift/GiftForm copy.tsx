@@ -10,16 +10,10 @@ import { phone, name } from "@/helpers/validation";
 const GiftForm = () => {
 
 
-    // const giftInputStyle = {
-    //     wraper: 'flex flex-col min-w-[200px] w-full t:w-auto',
-    //     label: 'text-[0]  border-b-2 border-black-15 transition-colors',
-    //     input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2',
-    //     error: ' text-error-100 text-xs/[15px]'
-    // }
     const giftInputStyle = {
-        wraper: 'flex flex-col gap-y-1  w-full',
-        label: 'text-lg/[27px] font-medium  flex flex-col hover:border-accent-100 transition-colors',
-        input: 'outline-none bg-transparent text-base border border-black-30 rounded-[5px] placeholder-black-30 w-full px-[25px] py-[12px] resize-none',
+        wraper: 'flex flex-col min-w-[200px] w-full t:w-auto',
+        label: 'text-[0]  border-b-2 border-black-15 transition-colors',
+        input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2',
         error: ' text-error-100 text-xs/[15px]'
     }
 
@@ -34,18 +28,17 @@ const GiftForm = () => {
             <FormWrapperWithCaptcha
                 schema={{ name, phone }}
                 captchaName='gift'
-                className="flex  flex-col gap-x-4 gap-y-3  mx-auto"
+                className="flex  flex-wrap gap-x-5 gap-y-4  mx-auto"
             >
-                <FormInput type='text' name="name"
-                    label="Ім’я*" placeholder="Ім’я"
-                    styles={giftInputStyle} />
                 <FormInput type='text' name="phone"
-                    label="Номер телефону*" placeholder="+380667778899"
+                    label="phone" placeholder="Номер телефону"
                     styles={giftInputStyle} />
-
+                <FormInput type='text' name="name"
+                    label="name" placeholder="Ваше ім’я"
+                    styles={giftInputStyle} />
                 <FormSubmit label="Надіслати"
                     className={cn("greenLink",
-                        " px-[21px]     w-full t:max-w-[200px] mx-auto ")} />
+                        " block px-[21px] py-[22px] t:py-[13px] leading-[1.25]   h-fit w-full t:w-auto ")} />
             </FormWrapperWithCaptcha>
 
         </GoogleReCaptchaProvider>

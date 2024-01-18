@@ -89,7 +89,7 @@ const Article = ({ id }: { id: string }) => {
                       className={cn('w-8 h-8 shrink-0')}
                     />
                   </a>
-                  <a href="#facebook" title="facebook" className='flex shrink-0 icon'>
+                  <a href="https://www.linkedin.com/shareArticle?url=http://localhost:3000/articles/65a2a36a07d2f3ff7c0d0c9f" title="facebook" className='flex shrink-0 icon'>
                     <Icon name='/assets/icons/social.svg' id='facebook'
                       className={cn('w-8 h-8 shrink-0')}
                     />

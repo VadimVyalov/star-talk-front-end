@@ -48,9 +48,9 @@ const Calculator = () => {
     const [openModal, setOpenModal] = useState(false);
     const [hourPerDay, setHourPerDay] = useState(maxHourPerDay);
     const [isOpen, setIsOpen] = useState(false);
-    const onOpenMenu = () => {
-        setOpenModal(true);
-    };
+    // const onOpenMenu = () => {
+    //     setOpenModal(true);
+    // };
     const onCloseMenu = () => {
         setOpenModal(false);
     };
@@ -199,7 +199,7 @@ const Calculator = () => {
                                 />
                             </div>
                         </div>
-                        <button className={cn("greenLink", " t:px-28 py-4 text-lg leading-[1.75] w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
+                        <button className={cn("greenLink", " t:px-28  w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
                     </form>
                 </div>
             </div>
@@ -241,7 +241,7 @@ const Calculator = () => {
                             </li>
                         </ul>
 
-                        <button onClick={onCloseMenu} className={cn("greenLink", " px-16 py-2 text-lg leading-[1.75] w-full t:w-auto ")}>Зрозуміло</button>
+                        <button onClick={onCloseMenu} className={cn("greenLink", " px-16  w-full t:w-auto ")}>Зрозуміло</button>
 
                     </div>
 

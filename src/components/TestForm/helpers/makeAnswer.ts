@@ -28,7 +28,7 @@ const makeAnswer = async (data: any, questios: FormData[]) => {
     const total = checked.filter(i => i.result).length
     // console.log(`Вірних відповідей ${total} з ${dataQuestion.length} === `, checked)
     // console.log(checked.result);
-    return `Тест завершено. Вірних відповідей ${total} з ${questios.length} `
+    return ` Вірних відповідей ${total} з ${questios.length} `
 };
 
 export default makeAnswer

@@ -23,12 +23,12 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
    
     if (token) {
       const Data = {
-        name: data?.name?.trim() ||'',
+        name: data?.name?.trim() ||'test user',
         email: data?.email?.trim() ||'',
-        comment: data?.message?.trim() ||'',
-        phone: data?.phone?.trim() || "+00000000001111" ,
+        massage: data?.message?.trim() ||'',
+        phone: data?.phone?.trim() || '',
+        role: data?.role|| '',
         token: token,
-        gift: data?.gift || false,
       };  
 
       try {

@@ -6,6 +6,9 @@ import { FC, useCallback, useEffect } from "react";
 import { sendFeedBack } from "@/helpers/sendFeedBack";
 import { toast } from "react-toastify";
 import * as yup from "yup";
+import makeAnswer from "../TestForm/helpers/makeAnswer";
+import { FormData } from "../TestForm/types";
+
 // import { DevTool } from "@hookform/devtools";
 
 type TData = Record<string, string>
@@ -15,7 +18,7 @@ type TFormWrapper = {
     schema: Record<string, yup.AnySchema>,//{ [x: string]: yup.AnySchema },
     captchaName?: string,
     className?: string,
-
+    Questions?: FormData[],
     onPending?: () => void,
     onSuccess?: () => void,
     onError?: () => void,
@@ -24,7 +27,7 @@ type TFormWrapper = {
 }
 //
 const FormWrapperWithCaptcha: FC<TFormWrapper> = (
-    { children, schema, captchaName = 'formWrapper', className = '',
+    { children, schema, captchaName = 'formWrapper', className = '', Questions = [],
         onPending = null, onSuccess = null, onError = null, onFinally = null }) => {
 
 
@@ -50,7 +53,8 @@ const FormWrapperWithCaptcha: FC<TFormWrapper> = (
         // console.log(captchaName);
         // console.log(token);
         if (token) {
-
+            data.role = captchaName
+            if (captchaName === 'test') data.message = await makeAnswer(data, Questions)
             toast.promise(
                 sendFeedBack(data, token),
                 {

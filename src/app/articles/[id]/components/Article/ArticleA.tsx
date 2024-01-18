@@ -10,7 +10,7 @@ import cn from "@/helpers"
 import useGetData from '@/hooks/useGetData'
 import Viewer from '@/components/Editor/viewer'
 import "./viewerStyle.css"
-
+import socialLink from '@/constants/socialLink'
 
 
 const ArticleA = ({ id }: { id: string }) => {
@@ -84,22 +84,44 @@ const ArticleA = ({ id }: { id: string }) => {
                 <div className="flex  items-center gap-x-5 leading-[1.5] ">
                   <p className=" text-lg font-semibold"> Поділитись:  </p>
 
-                  <a href="#instagram" title="instagram" className='flex shrink-0 icon'>
+                  {/* <a href="#instagram"
+                    target='_blank'
+                    rel="noopener noreferrer nofollow"
+                    title="instagram"
+                    className='flex shrink-0 icon'>
                     <Icon name='/assets/icons/social.svg' id='instagram'
                       className={cn('w-8 h-8 shrink-0')}
                     />
-                  </a>
-                  <a href="#facebook" title="facebook" className='flex shrink-0 icon'>
+                  </a> */}
+                  <a href={`${socialLink.facebook.link}/${socialLink.facebook.sharer}=
+                  ${process.env.NEXT_PUBLIC_SITE_URL}/articles/${id}`}
+                    target='_blank'
+                    rel="noopener noreferrer nofollow"
+                    title={socialLink.facebook.title}
+
+                    className='flex shrink-0 icon'>
                     <Icon name='/assets/icons/social.svg' id='facebook'
                       className={cn('w-8 h-8 shrink-0')}
                     />
                   </a>
-                  <a href="#viber" title="Viber" className='flex shrink-0 icon'>
+                  <a href={`${socialLink.viber.link}/${socialLink.viber.sharer}=
+                  ${process.env.NEXT_PUBLIC_SITE_URL}/articles/${id}
+                   - ${title}`}
+                    target='_blank'
+                    rel="noopener noreferrer nofollow"
+                    title={socialLink.viber.title}
+                    className='flex shrink-0 icon'>
                     <Icon name='/assets/icons/social.svg' id='viber'
                       className={cn('w-8 h-8 shrink-0')}
                     />
                   </a>
-                  <a href="#telegram" title="telegram" className='flex shrink-0 icon'>
+                  <a href={`${socialLink.telegram.link}/${socialLink.telegram.sharer}=
+                  ${process.env.NEXT_PUBLIC_SITE_URL}/articles/${id}
+                  &text=${title}`}
+                    target='_blank'
+                    rel="noopener noreferrer nofollow"
+                    title={socialLink.telegram.title}
+                    className='flex shrink-0 icon'>
                     <Icon name='/assets/icons/social.svg' id='telegram'
                       className={cn('w-8 h-8 shrink-0')}
                     />

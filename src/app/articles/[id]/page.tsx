@@ -62,12 +62,34 @@ export async function generateMetadata(
   try {
 
     const article = await getDataById(params.id)
-    const { title, seo_description, keyword } = article
+    const { title, seo_description, keyword, image, image_preview } = article
 
     return {
       title: title,
       description: seo_description,
-      keywords: keyword
+      keywords: keyword,
+      openGraph: {
+        title: title,
+        description: seo_description,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/articles/${params.id}`,
+        siteName: 'StarTalk',
+        images: [
+          {
+            url: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${image_preview}`, // Must be an absolute URL
+            width: 530,
+            height: 280,
+          },
+          {
+            url: `${process.env.NEXT_PUBLIC_IMAGE_BASE_URL}${image}`, // Must be an absolute URL
+            width: 1200,
+            height: 555,
+          },
+
+        ],
+        locale: 'en_US',
+        type: 'website',
+      }
+
     }
 
   } catch (error) {
@@ -78,7 +100,7 @@ export async function generateMetadata(
 
 export default async function Page({ params, searchParams }: Props) {
 
-  const offset = searchParams.offset
+  // const offset = searchParams.offset
 
   return (
     <>

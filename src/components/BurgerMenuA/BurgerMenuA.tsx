@@ -64,7 +64,7 @@ export function BurgerMenuA() {
 						itemCn="border-b-[1px] border-grey-3  "
 						linkCn="mx-5 text-xl leading-[70px] text-center " />
 
-					<button className="greenLink mx-6 px-[24px] py-[18px]"
+					<button className="greenLink mx-6 px-[24px]"
 						type='button'
 						onClick={onOpenForm}>
 						Записатись на урок

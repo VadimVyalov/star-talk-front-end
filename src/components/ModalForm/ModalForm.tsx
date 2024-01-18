@@ -18,10 +18,16 @@ interface IModalForm {
 
 const ModalForm = ({ isOpen, onCloseMenu, className = '' }: IModalForm) => {
 
+    // const contactInputStyle = {
+    //     wraper: 'flex flex-col gap-y-2 w-full',
+    //     label: 'text-[0px] w-full',
+    //     input: 'outline-none bg-white-100 text-base border border-black-30 rounded-[5px] placeholder-black-30 w-full px-[23px] py-[12px]',
+    //     error: ' text-error-100 text-xs/[15px]'
+    // }
     const contactInputStyle = {
-        wraper: 'flex flex-col gap-y-2 w-full',
-        label: 'text-[0px] w-full',
-        input: 'outline-none bg-white-100 text-base border border-black-30 rounded-[5px] placeholder-black-30 w-full px-[23px] py-[12px]',
+        wraper: 'flex flex-col gap-y-1  w-full',
+        label: 'text-lg/[27px] font-medium  flex flex-col hover:border-accent-100 transition-colors',
+        input: 'outline-none bg-transparent text-base border border-black-30 rounded-[5px] placeholder-black-30 w-full px-[25px] py-[12px] resize-none',
         error: ' text-error-100 text-xs/[15px]'
     }
     return (
@@ -43,10 +49,10 @@ const ModalForm = ({ isOpen, onCloseMenu, className = '' }: IModalForm) => {
                         captchaName='lesson'
                         onFinally={onCloseMenu}
                         className='flex flex-col gap-y-8'>
-                        <FormInput type='text' name="name" label="Ім’я*" placeholder="Ім’я*" styles={contactInputStyle} />
-                        <FormInput type='text' name="phone" label="Телефон*" placeholder="Телефон*" styles={contactInputStyle} />
+                        <FormInput type='text' name="name" label="Ім’я*" placeholder="Ім’я" styles={contactInputStyle} />
+                        <FormInput type='text' name="phone" label="Телефон*" placeholder="+380667778899" styles={contactInputStyle} />
                         <FormSubmit label="Надіслати"
-                            className="greenLink mt-3 px-[21px] py-[27px] leading-[10px]  w-full  mx-auto" />
+                            className="greenLink   w-full  mx-auto" />
                     </FormWrapperWithCaptcha>
                 </div>
             </GoogleReCaptchaProvider>

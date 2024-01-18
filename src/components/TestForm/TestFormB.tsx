@@ -13,10 +13,16 @@ import makeSchemaA from './helpers/makeShemaA';
 //import questions from '../../../public/data/test.json' assert { type: 'json' }
 import useGetData from '@/hooks/useGetData';
 
+// const contactInputStyle = {
+//   wraper: 'flex flex-col gap-y-2 w-full  ',
+//   label: 'text-[0] border-b-2 border-black-15  transition-colors text-black-100',
+//   input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2 ',
+//   error: ' text-error-100 text-xs/[15px]'
+// }
 const contactInputStyle = {
-  wraper: 'flex flex-col gap-y-2 w-full  ',
-  label: 'text-[0] border-b-2 border-black-15  transition-colors text-black-100',
-  input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2 ',
+  wraper: 'flex flex-col gap-y-1  w-full',
+  label: 'text-lg/[27px] font-medium  flex flex-col hover:border-accent-100 transition-colors',
+  input: 'outline-none bg-transparent text-base border border-black-30 rounded-[5px] placeholder-black-30 w-full px-[25px] py-[12px] resize-none',
   error: ' text-error-100 text-xs/[15px]'
 }
 
@@ -34,6 +40,7 @@ export const TestFormB = () => {
   const { data: dataQuestion, error, isLoading } = useGetData<FormData[]>(`quizzes`);
 
   const questionNum = dataQuestion ? dataQuestion.length - 1 : 0
+  //const questionNum = 2
   const unData = !Array.isArray(dataQuestion) || questionNum < 1
 
   const nextQ = () => {
@@ -118,19 +125,21 @@ export const TestFormB = () => {
       <FormWrapperWithCaptcha
         schema={validationSchema}
         captchaName='test'
+        Questions={dataQuestion}
         onPending={() => setStatus('pending')}
         onSuccess={() => setStatus('finish')}
         onError={() => setStatus('error')}
-        onFinally={(formData) => console.log(formData)}
+        // onFinally={(formData) => console.log(formData)}
         className={cn('flex flex-col', status === 'contact'
           ? ' t:flex-row justify-between gap-x-6 items-end' : '')}
       >
         {
           status === 'contact'
             ? <div className="flex  flex-col gap-x-5 gap-y-5 d:gap-y-6 w-full t:max-w-[384px]">
-              <FormInput type='text' name="name" label="Ім’я*" placeholder="Ім’я*" styles={contactInputStyle} />
-              <FormInput type='text' name="phone" label="Телефон або нік в Telegram*" placeholder="Телефон або нік в Telegram*" styles={contactInputStyle} />
-              <FormInput type='text' name="email" label="Пошта*" placeholder="Пошта*" styles={contactInputStyle} />
+              <FormInput type='text' name="name" label="Ім’я*" placeholder="Ім’я" styles={contactInputStyle} />
+              <FormInput type='text' name="phone" label="Телефон або нік в Telegram*" placeholder="+380667778899 або User123" styles={contactInputStyle} />
+              <FormInput type='text' name="email" label="Пошта*" placeholder="example@email.com" styles={contactInputStyle} />
+
             </div> : null
         }
         {status === 'questions' || status === 'submit'
