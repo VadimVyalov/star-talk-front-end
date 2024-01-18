@@ -14,16 +14,17 @@ const Reviews = () => {
   const { data, error, isLoading } = useGetData<Review[]>('comments');
   const unData = !Array.isArray(data) || data?.length < 1
   return (
-    <section id="reviews" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
-      <div className="container">
+    ((!error && !unData) || isLoading)
+      ? <section id="reviews" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
+        <div className="container">
 
-        <h2 className="sectionTitle">Відгуки</h2>
-        {(!error && !unData) ? (
+          <h2 className="sectionTitle">Відгуки</h2>
+
 
           <div className="">
             <Slider {...rewiewsSlider}>
               {!isLoading ? (
-                data.map((rewiew: Review) => {
+                data?.map((rewiew: Review) => {
                   return (
                     <Rewiew key={rewiew.id} rewiew={rewiew} />
                   )
@@ -36,10 +37,11 @@ const Reviews = () => {
               }
             </Slider>
           </div>
-        ) : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
-        }
-      </div >
-    </section >
+
+        </div >
+      </section >
+      : null
+
   );
 }
 

@@ -1,7 +1,7 @@
 import Icon from "../../Icon";
 import cn from "@/helpers"
-import type { FAQ } from "./Questions";
-import { useState } from "react";
+import { FAQ } from "@/types/data";
+
 
 
 interface Props {

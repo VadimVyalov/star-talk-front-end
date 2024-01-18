@@ -21,35 +21,34 @@ const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: n
     data.pop()
   }
   return (
-    ((!error && !unData) && !isLoading)
+    ((!error && !unData) || isLoading)
       ? <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
         <div className="container flex flex-col items-center">
 
-          ? (title ? <h2 className="sectionTitle">{title} </h2> : null)
+          {title ? <h2 className="sectionTitle">{title} </h2> : null}
 
           <div className="w-full grid grid-cols-1 t:grid-cols-2 gap-6">
-            {(!error && !unData) ? (
-              !isLoading ? (
+            {!isLoading
+              ? (data?.map((article: Article, i: number) =>
 
-                data.map((article: Article, i: number) =>
-
-                  <ArticleItem key={article.id} article={article} />
-                )
-              ) : (['art-1', 'art-2'].map(i => {
+                <ArticleItem key={article.id} article={article} />
+              ))
+              : (['art-1', 'art-2'].map(i => {
                 return (
                   <Sceleton key={i} />
                 )
-              }))
-            ) : null// <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
+              })) // <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
             }
           </div>
 
-          {dataNum > 2
+          {!isLoading
+
             ? <Link href="/articles" className={cn("greenLink flex items-center gap-x-2 mt-[60px] t:mt-12",
               " w-full t:w-fit px-[22px] justify-center")}>
               <span>Дивитись більше</span>
             </Link>
             : null}
+
         </div >
       </section >
       : null

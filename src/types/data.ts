@@ -17,3 +17,10 @@ export type Review = {
   message: string,
   author: string
 }
+
+export type FAQ = {
+  id: string,
+  question: string,
+  answer: string,
+
+}
