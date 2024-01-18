@@ -16,7 +16,7 @@ export const RingButton = ({ className = "", ...props }: ButtonProps) => {
 
 	return (
 		<>
-			<div className={cn("w-full fixed bottom-[66px] t:bottom-[50%]   z-5")}
+			<div className={cn("w-full fixed bottom-[60px] t:bottom-[50%]   z-5")}
 			// style={{ width: `calc(100vw - ${com}px)` }}
 			>
 				<div className="container  w-full h-full relative ">

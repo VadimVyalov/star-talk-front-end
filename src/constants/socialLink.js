@@ -1,8 +1,9 @@
 const socialLink = {
   viber: {
     title: "viber",
-    link: "viber://forward",
-    sharer: "?text",
+    link: "viber://",
+    sharer: "forward?text",
+    owner: "chat?number=380950963400",
   },
   facebook: {
     title: "facebook",
@@ -13,6 +14,13 @@ const socialLink = {
     title: "telegram",
     link: "https://telegram.me",
     sharer: "share/url?url",
+    owner: "startalk_english_school",
+  },
+  instagram: {
+    title: "instagram",
+    link: "https://www.instagram.com",
+    sharer: "",
+    owner: "startalk.english.school",
   },
 };
 
