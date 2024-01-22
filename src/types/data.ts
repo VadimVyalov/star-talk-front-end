@@ -10,6 +10,25 @@ export type Article = {
   keyword: string,
 
 }
+export type Period = {
+  id: string,
+  title: string,
+  lessons_amount: number,
+  slogan: string,
+  price_per_lesson: number,
+  price_description: Array<{ id: string, text: string }>,
+  image: string,
+  new: boolean,
+  hot: boolean,
+}
+
+export type Teacher = {
+  id: string,
+  name: string,
+  short_description: string,
+  description: Array<{ id: string, text: string }>,
+  photo: string
+}
 
 export type Review = {
   id: string,

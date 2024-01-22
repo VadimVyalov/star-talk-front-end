@@ -14,12 +14,11 @@ const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: n
 
   // const error = false;
   // const isLoading = false;
-  const { data, error, isLoading } = useGetData<Article[]>(`article?limit=${limit + 1}&offset=${offset}`);
+
+  const { data, error, isLoading } = useGetData<Article[]>(`article?limit=${limit}&offset=${offset}`);
   const unData = !Array.isArray(data) || data?.length < 1
-  const dataNum = data?.length || 0
-  if (dataNum === limit + 1 && !unData) {
-    data.pop()
-  }
+  // const dataNum = data?.length || 0
+
   return (
     ((!error && !unData) || isLoading)
       ? <section id="articles" className="mb-[72px] t:mb-[100px] d:mb-[120px]">

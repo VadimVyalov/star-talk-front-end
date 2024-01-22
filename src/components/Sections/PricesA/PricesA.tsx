@@ -1,48 +1,50 @@
 "use client";
 
 import Slider from "react-slick";
-
 import { priceSlider } from "@/constants/sliderSettings";
-
 import useGetData from "@/hooks/useGetData";
 import PriceItem from "./PriceItem";
 import Sceleton from "./Skeleton";
 import "./sliderStyle.css"
 import ModalForm from "@/components/ModalForm";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import useScreen from "@/hooks/useScreen";
+import { Period } from "@/types/data";
 
 //import data from "../../../public/data/price.json"
 //const baseUrl = '/assets/icons/stars.svg'
 
-export type Period = {
-  id: string,
-  title: string,
-  lessons_amount: number,
-  slogan: string,
-  price_per_lesson: number,
-  price_description: Array<{ id: string, text: string }>,
-  image: string,
-  new: boolean,
-  hot: boolean,
-}
-
 const PricesA = () => {
-
 
   // const error = false;
   // const isLoading = false;
 
-  const { data, error, isLoading } = useGetData('price');
+  const { data, error, isLoading } = useGetData<Period[]>('price');
   //console.log(data)
   const unData = !Array.isArray(data) || data?.length < 1
   const [open, setOpen] = useState(false);
   const onCloseMenu = () => { setOpen(false) };
-  return (
-    <section id="prices" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
-      <div className="container">
 
-        <h2 className="sectionTitle">Ціни на індивідуальні заняття</h2>
-        {(!error && !unData) ? (
+  const screen = useScreen()
+
+  const perPage = useMemo(() => {
+    switch (true) {
+      case screen.isD: return 3;
+      case screen.isT: return 2;
+      case screen.isM: return 1;
+      default: return 3;
+
+    }
+  }, [screen])
+
+  const sceletonData = [...Array(perPage).fill('').map((_, i) => `Price-${i + 1}`)]
+
+  return (
+    ((!error && !unData) || isLoading)
+      ? <section id="prices" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
+        <div className="container">
+
+          <h2 className="sectionTitle">Ціни на індивідуальні заняття</h2>
 
           <div className="">
             <Slider {...priceSlider}>
@@ -60,7 +62,7 @@ const PricesA = () => {
                     </div>
                   )
                 })
-              ) : (['sk-1', 'sk-2', 'sk-3'].map(i => {
+              ) : (sceletonData.map(i => {
                 return (
                   <Sceleton key={i} />
                 )
@@ -69,10 +71,10 @@ const PricesA = () => {
             </Slider>
             <ModalForm isOpen={open} onCloseMenu={onCloseMenu} />
           </div>
-        ) : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
-        }
-      </div >
-    </section >
+
+        </div >
+      </section >
+      : null
   );
 }
 

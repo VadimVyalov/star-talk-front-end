@@ -11,7 +11,7 @@
   display: flex;
 }
 .slider-price .slick-list {
-  @apply mb-12 mx-[-6%] t:mx-[-3%] d:mx-[-2%];
+  @apply mb-12 mx-[-7%] t:mx-[-3%] d:mx-[-2%];
 }
 .slider-price .slick-dots {
   position: unset;

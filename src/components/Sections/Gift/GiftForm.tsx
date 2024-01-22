@@ -17,6 +17,7 @@ const GiftForm = () => {
     //     input: 'outline-none bg-transparent text-base leading-[1.5] w-full pt-3 pb-2',
     //     error: ' text-error-100 text-xs/[15px]'
     // }
+
     const giftInputStyle = {
         wraper: 'flex flex-col gap-y-1  w-full',
         label: 'text-lg/[27px] font-medium  flex flex-col  transition-colors',
@@ -53,7 +54,6 @@ const GiftForm = () => {
             <PoliticsNotification
                 isOpen={showPolitics}
                 onCloseMenu={() => { setShowPolitics(false) }} />
-
         </GoogleReCaptchaProvider>
 
     )

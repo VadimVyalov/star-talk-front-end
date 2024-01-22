@@ -7,7 +7,7 @@ import Social from "../Social";
 import cn from "@/helpers";
 import Icon from "../Icon";
 const logo = "/assets/icons/logo.svg"
-import { menuFooter } from '@/constants/menuItems'
+import { menuHeader } from '@/constants/menuItems'
 import socialLink from "@/constants/socialLink";
 
 const Footer = () => {
@@ -31,9 +31,9 @@ const Footer = () => {
           />
         </Link>
 
-        <div className="col-start-1 row-start-2 t:col-start-1 t:col-end-4 t:row-start-1 t:row-span-4 mx-auto
-                        t:w-fit  flex justify-center z-10 ">
-          <Navigation menuItems={menuFooter} itemCn="gap-x-4" wrapCn="gap-y-3 d:flex-row  gap-x-6  mt-10 t:mt-1  " />
+        <div className="col-start-1 row-start-2 t:col-start-1  t:row-start-3  mx-auto
+                        t:ml-0">
+          <Navigation menuItems={menuHeader} itemCn="" wrapCn="gap-y-3 mt-10 t:mt-8 d:mt-10  " />
         </div>
 
         <div className="col-start-1 row-start-4 t:col-start-3 t:row-start-1 t:row-span-3
@@ -66,11 +66,13 @@ const Footer = () => {
         </div>
 
         <Social className="t:col-start-1 t:row-start-2 mx-auto mt-6 t:ml-0 t:mt-5" />
-        <p className="text-left  font-medium col-start-1 mt-4 row-start-5 t:row-start-3 whitespace-nowrap ">ФОП Сімак Тетяна Василівна</p>
+        <p className=" text-center font-medium col-start-1 mt-4 whitespace-nowrap
+        row-start-5 t:col-start-1 t:col-span-3 t:row-start-5  ">
+          ФОП Сімак Тетяна Василівна</p>
 
         <Link href={'/politics'} title='Політика конфедейційності'
-          className=" whitespace-nowrap font-medium text-center mx-auto Link
-        row-start-3 t:col-start-2 t:row-start-5 mt-6  d:col-start-2 d:row-start-2 d:mt-3 " >
+          className=" whitespace-nowrap font-medium text-center  Link
+         row-start-3 t:col-start-1 t:row-start-4 t:col-span-3 mt-6 t:mt-4" >
           Політика конфедейційності
         </Link>
       </div>

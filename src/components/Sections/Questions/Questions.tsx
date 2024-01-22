@@ -25,10 +25,7 @@ const Questions = () => {
     ((!error && !unData) || isLoading)
       ? <section id="questions" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
         <div className="container">
-
           <h2 className="sectionTitle">Відповіді на питання, що часто ставляться</h2>
-
-
           <div className="flex flex-col gap-y-8 items-center ">
 
             {!isLoading ? (

@@ -6,52 +6,62 @@ import useGetData from "@/hooks/useGetData";
 import TeacherItem from "./TeacherItem";
 import "./sliderStyle.css"
 import Sceleton from "./Skeleton";
+import { Teacher } from "@/types/data";
+import { useMemo } from "react";
+import useScreen from "@/hooks/useScreen";
 
-export type Teacher = {
-  id: string,
-  name: string,
-  short_description: string,
-  description: Array<{ id: string, text: string }>,
-  photo: string
-}
+
 
 const Teachers = () => {
 
-  const { data, error, isLoading } = useGetData('teachers');
+  const { data, error, isLoading } = useGetData<Teacher[]>('teachers');
 
   const unData = !Array.isArray(data) || data?.length < 1
+  const screen = useScreen()
+  const perPage = useMemo(() => {
+    switch (true) {
+      case screen.isD: return 4;
+      case screen.isT: return 2;
+      case screen.isM: return 1;
+      default: return 4;
 
+    }
+  }, [screen])
+
+  const sceletonData = [...Array(perPage).fill('').map((_, i) => `teacher-${i + 1}`)]
 
   return (
-    <section id="teachers" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
-      <div className="container">
+    ((!error && !unData) || isLoading)
+      ? <section id="teachers" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
+        <div className="container">
 
-        <h2 className="sectionTitle">Викладачі</h2>
-        {(!error && !unData)
-          ? (
-            <div className="">
-              <Slider {...teachersSlider}>
-                {!isLoading
-                  ? (
-                    data.map((teacher: Teacher) => {
-                      return (
-                        <TeacherItem key={teacher.id} teacher={teacher} />
-                      )
-                    })
-                  )
-                  : (['teacher-1', 'teacher-2', 'teacher-3', 'teacher-4'].map(i => {
+          <h2 className="sectionTitle">Викладачі</h2>
+
+
+          <div className="">
+            <Slider {...teachersSlider}>
+              {!isLoading
+                ? (
+                  data?.map((teacher: Teacher) => {
                     return (
-                      <Sceleton key={i} />
+                      <TeacherItem key={teacher.id} teacher={teacher} />
                     )
-                  }))
-                }
-              </Slider>
-            </div>
-          )
-          : <p className="text-error-100 text-center text-3xl"> Щось пішло не так </p>
-        }
-      </div >
-    </section >
+                  })
+                )
+                : (sceletonData.map(i => {
+                  return (
+                    <Sceleton key={i} />
+                  )
+                }))
+              }
+            </Slider>
+          </div>
+
+
+        </div >
+      </section >
+      : null
+
   );
 }
 
