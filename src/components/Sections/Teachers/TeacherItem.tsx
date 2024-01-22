@@ -1,9 +1,10 @@
 import Image from "next/image"
 import cn from "@/helpers"
-import type { Teacher } from "./Teachers";
+
 import { useState } from "react";
 import "./card.css"
 import Icon from "../../Icon";
+import { Teacher } from "@/types/data";
 
 interface Props {
   teacher: Teacher

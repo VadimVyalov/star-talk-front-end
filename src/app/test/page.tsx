@@ -5,12 +5,8 @@ import { TestForm } from "@/components/TestForm";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { TestFormB } from "@/components/TestForm/TestFormB";
-
 
 export default function Test() {
-
-
   return (
     <section id="test" className="mb-[72px] t:mb-[100px] d:mb-[120px]">
       <div className="container">
@@ -21,7 +17,7 @@ export default function Test() {
             id: 'test_GoogleReCaptchaProvider'
           }}
         >
-          <TestFormB />
+          <TestForm />
         </GoogleReCaptchaProvider>
 
       </div>

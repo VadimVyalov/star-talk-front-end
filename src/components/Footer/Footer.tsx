@@ -1,7 +1,6 @@
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-//import useScreen from '@/hooks/useScreen';
 import Navigation from "../Navigation";
 import Social from "../Social";
 import cn from "@/helpers";
@@ -11,8 +10,7 @@ import { menuHeader } from '@/constants/menuItems'
 import socialLink from "@/constants/socialLink";
 
 const Footer = () => {
-  // const { isT } = useScreen();
-  //console.log(isT)
+
   return (
 
     <div id="footer" className="container pb-8 mb-[68px] t:mb-0">
@@ -31,8 +29,7 @@ const Footer = () => {
           />
         </Link>
 
-        <div className="col-start-1 row-start-2 t:col-start-1  t:row-start-3  mx-auto
-                        t:ml-0">
+        <div className="col-start-1 row-start-2 t:col-start-1  t:row-start-3  mx-auto t:ml-0">
           <Navigation menuItems={menuHeader} itemCn="" wrapCn="gap-y-3 mt-10 t:mt-8 d:mt-10  " />
         </div>
 
@@ -82,15 +79,11 @@ const Footer = () => {
         target='_blank'
         rel="noopener noreferrer nofollow"
         className="Link flex mx-auto justify-center items-center flex-col t:flex-row">
-
         <span className="whitespace-nowrap">© 2023 WebUzvar</span>
         <span className="mx-1 hidden t:inline">|</span>
         <span className="whitespace-nowrap  ">Усі права захищено</span>
       </a>
-
-
     </div>
-
   );
 };
 

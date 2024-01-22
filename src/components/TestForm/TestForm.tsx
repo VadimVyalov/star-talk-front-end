@@ -1,108 +1,59 @@
 //'use client'
 import Link from 'next/link';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
-import { toast } from "react-toastify";
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { FormData } from './types';
+import React, { useEffect, useState } from 'react';
 import cn from "@/helpers"
-import { test } from "@/helpers/validation";
-import { sendFeedBack } from '@/helpers/sendFeedBack';
-
-import ContactForm from './elements/ContactForm';
-import makeSchema from './helpers/makeShema';
-import makeAnswer from './helpers/makeAnswer';
+import { FormData } from './types';
+import FormWrapperWithCaptcha from '../ModalForm/FormWrapperWithCaptcha';
+import FormInput from '../NestedForm/FormInput';
+import FormSubmit from '../NestedForm/FormSubmit';
 import { Element } from './Element';
+import { name, email, telegramOrPhone as phone } from "@/helpers/validation";
+import makeSchemaA from './helpers/makeShemaA';
 
-import questions from '../../../public/data/test.json' assert { type: 'json' }
+import useGetData from '@/hooks/useGetData';
+import { getLS } from '@/helpers/lsStorage';
+import PoliticsNotification from '../PoliticsNotification';
 
+
+const contactInputStyle = {
+  wraper: 'flex flex-col gap-y-1  w-full',
+  label: 'text-lg/[27px] font-medium  flex flex-col  transition-colors',
+  input: 'outline-0 bg-transparent text-base border border-black-30 hover:border-accent-100 focus:border-accent-100 rounded-[5px] placeholder-black-30 w-full px-[25px] py-[12px] resize-none t:min-w-[280px]',
+  inputError: 'hover:border-error-100 focus:border-error-100',
+  error: ' text-error-100 text-xs/[15px]'
+}
 
 export const TestForm = () => {
-
-
-
-  const [state, setState] = useState(false);
-
+  type Status = 'contact' | 'questions' | 'submit' | 'pending' | 'finish' | 'error' | 'notAllow'
   const [step, setStep] = useState(-1);
+  const [status, setStatus] = useState<Status>('contact')
   const [question, setQuestion] = useState<FormData | null>(null);
 
 
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const { data: dataQuestion, error, isLoading } = useGetData<FormData[]>(`quizzes`);
 
-  const dataQuestion = JSON.parse(JSON.stringify(questions)) as FormData[]
-  const isLoading = false
-  const isError = false
+  const questionNum = dataQuestion ? dataQuestion.length - 1 : 0
 
-  const questionNum = dataQuestion.length - 1
+  const unData = !Array.isArray(dataQuestion) || questionNum < 1
 
-  let validationSchema = step < 0 ? test : makeSchema(question)
+  const nextQ = () => {
+    if (step < questionNum && allowSend) setStep(prev => prev + 1)
 
-  const handleReCaptchaVerify = useCallback(async () => {
-    if (!executeRecaptcha) {
-      return;
-    }
-    const token = await executeRecaptcha("test");
-    return token;
-  }, [executeRecaptcha]);
-
-
-  const formMetods = useForm({
-    resolver: yupResolver(validationSchema),
-    mode: "onTouched",
-  });
-
-  //-= for test =-
-  // const nextQ = () => {
-  //   if (step < questionNum)
-  //     setStep(prev => prev + 1)
-  // }
-  // const prevQ = () => {
-  //   if (step > -1)
-  //     setStep(prev => prev - 1)
-  // }
-
-
-  const action: () => void = formMetods.handleSubmit(async (data) => {
-
-    if ((step < questionNum)) {
-      setStep(prev => prev + 1)
-      return
-    }
-
-    const answer = await makeAnswer(data, dataQuestion)
-    // console.log(data);
-
-    const token = await handleReCaptchaVerify();
-    if (token) {
-      data.message = answer
-      toast.promise(
-        sendFeedBack(data, token),
-        {
-          pending: 'очікую відповідь сервера...',
-          success: 'Дякуємо, запит успішно надіслано. Найближчим часом ми з Вами сконтактуємо',
-          error: 'Щось пішло не так, спробуйте пізніше'
-        },
-        {
-          autoClose: 3000,
-        }
-      ).finally(() => setState(true));
-    } else { toast.error('Спрацював захист від ботів') }
-  });
-
-
-  useEffect(() => { setQuestion(dataQuestion[step]) }, [step])
-
-
-  if (isLoading) {
-    return <p>Зачекай...</p>;
   }
 
-  if ((!question && step > -1) || isError) {
-    return <p>помилка завантаження даних</p>;
-  }
+  const allowSend: boolean | undefined = getLS("politics")
+  const [showPolitics, setShowPolitics] = useState(false)
+  useEffect(() => {
 
+    if (step <= questionNum && dataQuestion) setQuestion(dataQuestion[step])
+    if (step > -1) setStatus('questions')
+    if (step > questionNum - 1) setStatus('submit')
 
+  }, [step])
+
+  const validationSchema = status === 'contact'
+    ? { name, phone, email }
+    : makeSchemaA(question)
 
   const answerVariants =
   {
@@ -111,15 +62,47 @@ export const TestForm = () => {
     items: question?.variants || [{ 'id': 'notVariant', 'value': 'notVariant' }]
   }
 
+
+  if (isLoading) {
+    return <p>Завантаження даних ...</p>
+  }
+
+  if (error || (unData && !isLoading)) {
+    return (
+
+      <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
+        <h1 className="sectionTitle">Помилка завантаження даних</h1>
+        <Link href="/" className={cn('greenLink  w-full t:max-w-[250px] mt-1 h-fit')}>На головну</Link>
+      </div>
+    )
+  }
+
+  if (status === 'pending') {
+    return <p>Обробка даних ...</p>;
+  }
+
+  if (status === 'error') {
+    return (
+      <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
+        <h1 className="sectionTitle">Помилка обробки даних</h1>
+        <Link href="/" className={cn('greenLink  w-full t:max-w-[250px] mt-1 h-fit')}>На головну</Link>
+      </div>
+    )
+
+  }
+
+  if (status === 'finish')
+    return (
+      <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
+        <h1 className="sectionTitle">Вітаємо тест завершено</h1>
+        <Link href="/" className={cn('greenLink  w-full t:max-w-[250px] mt-1 h-fit')}>На головну</Link>
+      </div>
+    )
+
   return (
-
-    state ? <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
-      <h1 className="sectionTitle">Вітаємо тест завершено</h1>
-      <Link href="/" className={cn('greenLink py-3.5 w-full t:w-[279px] mt-1 shrink-0 h-fit')}>На головну</Link>
-
-    </div> : <FormProvider {...formMetods}>
+    <>
       <h1 className="sectionTitle">Тест на визначення рівня англійської</h1>
-      {step < 0
+      {status === 'contact'
         ? <div>
           <p>{'Привіт) Якщо ти вже перевіряєш рівень своєї англійської, це означає, що залишився один крок і можна починати вдосконалювати себе, вивчаючи мову=) '}</p>
           <ul className='flex flex-col gap-y-1.5 mt-4 mb-10'>
@@ -131,44 +114,60 @@ export const TestForm = () => {
         </div>
         : null}
 
-      <form
-        // action={action}
-        onSubmit={action}
-        className={cn('flex flex-col', step < 0 ? ' t:flex-row justify-between gap-x-6 items-end' : '')}>
-
+      <FormWrapperWithCaptcha
+        schema={validationSchema}
+        captchaName='test'
+        Questions={dataQuestion}
+        onPending={() => setStatus('pending')}
+        onSuccess={() => setStatus('finish')}
+        onError={() => setStatus('error')}
+        // onFinally={(formData) => console.log(formData)}
+        notAllow={() => { setShowPolitics(true) }}
+        className={cn('flex flex-col', status === 'contact'
+          ? ' t:flex-row justify-between gap-x-6 items-end' : '')}
+      >
         {
-          step < 0
-            ? <ContactForm />
-            : <div>
-              <h3 className='mb-6'>{`${step + 1}. ${question?.title}`}</h3>
-              <Element element={answerVariants} />
-            </div>
+          status === 'contact'
+            ? <div className="flex  flex-col gap-x-5 gap-y-5 d:gap-y-6 w-full t:max-w-[384px]">
+              <FormInput type='text' name="name" label="Ім’я*" placeholder="Ім’я" styles={contactInputStyle} />
+              <FormInput type='text' name="phone" label="Телефон або нік в Telegram*" placeholder="+380667778899 або User123" styles={contactInputStyle} />
+              <FormInput type='text' name="email" label="Пошта*" placeholder="example@email.com" styles={contactInputStyle} />
+
+            </div> : null
+        }
+        {status === 'questions' || status === 'submit'
+          ? <div>
+            <h3 className='mb-6'>{`${step + 1}. ${question?.title}`}</h3>
+            <Element element={answerVariants} />
+          </div> : null
         }
 
-        <button type={'submit'} disabled={!formMetods.formState.isValid}
-          className={cn('greenLink py-3.5 w-full t:w-[279px] mt-12 shrink-0 h-fit')} >{step < 0 ? 'Почати тест' : 'Продовжити'} </button>
+        <FormSubmit
+          type={(status === 'submit' || !allowSend) ? 'submit' : 'button'}
+          onClick={nextQ}
+          className={cn('greenLink  w-full t:max-w-[250px] mt-12 mb-5 h-fit')}
+          label={status === 'contact' ? 'Почати тест' : status === 'submit' ? 'Завершити' : 'Продовжити'}
+          title={status === 'contact' ? 'Почати тест' : status === 'submit' ? 'Завершити' : 'Продовжити'}
+        />
+        <PoliticsNotification
+          isOpen={showPolitics}
+          onCloseMenu={() => { setShowPolitics(false) }} />
+      </FormWrapperWithCaptcha>
 
-
-      </form>
-
-      {step < 0
+      {status === 'questions' || status === 'submit'
         ?
-        null
-        :
         <div className='h-5 px-5 t:px-[50px] py-[5px] mt-12 w-full d:w-[692px] mx-auto rounded-full bg-grey-4'>
           <div
-            style={{ width: step > 0 ? `${(step) / questionNum * 100}%` : '10px' }}
+            style={{
+              width: step < 0
+                ? '10px' : step > questionNum
+                  ? '100%'
+                  : `${(step + 1) / (questionNum + 1) * 100}%`
+            }}
             className={`h-full rounded-full  bg-accent-100 transition-['width'] duration-300`}>
           </div>
-        </div>
+        </div> : null
       }
-
-      {/* -= for test =-
-      <button type='button' onClick={prevQ} className='h-6 w-12 m-2 border border-accent-100 rounded'> prev </button>
-      <button type='button' onClick={nextQ} className='h-6 w-12 m-2 border border-accent-100 rounded disabled:bg-red-600' > next</button> */}
-
-
-    </FormProvider>
-
+    </>
   );
 };

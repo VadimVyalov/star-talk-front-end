@@ -1,7 +1,7 @@
 import Icon from "../../Icon";
 import cn from "@/helpers"
-import type { Period } from "./PricesA";
 import Image from "next/image";
+import { Period } from "@/types/data";
 
 
 interface Props {
