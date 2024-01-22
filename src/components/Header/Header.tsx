@@ -40,6 +40,7 @@ const Header = () => {
             <><Navigation menuItems={menuHeader} wrapCn='flex-row gap-x-6' />
 
               <button className="greenLink px-[24px] shrink-0"
+                title="Записатись на урок"
                 type='button'
                 onClick={() => { setOpen(true) }}>
                 Записатись на урок

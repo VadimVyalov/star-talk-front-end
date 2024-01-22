@@ -17,7 +17,10 @@ export function BurgerMenu() {
 	};
 	return (
 		<>
-			<button onClick={onOpenMenu} className='flex shrink-0 icon !w-10 !h-10'>
+			<button
+				type="button"
+				onClick={onOpenMenu}
+				className='flex shrink-0 icon !w-10 !h-10'>
 				<Icon name='/assets/icons/small.svg' id='menu'
 					className={cn('w-full h-full shrink-0')}
 				/>

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 import { Bree_Serif, Montserrat, Roboto_Slab } from "next/font/google";
+import PoliticsPlate from "@/components/PoliticsPlate";
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "500", "600", "700"], display: 'swap', variable: '--font-montserrat', })
 const roboto = Roboto_Slab({ subsets: ["latin"], weight: ["400", "500", "600", "700"], display: 'swap', variable: '--font-roboto', })
 const bree_serif = Bree_Serif({ subsets: ["latin"], weight: "400", variable: '--font-bree', })
@@ -35,6 +36,7 @@ export default function RootLayout({
 
         <main>{children}</main>
         <Footer />
+        <PoliticsPlate />
         <div id="modal-root"></div>
       </body>
 

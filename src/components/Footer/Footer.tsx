@@ -53,13 +53,14 @@ const Footer = () => {
             <a href="tel:+380950963400"
               title="phone"
               rel="noopener noreferrer nofollow"
-              className="text-base t:text-[20px] font-medium  hover:text-accent-100 transition">
+              className="text-base t:text-[20px] font-medium  Link">
               +380950963400
             </a>
           </div>
           <a href='mailto:startalk.school@gmail.com'
+            title="Email"
             rel="noopener noreferrer nofollow"
-            className=" hover:text-accent-100 transition ">
+            className=" Link ">
             startalk.school@gmail.com
           </a>
         </div>
@@ -67,14 +68,24 @@ const Footer = () => {
         <Social className="t:col-start-1 t:row-start-2 mx-auto mt-6 t:ml-0 t:mt-5" />
         <p className="text-left  font-medium col-start-1 mt-4 row-start-5 t:row-start-3 whitespace-nowrap ">ФОП Сімак Тетяна Василівна</p>
 
-        <Link className=" whitespace-nowrap font-medium text-center mx-auto   hover:text-accent-100 transition
-        row-start-3 t:col-start-2 t:row-start-5 mt-6  d:col-start-2 d:row-start-2 d:mt-3 " href={'/politics'}>Політика конфедейційності</Link>
+        <Link href={'/politics'} title='Політика конфедейційності'
+          className=" whitespace-nowrap font-medium text-center mx-auto Link
+        row-start-3 t:col-start-2 t:row-start-5 mt-6  d:col-start-2 d:row-start-2 d:mt-3 " >
+          Політика конфедейційності
+        </Link>
       </div>
 
-      <div className="flex flex-col gap-2 justify-center">
-        {/* <p className="text-center ">Copyright © 2023 WebUzvar.  <span className="whitespace-nowrap"> All Rights Reserved</span> </p> */}
-        <p className="text-center ">© 2023 WebUzvar | Усі права захищено </p>
-      </div>
+      <a href="https://webuzvar.com/"
+        title="Перейти на сайт розробника"
+        target='_blank'
+        rel="noopener noreferrer nofollow"
+        className="Link flex mx-auto justify-center items-center flex-col t:flex-row">
+
+        <span className="whitespace-nowrap">© 2023 WebUzvar</span>
+        <span className="mx-1 hidden t:inline">|</span>
+        <span className="whitespace-nowrap  ">Усі права захищено</span>
+      </a>
+
 
     </div>
 

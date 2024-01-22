@@ -43,8 +43,9 @@ const Articles = ({ limit = 0, offset = 0, title = 'Статті' }: { limit?: n
 
           {!isLoading
 
-            ? <Link href="/articles" className={cn("greenLink flex items-center gap-x-2 mt-[60px] t:mt-12",
-              " w-full t:w-fit px-[22px] justify-center")}>
+            ? <Link href="/articles" title="Дивитись більше"
+              className={cn("greenLink flex items-center gap-x-2 mt-[60px] t:mt-12",
+                " w-full t:w-fit px-[22px] justify-center")}>
               <span>Дивитись більше</span>
             </Link>
             : null}

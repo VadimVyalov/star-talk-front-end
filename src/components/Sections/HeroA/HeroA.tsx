@@ -17,8 +17,9 @@ const HeroA = () => {
                         </h1>
                         <p className=" d:text-[20px] font-medium  d:mb-3">Англійська - це впевненість в собі і нові можливості</p>
                         <p className=" d:text-[20px] font-semibold t:font-bold d:font-extrabold mb-5 mt-5 d:mb-10 "> БУДЬ ПОПЕРЕДУ!</p>
-                        <Link href="/test" className={cn("greenLink flex items-center gap-x-2",
-                            " w-full  t:max-w-[300px] justify-center")}>
+                        <Link href="/test" title="Визначте свій рівень"
+                            className={cn("greenLink flex items-center gap-x-2",
+                                " w-full  t:max-w-[300px] justify-center")}>
                             <span>Визначте свій рівень</span>
                             <Icon name="/assets/icons/small.svg" id="arrow-right" />
                         </Link>

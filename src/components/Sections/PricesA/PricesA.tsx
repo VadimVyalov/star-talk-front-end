@@ -52,6 +52,7 @@ const PricesA = () => {
                     <div key={period.id} className="slider-item">
                       <PriceItem period={period} />
                       <button
+                        title="Записатись на урок"
                         className=" w-[95%] h-[60px] text-lg  font-semibold mx-1.5 whiteLink"
                         onClick={() => { setOpen(true) }}
                       >

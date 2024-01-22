@@ -12,6 +12,8 @@ import makeSchemaA from './helpers/makeShemaA';
 //import makeAnswer from './helpers/makeAnswer';
 //import questions from '../../../public/data/test.json' assert { type: 'json' }
 import useGetData from '@/hooks/useGetData';
+import { getLS } from '@/helpers/lsStorage';
+import PoliticsNotification from '../PoliticsNotification';
 
 // const contactInputStyle = {
 //   wraper: 'flex flex-col gap-y-2 w-full  ',
@@ -21,13 +23,14 @@ import useGetData from '@/hooks/useGetData';
 // }
 const contactInputStyle = {
   wraper: 'flex flex-col gap-y-1  w-full',
-  label: 'text-lg/[27px] font-medium  flex flex-col hover:border-accent-100 transition-colors',
-  input: 'outline-none bg-transparent text-base border border-black-30 rounded-[5px] placeholder-black-30 w-full px-[25px] py-[12px] resize-none',
+  label: 'text-lg/[27px] font-medium  flex flex-col  transition-colors',
+  input: 'outline-0 bg-transparent text-base border border-black-30 hover:border-accent-100 focus:border-accent-100 rounded-[5px] placeholder-black-30 w-full px-[25px] py-[12px] resize-none t:min-w-[280px]',
+  inputError: 'hover:border-error-100 focus:border-error-100',
   error: ' text-error-100 text-xs/[15px]'
 }
 
 export const TestFormB = () => {
-  type Status = 'contact' | 'questions' | 'submit' | 'pending' | 'finish' | 'error'
+  type Status = 'contact' | 'questions' | 'submit' | 'pending' | 'finish' | 'error' | 'notAllow'
   const [step, setStep] = useState(-1);
   const [status, setStatus] = useState<Status>('contact')
   const [question, setQuestion] = useState<FormData | null>(null);
@@ -44,13 +47,14 @@ export const TestFormB = () => {
   const unData = !Array.isArray(dataQuestion) || questionNum < 1
 
   const nextQ = () => {
-    if (step < questionNum) setStep(prev => prev + 1)
+    if (step < questionNum && allowSend) setStep(prev => prev + 1)
 
   }
   // const prevQ = () => {
   //   if (step > -1) setStep(prev => prev - 1)
   // }
-
+  const allowSend: boolean | undefined = getLS("politics")
+  const [showPolitics, setShowPolitics] = useState(false)
   useEffect(() => {
 
     if (step <= questionNum && dataQuestion) setQuestion(dataQuestion[step])
@@ -80,7 +84,7 @@ export const TestFormB = () => {
 
       <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
         <h1 className="sectionTitle">Помилка завантаження даних</h1>
-        <Link href="/" className={cn('greenLink py-3.5 w-full t:w-[279px] mt-1 shrink-0 h-fit')}>На головну</Link>
+        <Link href="/" className={cn('greenLink  w-full t:max-w-[250px] mt-1 h-fit')}>На головну</Link>
       </div>
     )
   }
@@ -93,7 +97,7 @@ export const TestFormB = () => {
     return (
       <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
         <h1 className="sectionTitle">Помилка обробки даних</h1>
-        <Link href="/" className={cn('greenLink py-3.5 w-full t:w-[279px] mt-1 shrink-0 h-fit')}>На головну</Link>
+        <Link href="/" className={cn('greenLink  w-full t:max-w-[250px] mt-1 h-fit')}>На головну</Link>
       </div>
     )
 
@@ -103,9 +107,10 @@ export const TestFormB = () => {
     return (
       <div className='flex flex-col justify-center items-center mt-[72px] t:mt-[100px] d:mt-[150px]' >
         <h1 className="sectionTitle">Вітаємо тест завершено</h1>
-        <Link href="/" className={cn('greenLink py-3.5 w-full t:w-[279px] mt-1 shrink-0 h-fit')}>На головну</Link>
+        <Link href="/" className={cn('greenLink  w-full t:max-w-[250px] mt-1 h-fit')}>На головну</Link>
       </div>
     )
+  console.log(allowSend);
 
   return (
     <>
@@ -130,6 +135,7 @@ export const TestFormB = () => {
         onSuccess={() => setStatus('finish')}
         onError={() => setStatus('error')}
         // onFinally={(formData) => console.log(formData)}
+        notAllow={() => { setShowPolitics(true) }}
         className={cn('flex flex-col', status === 'contact'
           ? ' t:flex-row justify-between gap-x-6 items-end' : '')}
       >
@@ -150,13 +156,15 @@ export const TestFormB = () => {
         }
 
         <FormSubmit
-          type={(status === 'submit') ? 'submit' : 'button'}
+          type={(status === 'submit' || !allowSend) ? 'submit' : 'button'}
           onClick={nextQ}
-          className={cn('greenLink py-3.5 w-full t:w-[279px] mt-12 shrink-0 h-fit')}
+          className={cn('greenLink  w-full t:max-w-[250px] mt-12 mb-5 h-fit')}
           label={status === 'contact' ? 'Почати тест' : status === 'submit' ? 'Завершити' : 'Продовжити'}
-
+          title={status === 'contact' ? 'Почати тест' : status === 'submit' ? 'Завершити' : 'Продовжити'}
         />
-
+        <PoliticsNotification
+          isOpen={showPolitics}
+          onCloseMenu={() => { setShowPolitics(false) }} />
       </FormWrapperWithCaptcha>
 
       {status === 'questions' || status === 'submit'

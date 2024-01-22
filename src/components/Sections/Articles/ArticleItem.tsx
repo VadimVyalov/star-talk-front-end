@@ -39,7 +39,8 @@ const ArticleItem = ({ article }: Props) => {
             <p className=" text-xs d:text-base text-black-30 font-medium ml-3 whitespace-nowrap"> {date}  </p>
           </div>
 
-          <Link href={`/articles/${id}`} className={cn("  flex items-center gap-x-3 group w-fit mt-3 d:mt-5 font-semibold text-sm ")}>
+          <Link href={`/articles/${id}`} title='Читати далі'
+            className={cn("  flex items-center gap-x-3 group w-fit mt-3 d:mt-5 font-semibold text-sm ")}>
             <span className="flex items-center justify-center w-9 h-9  border
            border-accent-100 rounded-full group-hover:bg-white-100
            bg-accent-100 group-hover:text-accent-100 text-white-100 transition-colors">

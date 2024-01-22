@@ -1,6 +1,7 @@
 "use client";
+
 import cn from "@/helpers";
-import { useState } from "react";
+import React, { useState } from "react";
 import ModalForm from "../ModalForm";
 //import { useLayoutEffect, useState } from "react";
 
@@ -25,6 +26,7 @@ export const RingButton = ({ className = "", ...props }: ButtonProps) => {
 						className={cn(className, "absolute right-4 left-4 t:-right-[90px] t:left-[unset] t:-top-[33px] t:-rotate-90",
 							"t:w-60  border rounded-t-[24px] rounded-b-none flex items-center justify-center")}
 						type='button'
+						title="Записатись на урок"
 						onClick={() => { setOpen(true) }}
 
 						{...props}

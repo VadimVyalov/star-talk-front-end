@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import * as yup from "yup";
 import makeAnswer from "../TestForm/helpers/makeAnswer";
 import { FormData } from "../TestForm/types";
+import { getLS } from "@/helpers/lsStorage";
 
 // import { DevTool } from "@hookform/devtools";
 
@@ -23,12 +24,13 @@ type TFormWrapper = {
     onSuccess?: () => void,
     onError?: () => void,
     onFinally?: (data: TData) => void,
+    notAllow?: () => void,
 
 }
 //
 const FormWrapperWithCaptcha: FC<TFormWrapper> = (
     { children, schema, captchaName = 'formWrapper', className = '', Questions = [],
-        onPending = null, onSuccess = null, onError = null, onFinally = null }) => {
+        onPending = null, onSuccess = null, onError = null, onFinally = null, notAllow = null }) => {
 
 
     const resolverSchema = yup.object().shape(schema)
@@ -47,14 +49,24 @@ const FormWrapperWithCaptcha: FC<TFormWrapper> = (
     // console.log(executeRecaptcha);
 
 
+
     const action: () => void = formMetods.handleSubmit(async (data) => {
 
         const token = await handleReCaptchaVerify();
         // console.log(captchaName);
         // console.log(token);
+        const allowSend: boolean | undefined = getLS("politics")
+        if (!allowSend) {
+            if (notAllow) notAllow()
+            console.log('notAllow');
+            return
+        }
+
         if (token) {
             data.role = captchaName
+
             if (captchaName === 'test') data.message = await makeAnswer(data, Questions)
+
             toast.promise(
                 sendFeedBack(data, token),
                 {
@@ -80,7 +92,8 @@ const FormWrapperWithCaptcha: FC<TFormWrapper> = (
                 },
                 {
                     autoClose: 3000,
-                    pauseOnHover: false
+                    pauseOnHover: false,
+
                 }
             ).finally(() => { if (onFinally) onFinally(data) });
         } else {
@@ -112,14 +125,11 @@ const FormWrapperWithCaptcha: FC<TFormWrapper> = (
     }, [formMetods.formState.isSubmitSuccessful, formMetods.reset, onFinally]);
 
 
-
-
     return (
 
         <FormProvider {...formMetods}>
             <form className={className}
-                // flex flex-col gap-x-5 gap-y-6 p-5 bg-mainBg
-                //action={action}
+
                 onSubmit={action}
             >
                 {children}

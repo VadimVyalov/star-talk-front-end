@@ -11,6 +11,7 @@ interface InestedInput extends React.InputHTMLAttributes<HTMLInputElement> {
         wraper?: string;
         label?: string;
         input?: string;
+        inputError?: string;
         error?: string;
     }
 }
@@ -26,8 +27,9 @@ const FormInput = memo(({ name, label, styles, ...props }: InestedInput) => {
         <div className={cn(styles?.wraper)}>
             <label className={cn(styles?.label)}>{label}
                 <input {...register(name)}
-                    className={cn(styles?.input)}
+                    className={cn(styles?.input, errors[name] ? styles?.inputError : '')}
                     {...props}
+
                 />
 
             </label>

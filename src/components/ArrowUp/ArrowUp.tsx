@@ -31,7 +31,8 @@ export const ArrowUp = ({ className = "", ...props }: ButtonProps) => {
 		<button
 			id='arrowUp'
 			className={`${className} ${showButton ? " w-16 h-16 border-[1px] rounded-full flex items-center justify-center border-accent-100 hover:text-accent-100 bg-accent-100 hover:bg-mainBg" : "hidden"}  `}
-			type={'button'}
+			type="button"
+			title="догори"
 			onClick={() => {
 				document.documentElement.scrollIntoView({ behavior: "smooth", });
 

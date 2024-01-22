@@ -19,7 +19,6 @@ export function ModalPortal({
 }: ModalProps) {
 	const { lockScroll, unlockScroll } = useScrollLock();
 
-
 	useKeyPress("Escape", onCloseMenu);
 
 	useEffect(() => {

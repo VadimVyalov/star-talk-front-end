@@ -42,7 +42,8 @@ export function BurgerMenuA() {
 
 	return (
 		<>
-			<button title="меню"
+			<button
+				title={!openMenu ? "меню" : 'закрити'}
 				onClick={() => setOpenMenu(prev => !prev)}
 				disabled={openForm}
 				className='flex flex-col justify-between items-center  icon disabled:text-black-50 p-1 !w-10 !h-10 z-20'>
@@ -66,6 +67,7 @@ export function BurgerMenuA() {
 
 					<button className="greenLink mx-6 px-[24px]"
 						type='button'
+						title="Записатись на урок"
 						onClick={onOpenForm}>
 						Записатись на урок
 					</button>

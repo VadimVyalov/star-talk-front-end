@@ -94,14 +94,19 @@ button {
   }
 
   .greenLink {
-    @apply rounded-bl-3xl rounded-tr-3xl border border-accent-100   bg-accent-100 text-white-100 hover:text-accent-100 hover:bg-mainBg 
-   text-lg/[18px] py-5 font-semibold
-   text-center  whitespace-nowrap active:shadow-lg transition disabled:bg-disabled disabled:border-disabled disabled:hover:text-white-100;
+    @apply rounded-bl-3xl rounded-tr-3xl border border-accent-100   bg-accent-100 text-white-100 outline-none
+   text-lg/[18px] py-5 font-semibold text-center  whitespace-nowrap active:shadow-lg transition
+    hover:text-accent-100 hover:bg-mainBg  focus:text-accent-100 focus:bg-mainBg  focus:border-2
+    disabled:bg-disabled disabled:border-disabled disabled:hover:text-white-100;
   }
 
   .whiteLink {
     @apply rounded-bl-3xl rounded-tr-3xl border border-accent-100  hover:bg-accent-100 hover:text-white-100 text-accent-100 bg-mainBg 
    text-center font-semibold whitespace-nowrap active:shadow-lg transition;
+  }
+
+  .Link {
+    @apply hover:text-accent-100 focus:text-accent-100 transition;
   }
 
   .icon {

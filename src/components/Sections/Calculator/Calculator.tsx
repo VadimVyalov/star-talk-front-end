@@ -154,17 +154,12 @@ const Calculator = () => {
                                 <label id="selectDate" className="whitespace-nowrap text-white-100 ">Дата завершення</label>
                                 <Controller
                                     control={control}
-
                                     name="selectDate"
                                     render={({ field: { value, onChange, ...fieldProps } }) => {
-
-
                                         return (
-
                                             <ReactDatePicker
                                                 {...fieldProps}
                                                 open={isOpen}
-
                                                 onInputClick={() => setIsOpen(!isOpen)}
                                                 onChange={(date) => { onChange(date); setIsOpen(false) }}
                                                 onClickOutside={() => setIsOpen(false)}
@@ -199,7 +194,12 @@ const Calculator = () => {
                                 />
                             </div>
                         </div>
-                        <button className={cn("greenLink", " t:px-28  w-full t:w-auto mb-[340px] t:mb-auto")}>Розрахувати</button>
+                        <button
+                            type="submit"
+                            title="Розрахувати"
+                            className={cn("greenLink", " t:px-28  w-full t:w-auto mb-[340px] t:mb-auto")}>
+                            Розрахувати
+                        </button>
                     </form>
                 </div>
             </div>

@@ -104,8 +104,6 @@ const Article = ({ id }: { id: string }) => {
                       className={cn('w-8 h-8 shrink-0')}
                     />
                   </a>
-
-
                 </div>
               </div>
 
